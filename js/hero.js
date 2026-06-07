@@ -13,9 +13,10 @@
 import * as THREE from "three";
 
 /* ----------------------------- Config ------------------------------ */
-const FRAME_COUNT = 169;                       // frames in /assets/frames
+const FRAME_COUNT = 169;
+const FRAMES_BASE = "https://pub-5aff009cfde149179ad8598d6f4b228e.r2.dev/frames/";
 const FRAME_PATH  = (i) =>
-  `assets/frames/frame_${String(i).padStart(4, "0")}.jpg`;
+  `${FRAMES_BASE}frame_${String(i).padStart(4, "0")}.jpg`;
 
 // Scroll distance that the pinned sequence occupies.
 // BASE feels natural for this many frames; dividing by 0.6 makes the
@@ -106,6 +107,7 @@ function preload() {
     let loaded = 0;
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
+      img.crossOrigin = "anonymous";
       img.decoding = "async";
       img.onload = img.onerror = () => {
         images[i] = img.naturalWidth ? img : null;
