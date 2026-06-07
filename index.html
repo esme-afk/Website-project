@@ -10,18 +10,9 @@
   <!-- Brand styles -->
   <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Preconnect to library CDNs -->
-  <link rel="preconnect" href="https://unpkg.com" />
+  <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-
-  <!-- Three.js (ES module) -->
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-      }
-    }
-  </script>
+  <link rel="preconnect" href="https://pub-5aff009cfde149179ad8598d6f4b228e.r2.dev" crossorigin />
 
   <!-- GSAP + ScrollTrigger -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -73,42 +64,39 @@
 
   <!-- ============================== HERO ============================== -->
   <section class="hero" id="home">
-    <!-- Pinned stage: holds the Three.js canvas + headline + CTA -->
+    <!-- Pinned stage: layered headline (behind + in-front) around the truck -->
     <div class="hero__stage">
-      <!-- Three.js renders the scroll-driven truck sequence here -->
+      <!-- Headline BEHIND the truck -->
+      <h1 class="hero__headline hero__headline--back">
+        <span class="hero__rank">#1</span> San&nbsp;Diego's Premium<br />
+        Dumpster Rental &amp; Hauling
+      </h1>
+
+      <!-- Scroll-driven truck frame sequence (2D canvas) -->
       <canvas class="hero__canvas" id="heroCanvas"></canvas>
+
+      <!-- Same headline IN FRONT of the truck (lower portion revealed via mask) -->
+      <div class="hero__headline hero__headline--front" aria-hidden="true">
+        <span class="hero__rank">#1</span> San&nbsp;Diego's Premium<br />
+        Dumpster Rental &amp; Hauling
+      </div>
+
+      <!-- CTA -->
+      <a href="#contact" class="btn btn--quote hero__cta">
+        <span class="btn__label">Get Your Free Quote</span>
+        <span class="btn__arrow" aria-hidden="true">→</span>
+      </a>
 
       <!-- Loader (frame preloading) -->
       <div class="hero__loader" id="heroLoader">
         <div class="hero__loader-mark">LONE&nbsp;WOLF</div>
         <div class="hero__loader-bar"><span id="heroLoaderFill"></span></div>
       </div>
-
-      <!-- Center-left headline + CTA -->
-      <div class="hero__content">
-        <p class="hero__eyebrow" data-parallax="0.12">Roll-Off Dumpster Rental &amp; Hauling</p>
-        <h1 class="hero__headline" data-parallax="0.22">
-          <span class="hero__rank">#1</span>
-          San&nbsp;Diego's <em>Premium</em><br />
-          Dumpster Rental &amp; Hauling
-        </h1>
-
-        <a href="#contact" class="btn btn--quote hero__cta" data-parallax="0.06">
-          <span class="btn__label">Get Your Free Quote</span>
-          <span class="btn__arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <!-- Scroll cue -->
-      <div class="hero__scrollcue" id="scrollCue">
-        <span>Scroll</span>
-        <div class="hero__scrollcue-track"><i></i></div>
-      </div>
     </div>
   </section>
 
   <!-- App scripts -->
   <script defer src="js/menu.js"></script>
-  <script type="module" src="js/hero.js"></script>
+  <script defer src="js/hero.js"></script>
 </body>
 </html>

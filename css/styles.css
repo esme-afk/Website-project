@@ -348,12 +348,12 @@ body.menu-open .overlay {
 }
 
 /* =====================================================================
-   HERO
+   HERO  —  layered depth: headline BEHIND + truck + headline IN FRONT
    ===================================================================== */
 .hero {
   position: relative;
-  /* total scroll length is set from JS for the scrubbed sequence;
-     this min-height keeps things sane before JS runs */
+  /* extra scroll length for the scrubbed sequence is added by the JS pin;
+     this keeps things sane before JS runs */
   min-height: 100vh;
   background: var(--white);
 }
@@ -364,103 +364,73 @@ body.menu-open .overlay {
   width: 100%;
   overflow: hidden;
   background: var(--white);
+  isolation: isolate; /* contain the canvas blend mode */
 }
 
-/* Three.js canvas — fills the stage, sits behind the copy */
+/* The truck frame sequence.
+   mix-blend-mode:multiply drops the frames' white background so the
+   BACK headline reads through the empty space and the truck visually
+   sits ON TOP of (in front of) that headline. */
 .hero__canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   display: block;
-  z-index: 1;
+  z-index: 2;
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
-/* Center-left headline block */
-.hero__content {
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  left: var(--gutter);
-  transform: translateY(-50%);
-  width: min(620px, 86vw);
-  pointer-events: none; /* let the canvas show through; re-enable on CTA */
-}
-.hero__content > * { pointer-events: auto; }
-
-.hero__eyebrow {
-  margin: 0 0 18px;
-  font-weight: 600;
-  font-size: clamp(0.72rem, 1vw, 0.85rem);
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: var(--burnt-red);
-}
-
+/* Both headline layers share identical geometry so they register exactly */
 .hero__headline {
-  margin: 0 0 clamp(28px, 4vh, 44px);
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 0 var(--gutter);
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 0.98;
+  font-size: clamp(1.6rem, 6.2vw, 6rem);
+  line-height: 0.92;
   letter-spacing: -0.02em;
+  text-transform: uppercase;
   color: var(--obsidian);
   text-wrap: balance;
+  pointer-events: none;
+  will-change: transform;
 }
-.hero__headline em {
-  font-style: normal;
-  color: transparent;
-  background: var(--grad-1);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-.hero__rank {
+.hero__headline .hero__rank {
   display: inline-block;
   color: transparent;
   background: var(--grad-2);
   -webkit-background-clip: text;
   background-clip: text;
-  margin-right: 0.12em;
+  margin-right: 0.08em;
 }
 
-.hero__cta { will-change: transform; }
+/* Layer behind the truck */
+.hero__headline--back { z-index: 1; }
 
-/* scroll cue ------------------------------------------------------- */
-.hero__scrollcue {
-  position: absolute;
+/* Layer in front of the truck — only the lower portion is revealed,
+   so the bottom of the words crosses over the truck body. */
+.hero__headline--front {
   z-index: 3;
-  bottom: 28px;
+  color: var(--obsidian);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 48%, #000 62%);
+          mask-image: linear-gradient(to bottom, transparent 48%, #000 62%);
+}
+
+.hero__cta {
+  position: absolute;
+  z-index: 4;
   left: 50%;
+  bottom: clamp(32px, 6vh, 64px);
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.66rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(11, 11, 11, 0.55);
-  transition: opacity 0.4s var(--ease);
+  will-change: transform;
 }
-.hero__scrollcue-track {
-  width: 2px;
-  height: 46px;
-  border-radius: 2px;
-  background: rgba(11, 11, 11, 0.12);
-  overflow: hidden;
-}
-.hero__scrollcue-track i {
-  display: block;
-  width: 100%;
-  height: 40%;
-  background: var(--burnt-red);
-  animation: cue 1.8s var(--ease) infinite;
-}
-@keyframes cue {
-  0%   { transform: translateY(-100%); }
-  100% { transform: translateY(250%); }
-}
-.hero__scrollcue.is-hidden { opacity: 0; }
 
 /* loader ----------------------------------------------------------- */
 .hero__loader {
@@ -506,22 +476,15 @@ body.menu-open .overlay {
   :root { --nav-h: 72px; }
   .nav__links { display: none; }       /* primary links collapse into burger */
   .nav__logo img { height: 40px; }
-  .hero__content {
-    left: 0;
-    right: 0;
-    width: auto;
-    padding: 0 var(--gutter);
-    text-align: left;
-  }
 }
 
 @media (max-width: 560px) {
   .nav__cta .btn__label { font-size: 0.85rem; }
   .btn--cta { padding: 0.8em 1.15em; }
+  .hero__cta { bottom: 22px; }
 }
 
-/* Respect reduced-motion: stop looping cue + soften transitions */
+/* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto; }
-  .hero__scrollcue-track i { animation: none; }
 }
