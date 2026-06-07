@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0B0B" />
+  <title>Lone Wolf Hauling Inc. — San Diego's Premium Dumpster Rental &amp; Hauling</title>
+  <meta name="description" content="Lone Wolf Hauling Inc. — San Diego's #1 premium roll-off dumpster rental and hauling for contractors, residential, and commercial projects." />
+
+  <!-- Brand styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Preconnect to library CDNs -->
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+  <!-- Three.js (ES module) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <!-- ============================== MENU / NAV ============================== -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <!-- Left: logo + primary links -->
+      <a class="nav__logo" href="#home" aria-label="Lone Wolf Hauling Inc. — Home">
+        <img
+          src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png"
+          alt="Lone Wolf Hauling Inc."
+        />
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#about" class="nav__link">About</a>
+        <a href="#services" class="nav__link">Services</a>
+        <a href="#sizes" class="nav__link">Sizes</a>
+      </nav>
+
+      <!-- Right: CTA button + burger -->
+      <div class="nav__right">
+        <a href="#contact" class="btn btn--cta nav__cta">Get in Contact</a>
+
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlayMenu">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================== OVERLAY MENU ============================== -->
+  <div class="overlay" id="overlayMenu" aria-hidden="true">
+    <nav class="overlay__nav" aria-label="Full menu">
+      <a href="#home"    class="overlay__link"><span class="overlay__index">01</span> Home</a>
+      <a href="#about"   class="overlay__link"><span class="overlay__index">02</span> About</a>
+      <a href="#services" class="overlay__link"><span class="overlay__index">03</span> Services</a>
+      <a href="#sizes"   class="overlay__link"><span class="overlay__index">04</span> Sizes</a>
+      <a href="#reviews" class="overlay__link"><span class="overlay__index">05</span> Reviews</a>
+      <a href="#contact" class="overlay__link"><span class="overlay__index">06</span> Contact Us</a>
+    </nav>
+    <a href="#contact" class="btn btn--cta overlay__cta">Get Your Free Quote</a>
+  </div>
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero" id="home">
+    <!-- Pinned stage: holds the Three.js canvas + headline + CTA -->
+    <div class="hero__stage">
+      <!-- Three.js renders the scroll-driven truck sequence here -->
+      <canvas class="hero__canvas" id="heroCanvas"></canvas>
+
+      <!-- Loader (frame preloading) -->
+      <div class="hero__loader" id="heroLoader">
+        <div class="hero__loader-mark">LONE&nbsp;WOLF</div>
+        <div class="hero__loader-bar"><span id="heroLoaderFill"></span></div>
+      </div>
+
+      <!-- Center-left headline + CTA -->
+      <div class="hero__content">
+        <p class="hero__eyebrow" data-parallax="0.12">Roll-Off Dumpster Rental &amp; Hauling</p>
+        <h1 class="hero__headline" data-parallax="0.22">
+          <span class="hero__rank">#1</span>
+          San&nbsp;Diego's <em>Premium</em><br />
+          Dumpster Rental &amp; Hauling
+        </h1>
+
+        <a href="#contact" class="btn btn--quote hero__cta" data-parallax="0.06">
+          <span class="btn__label">Get Your Free Quote</span>
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- Scroll cue -->
+      <div class="hero__scrollcue" id="scrollCue">
+        <span>Scroll</span>
+        <div class="hero__scrollcue-track"><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App scripts -->
+  <script defer src="js/menu.js"></script>
+  <script type="module" src="js/hero.js"></script>
+</body>
+</html>
