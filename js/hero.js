@@ -40,7 +40,10 @@
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* --------------------------- Rendering --------------------------- */
-  // Draw the current frame "contain"-fitted and centered on white.
+  // Truck is drawn "contain" (never cropped) and scaled down so it never
+  // fills the whole hero. Slightly raised to leave room for the body card.
+  function truckScale() { return window.innerWidth > 860 ? 0.74 : 0.86; }
+
   function drawFrame(index) {
     var img = images[Math.round(index)];
     var w = canvas.width, h = canvas.height;
@@ -48,10 +51,12 @@
     ctx.fillRect(0, 0, w, h);
     if (!img || !img.naturalWidth) return;
 
-    var fit = Math.min(w / img.naturalWidth, h / img.naturalHeight);
+    var fit = Math.min(w / img.naturalWidth, h / img.naturalHeight) * truckScale();
     var dw = img.naturalWidth * fit;
     var dh = img.naturalHeight * fit;
-    ctx.drawImage(img, (w - dw) / 2, (h - dh) / 2, dw, dh);
+    var dx = (w - dw) / 2;
+    var dy = (h - dh) / 2 - h * 0.04;   // nudge up a touch
+    ctx.drawImage(img, dx, dy, dw, dh);
   }
 
   function resize() {
@@ -111,15 +116,22 @@
       }
     });
 
-    // 2) Subtle parallax — BOTH headline layers move together (identical
-    //    transform) so the front/back copies stay perfectly registered;
-    //    the drift is relative to the truck, which deepens the layering.
+    // 2) Subtle parallax — headline drifts up, body card drifts gently the
+    //    other way, so the truck reads as the anchored middle layer.
     gsap.to(".hero__headline", {
-      yPercent: -7, ease: "none",
+      yPercent: -16, ease: "none",
       scrollTrigger: {
         trigger: ".hero", start: "top top",
         end: function () { return "+=" + scrollLength(); },
         scrub: 1, invalidateOnRefresh: true
+      }
+    });
+    gsap.to(".hero__card", {
+      yPercent: 10, ease: "none",
+      scrollTrigger: {
+        trigger: ".hero", start: "top top",
+        end: function () { return "+=" + scrollLength(); },
+        scrub: 1.4, invalidateOnRefresh: true
       }
     });
 
