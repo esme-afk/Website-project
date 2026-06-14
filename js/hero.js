@@ -16,7 +16,7 @@
   "use strict";
 
   /* ----------------------------- Config ---------------------------- */
-  var FRAME_COUNT  = 169;
+  var FRAME_COUNT  = 145;
   // Pre-keyed transparent WebP frames, hosted same-origin (no CORS issues),
   // so the truck is a real cutout that occludes the headline behind it.
   var FRAMES_BASE  = "assets/frames-web/";
