@@ -45,8 +45,8 @@
   // Truck is drawn "contain" (never cropped) and scaled down with generous
   // margins so it can't crop on any viewport. Shifted toward the LEFT so the
   // right-side headline stays clear and readable.
-  function truckScale() { return window.innerWidth > 860 ? 0.62 : 0.8; }
-  function truckShiftX() { return window.innerWidth > 860 ? -0.10 : 0; } // fraction of width
+  function truckScale() { return window.innerWidth > 860 ? 0.82 : 0.92; }
+  function truckShiftX() { return window.innerWidth > 860 ? -0.15 : 0; } // fraction of width
 
   function drawFrame(index) {
     var img = images[Math.round(index)];
