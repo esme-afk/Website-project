@@ -96,15 +96,24 @@
     if (!gsap || !ScrollTrigger) { drawFrame(0); return; }
     gsap.registerPlugin(ScrollTrigger);
 
-    if (prefersReduced) { drawFrame(0); return; } // static first frame
+    var lines = gsap.utils.toArray(".hero__headline .hl-inner");
 
-    // 1) Scrubbed frame sequence — forward on down, reverse on up,
-    //    while the stage is pinned in place.
-    gsap.to(seq, {
-      frame: FRAME_COUNT - 1,
-      ease: "none",
-      snap: { frame: 1 },
-      onUpdate: function () { drawFrame(seq.frame); },
+    if (prefersReduced) {
+      // No motion: show the truck + everything in place.
+      drawFrame(0);
+      return;
+    }
+
+    // Hidden starting state for the choreographed reveals
+    gsap.set(lines, { yPercent: 120, opacity: 0 });
+    gsap.set(".hero__card", { y: 60, autoAlpha: 0 });
+
+    // One timeline scrubbed by the pinned scroll drives EVERYTHING:
+    //   • the truck frame sequence (forward on down / reverse on up)
+    //   • each headline line sliding up in sequence
+    //   • the body card + CTA appearing last (once you've scrolled through)
+    var tl = gsap.timeline({
+      defaults: { ease: "none" },
       scrollTrigger: {
         trigger: ".hero",
         start: "top top",
@@ -116,27 +125,21 @@
       }
     });
 
-    // 2) Subtle parallax — headline drifts up, body card drifts gently the
-    //    other way, so the truck reads as the anchored middle layer.
-    gsap.to(".hero__headline", {
-      yPercent: -16, ease: "none",
-      scrollTrigger: {
-        trigger: ".hero", start: "top top",
-        end: function () { return "+=" + scrollLength(); },
-        scrub: 1, invalidateOnRefresh: true
-      }
-    });
-    gsap.to(".hero__card", {
-      yPercent: 10, ease: "none",
-      scrollTrigger: {
-        trigger: ".hero", start: "top top",
-        end: function () { return "+=" + scrollLength(); },
-        scrub: 1.4, invalidateOnRefresh: true
-      }
-    });
+    // Frame sequence spans the whole timeline (0 → 10 units)
+    tl.to(seq, {
+      frame: FRAME_COUNT - 1,
+      snap: { frame: 1 },
+      duration: 10,
+      onUpdate: function () { drawFrame(seq.frame); }
+    }, 0);
 
-    // Intro for the CTA once frames are ready
-    gsap.from(".hero__cta", { y: 24, opacity: 0, duration: 0.8, ease: "power3.out", delay: 0.15 });
+    // Headline lines reveal one after another as you scroll
+    tl.to(lines[0], { yPercent: 0, opacity: 1, ease: "power3.out", duration: 1.3 }, 0.4);
+    tl.to(lines[1], { yPercent: 0, opacity: 1, ease: "power3.out", duration: 1.3 }, 2.3);
+    tl.to(lines[2], { yPercent: 0, opacity: 1, ease: "power3.out", duration: 1.3 }, 4.2);
+
+    // Body card + CTA — the last thing to appear, near the end of the scroll
+    tl.to(".hero__card", { y: 0, autoAlpha: 1, ease: "power3.out", duration: 1.8 }, 7.4);
 
     ScrollTrigger.refresh();
   }

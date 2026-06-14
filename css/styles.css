@@ -53,11 +53,12 @@
   --grad-2: linear-gradient(180deg, #F9F1C8 0%, #FFC919 100%);
 
   /* Type families */
-  --font-head: "Protofo", "Arial Narrow", "Helvetica Neue", Impact, sans-serif;
-  --font-body: "PP Mori", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-head: "Protofo", "Archivo", "Arial Narrow", "Helvetica Neue", Impact, sans-serif;
+  --font-display: "Anton", "Protofo", "Archivo", Impact, sans-serif; /* bold standout headline */
+  --font-body: "PP Mori", "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
 
   /* Layout */
-  --nav-h: 84px;
+  --nav-h: 94px;
   --gutter: clamp(20px, 5vw, 72px);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -198,7 +199,7 @@ button { font: inherit; cursor: pointer; }
   margin-right: clamp(2px, 1vw, 14px);
 }
 .nav__logo img {
-  height: 68px;             /* bigger, more noticeable */
+  height: 84px;             /* bigger, more noticeable */
   width: auto;
   transition: transform 0.4s var(--ease);
 }
@@ -381,23 +382,33 @@ body.menu-open .overlay {
   pointer-events: none;
 }
 
-/* Headline — top right */
+/* Headline — top right, BEHIND the truck (z-index 1 < canvas z-index 2),
+   so the truck always renders in front and stays the main subject. */
 .hero__headline {
   position: absolute;
-  z-index: 3;
-  top: clamp(96px, 15vh, 168px);
+  z-index: 1;
+  top: clamp(104px, 15vh, 180px);
   right: var(--gutter);
   margin: 0;
   text-align: right;
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: clamp(2.2rem, 5vw, 4.6rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 400;            /* Anton is a single heavy weight */
+  font-size: clamp(2.8rem, 7.6vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.005em;
   text-transform: uppercase;
   color: var(--obsidian);
-  text-shadow: 0 2px 18px rgba(243, 239, 232, 0.9); /* lift off the truck */
   pointer-events: none;
+}
+/* Each line clips its inner span so it can slide up into view on scroll */
+.hero__headline .hl-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;      /* room for descenders (e.g. the "g") */
+  margin-bottom: -0.08em;
+}
+.hero__headline .hl-inner {
+  display: inline-block;
   will-change: transform;
 }
 .hero__headline-em {
@@ -411,10 +422,10 @@ body.menu-open .overlay {
   content: "";
   display: block;
   margin-left: auto;
-  margin-top: 0.45rem;
-  width: clamp(90px, 12vw, 180px);
-  height: 6px;
-  border-radius: 6px;
+  margin-top: 0.4rem;
+  width: clamp(110px, 13vw, 220px);
+  height: 8px;
+  border-radius: 8px;
   background: var(--grad-2);
 }
 
