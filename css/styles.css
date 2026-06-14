@@ -387,14 +387,14 @@ body.menu-open .overlay {
 .hero__headline {
   position: absolute;
   z-index: 1;
-  top: clamp(104px, 15vh, 180px);
+  top: clamp(100px, 13vh, 150px);
   right: var(--gutter);
   margin: 0;
   text-align: right;
   font-family: var(--font-display);
   font-weight: 400;            /* Anton is a single heavy weight */
-  font-size: clamp(2.8rem, 7.6vw, 7.5rem);
-  line-height: 0.92;
+  font-size: clamp(2rem, 6vw, 6rem);
+  line-height: 0.94;
   letter-spacing: 0.005em;
   text-transform: uppercase;
   color: var(--obsidian);

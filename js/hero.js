@@ -42,9 +42,11 @@
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* --------------------------- Rendering --------------------------- */
-  // Truck is drawn "contain" (never cropped) and scaled down so it never
-  // fills the whole hero. Slightly raised to leave room for the body card.
-  function truckScale() { return window.innerWidth > 860 ? 0.74 : 0.86; }
+  // Truck is drawn "contain" (never cropped) and scaled down with generous
+  // margins so it can't crop on any viewport. Shifted toward the LEFT so the
+  // right-side headline stays clear and readable.
+  function truckScale() { return window.innerWidth > 860 ? 0.66 : 0.82; }
+  function truckShiftX() { return window.innerWidth > 860 ? -0.12 : 0; } // fraction of width
 
   function drawFrame(index) {
     var img = images[Math.round(index)];
@@ -55,8 +57,10 @@
     var fit = Math.min(w / img.naturalWidth, h / img.naturalHeight) * truckScale();
     var dw = img.naturalWidth * fit;
     var dh = img.naturalHeight * fit;
-    var dx = (w - dw) / 2;
-    var dy = (h - dh) / 2 - h * 0.04;   // nudge up a touch
+    var dx = (w - dw) / 2 + w * truckShiftX();
+    var dy = (h - dh) / 2;       // vertically centered (no crop top/bottom)
+    // keep fully on-screen even with the shift
+    if (dx < 0 && dx + dw > w) dx = (w - dw) / 2;
     ctx.drawImage(img, dx, dy, dw, dh);
   }
 
@@ -135,12 +139,12 @@
     }, 0);
 
     // Headline lines reveal one after another as you scroll
-    tl.to(lines[0], { yPercent: 0, opacity: 1, ease: "power3.out", duration: 1.3 }, 0.4);
-    tl.to(lines[1], { yPercent: 0, opacity: 1, ease: "power3.out", duration: 1.3 }, 2.3);
-    tl.to(lines[2], { yPercent: 0, opacity: 1, ease: "power3.out", duration: 1.3 }, 4.2);
+    lines.forEach(function (ln, i) {
+      tl.to(ln, { yPercent: 0, opacity: 1, ease: "power3.out", duration: 1.1 }, 0.4 + i * 1.5);
+    });
 
     // Body card + CTA — the last thing to appear, near the end of the scroll
-    tl.to(".hero__card", { y: 0, autoAlpha: 1, ease: "power3.out", duration: 1.8 }, 7.4);
+    tl.to(".hero__card", { y: 0, autoAlpha: 1, ease: "power3.out", duration: 1.6 }, 7.6);
 
     ScrollTrigger.refresh();
   }
