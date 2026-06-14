@@ -370,7 +370,8 @@ body.menu-open .overlay {
 .hero__roads .road--amber { stroke: var(--amber);     color: var(--amber); animation-duration: 8s; }
 @keyframes roadflow { to { stroke-dashoffset: -360; } }
 
-/* The truck frame sequence — multiply drops the frames' white background */
+/* The truck frame sequence — pre-keyed transparent frames, drawn normally,
+   so the truck is opaque and fully occludes the headline behind it. */
 .hero__canvas {
   position: absolute;
   inset: 0;
@@ -378,7 +379,6 @@ body.menu-open .overlay {
   height: 100%;
   display: block;
   z-index: 2;
-  mix-blend-mode: multiply;
   pointer-events: none;
 }
 

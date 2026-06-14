@@ -17,9 +17,11 @@
 
   /* ----------------------------- Config ---------------------------- */
   var FRAME_COUNT  = 169;
-  var FRAMES_BASE  = "https://pub-5aff009cfde149179ad8598d6f4b228e.r2.dev/frames/";
+  // Pre-keyed transparent WebP frames, hosted same-origin (no CORS issues),
+  // so the truck is a real cutout that occludes the headline behind it.
+  var FRAMES_BASE  = "assets/frames-web/";
   var FRAME_PATH   = function (i) {
-    return FRAMES_BASE + "frame_" + String(i).padStart(4, "0") + ".jpg";
+    return FRAMES_BASE + "frame_" + String(i).padStart(4, "0") + ".webp";
   };
 
   // 1.0 = normal scroll, 0.6 = 40% slower (sequence takes ~167% of scroll)
@@ -47,8 +49,7 @@
   function drawFrame(index) {
     var img = images[Math.round(index)];
     var w = canvas.width, h = canvas.height;
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, w, h);
+    ctx.clearRect(0, 0, w, h);   // transparent — let the hero gradient show
     if (!img || !img.naturalWidth) return;
 
     var fit = Math.min(w / img.naturalWidth, h / img.naturalHeight) * truckScale();
