@@ -393,7 +393,7 @@ body.menu-open .overlay {
   text-align: right;
   font-family: var(--font-display);
   font-weight: 400;            /* Anton is a single heavy weight */
-  font-size: clamp(2rem, 6vw, 6rem);
+  font-size: clamp(2.4rem, 7vw, 7rem);
   line-height: 0.94;
   letter-spacing: 0.005em;
   text-transform: uppercase;

@@ -45,8 +45,8 @@
   // Truck is drawn "contain" (never cropped) and scaled down with generous
   // margins so it can't crop on any viewport. Shifted toward the LEFT so the
   // right-side headline stays clear and readable.
-  function truckScale() { return window.innerWidth > 860 ? 0.66 : 0.82; }
-  function truckShiftX() { return window.innerWidth > 860 ? -0.12 : 0; } // fraction of width
+  function truckScale() { return window.innerWidth > 860 ? 0.62 : 0.8; }
+  function truckShiftX() { return window.innerWidth > 860 ? -0.10 : 0; } // fraction of width
 
   function drawFrame(index) {
     var img = images[Math.round(index)];
@@ -58,9 +58,11 @@
     var dw = img.naturalWidth * fit;
     var dh = img.naturalHeight * fit;
     var dx = (w - dw) / 2 + w * truckShiftX();
-    var dy = (h - dh) / 2;       // vertically centered (no crop top/bottom)
-    // keep fully on-screen even with the shift
-    if (dx < 0 && dx + dw > w) dx = (w - dw) / 2;
+    var dy = (h - dh) / 2;
+    // HARD CLAMP inside the canvas — cropping is now mathematically impossible
+    // (dw <= w and dh <= h because scale < 1 with a contain fit).
+    dx = Math.max(0, Math.min(dx, w - dw));
+    dy = Math.max(0, Math.min(dy, h - dh));
     ctx.drawImage(img, dx, dy, dw, dh);
   }
 
