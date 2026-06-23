@@ -554,9 +554,12 @@ body.menu-open .overlay {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transform: scale(1.12);
+  transform: scale(1.06);
   will-change: opacity, transform;
+  /* crossfade + subtle scale-in are CSS-driven (cheap), toggled via class */
+  transition: opacity 0.7s var(--ease), transform 1.2s var(--ease);
 }
+.svc-img.is-shown { opacity: 1; transform: scale(1); }
 .svc-img__overlay {
   position: absolute;
   inset: 0;
@@ -606,9 +609,10 @@ body.menu-open .overlay {
   margin: 0;
   max-width: 46ch;
   font-family: var(--font-body);
+  font-weight: 400;
   font-size: clamp(0.95rem, 1.05vw, 1.1rem);
-  line-height: 1.5;
-  color: rgba(243, 239, 232, 0.85);
+  line-height: 1.55;
+  color: rgba(243, 239, 232, 0.82);
 }
 
 .svc-list {
@@ -618,7 +622,6 @@ body.menu-open .overlay {
   display: flex;
   flex-direction: column;
   gap: clamp(12px, 1.5vw, 22px);
-  will-change: transform;
 }
 .svc-item {
   display: flex;

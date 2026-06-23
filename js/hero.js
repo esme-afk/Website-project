@@ -128,7 +128,9 @@
         scrub: 0.6,
         pin: ".hero__stage",
         anticipatePin: 1,
-        invalidateOnRefresh: true
+        invalidateOnRefresh: true,
+        refreshPriority: 2   // hero (higher on page) refreshes first so its
+                             // pin spacing is set before Section 2 is measured
       }
     });
 

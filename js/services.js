@@ -2,8 +2,12 @@
    Lone Wolf Hauling — Section 2: Service Pillars
    Scroll-driven 2-column showcase. Right red panel stays pinned while the
    active service line is highlighted and the matching left image fades in.
-   Self-contained; uses the global GSAP/ScrollTrigger, independent of the
-   hero's ScrollTriggers.
+
+   Performance: the image crossfade + active highlight are driven by CSS
+   transitions toggled on a class — we only touch the DOM when the active
+   index actually changes (not every scroll frame), which keeps it smooth.
+   Independent of the hero's ScrollTriggers (lower refreshPriority so the
+   hero's pin spacing is calculated first and Section 2 starts after it).
    ===================================================================== */
 (function () {
   "use strict";
@@ -14,36 +18,25 @@
 
     var items = Array.prototype.slice.call(section.querySelectorAll(".svc-item"));
     var imgs  = Array.prototype.slice.call(section.querySelectorAll(".svc-img"));
-    var list  = section.querySelector(".svc-list");
     var N = items.length;
     if (!N) return;
 
-    var gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
-
-    function setActive(idx) {
+    function show(idx) {
       items.forEach(function (it, i) { it.classList.toggle("is-active", i === idx); });
+      imgs.forEach(function (im, i) { im.classList.toggle("is-shown", i === idx); });
     }
+    show(0);
 
-    // No GSAP → static, first service shown
-    if (!gsap || !ScrollTrigger) {
-      setActive(0);
-      imgs.forEach(function (im, i) { im.style.opacity = i === 0 ? "1" : "0"; im.style.transform = "none"; });
-      return;
-    }
+    var gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
+    if (!gsap || !ScrollTrigger) return;             // static first service
     gsap.registerPlugin(ScrollTrigger);
-
-    // Base state
-    gsap.set(imgs, { autoAlpha: 0, scale: 1.12 });
-    gsap.set(imgs[0], { autoAlpha: 1, scale: 1 });
-    setActive(0);
-
-    // Reduced motion → first service, no scroll animation
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     var mm = gsap.matchMedia();
 
-    /* ---------- DESKTOP: pinned, scrubbed crossfade + highlight ---------- */
+    /* ---------- DESKTOP: pin section, advance active service on scroll ---------- */
     mm.add("(min-width: 861px)", function () {
+      var current = 0;
       var st = ScrollTrigger.create({
         trigger: ".services",
         start: "top top",
@@ -52,14 +45,10 @@
         scrub: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
+        refreshPriority: 1,
         onUpdate: function (self) {
-          var p = self.progress * (N - 1);              // continuous 0 .. N-1
-          setActive(Math.round(p));
-          gsap.set(list, { y: -22 * p });               // subtle upward drift
-          imgs.forEach(function (im, i) {
-            var d = Math.min(1, Math.abs(i - p));        // 0 = fully in, 1 = out
-            gsap.set(im, { autoAlpha: 1 - d, scale: 1 + 0.12 * d });
-          });
+          var idx = Math.round(self.progress * (N - 1));
+          if (idx !== current) { current = idx; show(idx); }   // only on change
         }
       });
       return function () { st.kill(); };
@@ -67,20 +56,13 @@
 
     /* ---------- MOBILE: sticky image, per-item triggers swap active ---------- */
     mm.add("(max-width: 860px)", function () {
-      gsap.set(list, { y: 0 });
-      gsap.set(imgs, { scale: 1 });
-      function activate(i) {
-        setActive(i);
-        imgs.forEach(function (im, j) { gsap.to(im, { autoAlpha: j === i ? 1 : 0, duration: 0.45 }); });
-      }
-      activate(0);
       var trigs = items.map(function (it, i) {
         return ScrollTrigger.create({
           trigger: it,
           start: "top 62%",
           end: "bottom 42%",
-          onEnter: function () { activate(i); },
-          onEnterBack: function () { activate(i); }
+          onEnter: function () { show(i); },
+          onEnterBack: function () { show(i); }
         });
       });
       return function () { trigs.forEach(function (t) { t.kill(); }); };
