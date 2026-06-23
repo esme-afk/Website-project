@@ -1003,3 +1003,155 @@ body.menu-open .overlay {
   .about__media-frame { aspect-ratio: 4 / 5; border-radius: 20px; }
   .about__media-accent { border-radius: 20px; }
 }
+
+/* =====================================================================
+   SECTION 5 — TESTIMONIALS
+   ===================================================================== */
+.testimonials-section {
+  position: relative;
+  background: var(--obsidian);
+  overflow: hidden;
+}
+
+/* Background image stays still while the cards scroll over it.
+   JS toggles .is-fixed (position:fixed) while the section is in view, and
+   .is-bottom (rests at the section's end) on exit. Using fixed instead of
+   CSS sticky because the page's overflow-x:hidden breaks sticky. */
+.testimonials-section__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.testimonials-section__bg.is-fixed  { position: fixed; }
+.testimonials-section__bg.is-bottom { position: absolute; top: auto; bottom: 0; }
+.testimonials-section__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* darker toward the right where the cards sit, lighter on the left so
+     the subject stays visible */
+  background: linear-gradient(100deg,
+              rgba(11, 11, 11, 0.18) 0%,
+              rgba(11, 11, 11, 0.30) 42%,
+              rgba(11, 11, 11, 0.60) 100%);
+}
+
+.testimonials-section__inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(110px, 15vh, 180px) var(--gutter) clamp(90px, 14vh, 170px);
+}
+.testimonials-section__title {
+  margin: 0 0 clamp(40px, 8vh, 90px);
+  max-width: 16ch;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Cards float, staggered (editorial zig-zag), revealed one by one */
+.testimonials-section__cards {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(160px, 24vh, 300px);
+}
+.testimonials-section__card {
+  position: relative;
+  width: clamp(300px, 38vw, 460px);
+  padding: clamp(26px, 2.4vw, 40px);
+  border-radius: 22px;
+  box-shadow: 0 34px 70px rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+          backdrop-filter: blur(14px) saturate(125%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  will-change: transform, opacity;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+/* editorial stagger kept to the centre-right so the subject/face on the
+   left of the background stays visible (one card is shown at a time) */
+.testimonials-section__card--light { align-self: flex-end; transform: rotate(1.2deg); }
+.testimonials-section__card--dark  { align-self: center;   transform: rotate(-1.4deg); }
+.testimonials-section__card--red   { align-self: flex-end; transform: rotate(1deg); margin-right: clamp(0px, 8vw, 120px); }
+
+/* translucent brand variants */
+.testimonials-section__card--light { background: rgba(243, 239, 232, 0.88); color: var(--obsidian); }
+.testimonials-section__card--dark  { background: rgba(13, 13, 13, 0.66);   color: var(--off-white); border-color: rgba(255,255,255,0.12); }
+.testimonials-section__card--red   { background: rgba(176, 36, 0, 0.80);   color: var(--white); }
+
+.testimonials-section__qmark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 0.6;
+  margin-bottom: 14px;
+  color: var(--amber);
+}
+.testimonials-section__quote {
+  margin: 0 0 clamp(18px, 1.8vw, 26px);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(0.96rem, 1.04vw, 1.08rem);
+  line-height: 1.6;
+}
+.testimonials-section__by {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: clamp(12px, 1.4vw, 18px);
+  border-top: 1px solid currentColor;
+}
+.testimonials-section__by { border-top-color: rgba(128, 128, 128, 0.28); }
+.testimonials-section__author {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(0.98rem, 1.1vw, 1.12rem);
+  letter-spacing: 0.01em;
+}
+.testimonials-section__company {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.82;
+}
+.testimonials-section__card--light .testimonials-section__company { color: var(--burnt-red); opacity: 1; }
+.testimonials-section__card--dark  .testimonials-section__company,
+.testimonials-section__card--red   .testimonials-section__company { color: var(--amber); opacity: 1; }
+
+@media (hover: hover) and (min-width: 861px) {
+  .testimonials-section__card:hover {
+    transform: translateY(-8px) rotate(0deg);
+    box-shadow: 0 46px 90px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Tablet — reduce overlap, narrow the stagger */
+@media (max-width: 1024px) {
+  .testimonials-section__card { width: min(70vw, 460px); }
+  .testimonials-section__card--dark { margin-left: 0; }
+  .testimonials-section__card--red  { margin-right: 0; }
+  .testimonials-section__cards { gap: clamp(140px, 20vh, 240px); }
+}
+
+/* Mobile — stack, background stays behind (still), simple + readable */
+@media (max-width: 720px) {
+  .testimonials-section__cards { gap: 26px; }
+  .testimonials-section__card {
+    width: 100%;
+    align-self: auto;
+    transform: none;
+    margin: 0;
+  }
+}
