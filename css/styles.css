@@ -527,3 +527,152 @@ body.menu-open .overlay {
   * { scroll-behavior: auto; }
   .hero__roads .road { animation: none; }
 }
+
+/* =====================================================================
+   SECTION 2 — SERVICE PILLARS
+   ===================================================================== */
+.services { position: relative; background: var(--obsidian); }
+.services__inner {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* LEFT — image showcase (55%) */
+.services__media {
+  position: relative;
+  width: 55%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--obsidian);
+}
+.svc-imgs { position: absolute; inset: 0; }
+.svc-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.12);
+  will-change: opacity, transform;
+}
+.svc-img__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg,
+              rgba(11,11,11,0.48) 0%,
+              rgba(11,11,11,0.12) 45%,
+              rgba(11,11,11,0.34) 100%);
+}
+
+/* RIGHT — red content panel (45%) */
+.services__panel {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(155deg, var(--burnt-red) 0%, #7d1c00 70%, #5e1500 100%);
+  color: var(--off-white);
+}
+.services__panel-inner {
+  width: 100%;
+  padding: clamp(28px, 4vw, 76px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.6vw, 22px);
+}
+.svc-eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.72rem, 1vw, 0.9rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.svc-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.svc-body {
+  margin: 0;
+  max-width: 46ch;
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.05vw, 1.1rem);
+  line-height: 1.5;
+  color: rgba(243, 239, 232, 0.85);
+}
+
+.svc-list {
+  list-style: none;
+  margin: clamp(8px, 1vw, 16px) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.5vw, 22px);
+  will-change: transform;
+}
+.svc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7em;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgba(243, 239, 232, 0.42);
+  transform-origin: left center;
+  transition: color 0.45s var(--ease), opacity 0.45s var(--ease),
+              transform 0.45s var(--ease);
+}
+.svc-num {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.5em;
+  letter-spacing: 0.05em;
+  color: rgba(243, 239, 232, 0.4);
+  transition: color 0.45s var(--ease);
+}
+.svc-item.is-active {
+  color: var(--white);
+  transform: scale(1.06);
+}
+.svc-item.is-active .svc-num { color: var(--amber); }
+
+.svc-cta { align-self: flex-start; margin-top: clamp(16px, 2vw, 28px); }
+
+/* light button variant for the red panel */
+.btn--light {
+  background: var(--off-white);
+  color: var(--obsidian);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+.btn--light::before { background: var(--amber); }
+.btn--light:hover,
+.btn--light:focus-visible { color: var(--obsidian); transform: translateY(-2px); }
+.btn--light:hover .btn__arrow { transform: translateX(6px); }
+
+/* Section 2 — mobile (stacked, sticky image above the service list) */
+@media (max-width: 860px) {
+  .services__inner { flex-direction: column; height: auto; overflow: visible; }
+  .services__media {
+    width: 100%;
+    height: 44vh;
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 1;
+  }
+  .services__panel { width: 100%; height: auto; }
+  .services__panel-inner { padding: clamp(24px, 7vw, 40px); gap: 16px; }
+  .svc-list { gap: 18px; }
+  .svc-item { font-size: clamp(1.35rem, 6vw, 1.9rem); }
+}
