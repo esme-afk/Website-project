@@ -37,7 +37,11 @@
   var ctx = canvas.getContext("2d");
   var images = new Array(FRAME_COUNT);
   var seq = { frame: 0 };
-  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  // Cap DPR at 1.5 — full 2x on Retina doubles the per-frame pixel work and
+  // is the main scroll-lag source; 1.5 looks crisp and is much lighter.
+  var DPR_CAP = 1.5;
+  var dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+  var lastFrame = -1;
 
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -48,8 +52,13 @@
   function truckScale() { return window.innerWidth > 860 ? 0.82 : 0.92; }
   function truckShiftX() { return window.innerWidth > 860 ? -0.15 : 0; } // fraction of width
 
-  function drawFrame(index) {
-    var img = images[Math.round(index)];
+  function drawFrame(index, force) {
+    var i = Math.round(index);
+    // Skip redundant redraws — only repaint when the frame actually changes.
+    // (Scrub fires every pixel; this cuts canvas work to ~145 paints total.)
+    if (i === lastFrame && !force) return;
+    lastFrame = i;
+    var img = images[i];
     var w = canvas.width, h = canvas.height;
     ctx.clearRect(0, 0, w, h);   // transparent — let the hero gradient show
     if (!img || !img.naturalWidth) return;
@@ -67,11 +76,11 @@
   }
 
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
     var w = canvas.clientWidth, h = canvas.clientHeight;
     canvas.width  = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
-    drawFrame(seq.frame);
+    drawFrame(seq.frame, true);   // force — canvas was cleared by resize
   }
 
   /* --------------------------- Preloading -------------------------- */
