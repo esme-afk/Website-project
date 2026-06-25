@@ -18,6 +18,7 @@
   /* ----------------------------- Overlay menu ----------------------- */
   function openMenu() {
     body.classList.add("menu-open");
+    nav.classList.remove("is-hidden");   // always reveal the nav when opening
     burger.setAttribute("aria-expanded", "true");
     burger.setAttribute("aria-label", "Close menu");
     overlay.setAttribute("aria-hidden", "false");
@@ -53,12 +54,31 @@
     if (e.key === "Escape" && body.classList.contains("menu-open")) closeMenu();
   });
 
-  /* ----------------------------- Sticky nav ------------------------- */
-  const onScroll = () => {
-    nav.classList.toggle("is-stuck", window.scrollY > 24);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  /* --------------------- Auto-hide nav on scroll -------------------- *
+     No background block. Visible at the top (Hero); hides smoothly when
+     scrolling down so it never covers the next section; returns on the
+     way up. Stays visible while the overlay menu is open.               */
+  let lastY = window.scrollY;
+  let ticking = false;
+  const TOP_ZONE = 80;     // always show near the very top (Hero)
+  const DELTA = 6;         // ignore tiny scroll jitter
+
+  function updateNav() {
+    const y = window.scrollY;
+    if (body.classList.contains("menu-open") || y <= TOP_ZONE) {
+      nav.classList.remove("is-hidden");
+    } else if (y > lastY + DELTA) {
+      nav.classList.add("is-hidden");      // scrolling down → hide
+    } else if (y < lastY - DELTA) {
+      nav.classList.remove("is-hidden");   // scrolling up → show
+    }
+    lastY = y;
+    ticking = false;
+  }
+  window.addEventListener("scroll", () => {
+    if (!ticking) { window.requestAnimationFrame(updateNav); ticking = true; }
+  }, { passive: true });
+  updateNav();
 
   /* --------------------- Button ripple micro-interaction ------------ *
      Acknowledges the click with a quick ripple from the cursor point.  */

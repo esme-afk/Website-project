@@ -8,7 +8,7 @@
   <meta name="description" content="Lone Wolf Hauling Inc. — San Diego's #1 premium roll-off dumpster rental and hauling for contractors, residential, and commercial projects." />
 
   <!-- Brand styles -->
-  <link rel="stylesheet" href="css/styles.css?v=17" />
+  <link rel="stylesheet" href="css/styles.css?v=18" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -27,7 +27,7 @@
   <!-- ============================== MENU / NAV ============================== -->
   <header class="nav" id="top">
     <div class="nav__inner">
-      <!-- Left: logo + primary links -->
+      <!-- Left: logo + burger -->
       <a class="nav__logo" href="#home" aria-label="Lone Wolf Hauling Inc. — Home">
         <img
           src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png"
@@ -35,15 +35,22 @@
         />
       </a>
 
-      <!-- Burger (opens full menu) -->
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlayMenu">
         <span class="burger__line"></span>
         <span class="burger__line"></span>
         <span class="burger__line"></span>
       </button>
 
-      <!-- Standout CTA -->
-      <a href="#contact" class="btn btn--cta nav__cta">Get A Quote</a>
+      <!-- Right: phone + CTA -->
+      <div class="nav__right">
+        <a class="nav__phone" href="tel:+17602083563" aria-label="Call 24/7 Customer Service (760) 208-3563">
+          <span class="nav__phone-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1L6.6 10.8z" fill="currentColor"/></svg>
+          </span>
+          <span class="nav__phone-text"><span class="nav__phone-label">24/7 Customer Service</span><strong class="nav__phone-num">(760) 208-3563</strong></span>
+        </a>
+        <a href="#contact" class="btn btn--cta nav__cta">Check Availability</a>
+      </div>
     </div>
   </header>
 
@@ -309,9 +316,20 @@
         <ul class="site-footer__contact">
           <li><span class="site-footer__contact-label">Call</span><a href="tel:+17602083563">(760) 208-3563</a></li>
           <li><span class="site-footer__contact-label">Email</span><a href="mailto:salvador@lonewolfhaulinginc.com">salvador@lonewolfhaulinginc.com</a></li>
-          <li><span class="site-footer__contact-label">Area</span><span>Vista, CA / Serving All of San Diego County</span></li>
           <li><span class="site-footer__contact-label">Hours</span><span>Mon&ndash;Sun: 9AM - 6PM / Sunday: Emergency Only</span></li>
         </ul>
+
+        <div class="site-footer__social">
+          <a href="#" aria-label="Instagram" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2 1.6 3.5 3.5 3.8v2.5c-1.3 0-2.6-.4-3.6-1.1v5.9a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v2.6a3 3 0 1 0 2.1 2.9V3h2.7z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8.2V14H10.5v7h3z"/></svg>
+          </a>
+        </div>
       </div>
 
       <div class="site-footer__col site-footer__col--areas">
@@ -333,8 +351,11 @@
           <li><a href="#about">About</a></li>
           <li><a href="#reviews">Reviews</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#contact">Get a Free Quote</a></li>
         </ul>
+        <a href="#contact" class="btn btn--quote site-footer__quote">
+          <span class="btn__label">Get a Free Quote</span>
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
 
@@ -347,13 +368,13 @@
   </footer>
 
   <!-- App scripts -->
-  <script defer src="js/menu.js?v=17"></script>
-  <script defer src="js/hero.js?v=17"></script>
-  <script defer src="js/services.js?v=17"></script>
-  <script defer src="js/sizes.js?v=17"></script>
-  <script defer src="js/about.js?v=17"></script>
-  <script defer src="js/testimonials.js?v=17"></script>
-  <script defer src="js/cta.js?v=17"></script>
-  <script defer src="js/footer.js?v=17"></script>
+  <script defer src="js/menu.js?v=18"></script>
+  <script defer src="js/hero.js?v=18"></script>
+  <script defer src="js/services.js?v=18"></script>
+  <script defer src="js/sizes.js?v=18"></script>
+  <script defer src="js/about.js?v=18"></script>
+  <script defer src="js/testimonials.js?v=18"></script>
+  <script defer src="js/cta.js?v=18"></script>
+  <script defer src="js/footer.js?v=18"></script>
 </body>
 </html>
