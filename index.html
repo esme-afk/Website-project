@@ -8,7 +8,7 @@
   <meta name="description" content="Lone Wolf Hauling Inc. — San Diego's #1 premium roll-off dumpster rental and hauling for contractors, residential, and commercial projects." />
 
   <!-- Brand styles -->
-  <link rel="stylesheet" href="css/styles.css?v=19" />
+  <link rel="stylesheet" href="css/styles.css?v=20" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -27,7 +27,7 @@
   <!-- ============================== MENU / NAV ============================== -->
   <header class="nav" id="top">
     <div class="nav__inner">
-      <!-- Left: logo + burger -->
+      <!-- Left: logo -->
       <a class="nav__logo" href="#home" aria-label="Lone Wolf Hauling Inc. — Home">
         <img
           src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png"
@@ -35,21 +35,29 @@
         />
       </a>
 
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlayMenu">
-        <span class="burger__line"></span>
-        <span class="burger__line"></span>
-        <span class="burger__line"></span>
-      </button>
+      <!-- Center: rounded pill menu (desktop) -->
+      <nav class="nav__pill" aria-label="Primary">
+        <a href="#about" class="nav__pill-link">About</a>
+        <a href="#services" class="nav__pill-link">Services</a>
+        <a href="#sizes" class="nav__pill-link">Sizes</a>
+        <a href="#reviews" class="nav__pill-link">Reviews</a>
+        <a href="#contact" class="nav__pill-link">Contact</a>
+      </nav>
 
-      <!-- Right: phone + CTA -->
+      <!-- Right: Book Now + phone, and burger (mobile only) -->
       <div class="nav__right">
-        <a class="nav__phone" href="tel:+17602083563" aria-label="Call 24/7 Customer Service (760) 208-3563">
-          <span class="nav__phone-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1L6.6 10.8z" fill="currentColor"/></svg>
-          </span>
-          <span class="nav__phone-text"><span class="nav__phone-label">24/7 Customer Service</span><strong class="nav__phone-num">(760) 208-3563</strong></span>
-        </a>
-        <a href="#contact" class="btn btn--cta nav__cta">Check Availability</a>
+        <div class="nav__cta-wrap">
+          <a href="#contact" class="btn btn--book nav__cta">Book Now</a>
+          <a class="nav__phone" href="tel:+17602083563">
+            <span class="nav__phone-dot" aria-hidden="true">&bull;</span>
+            24/7 Customer Service <strong>(760) 208-3563</strong>
+          </a>
+        </div>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlayMenu">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
       </div>
     </div>
   </header>
@@ -64,7 +72,7 @@
       <a href="#reviews" class="overlay__link"><span class="overlay__index">05</span> Reviews</a>
       <a href="#contact" class="overlay__link"><span class="overlay__index">06</span> Contact Us</a>
     </nav>
-    <a href="#contact" class="btn btn--cta overlay__cta">Get A Quote</a>
+    <a href="#contact" class="btn btn--book overlay__cta">Book Now</a>
   </div>
 
   <!-- ============================== HERO ============================== -->
@@ -368,13 +376,13 @@
   </footer>
 
   <!-- App scripts -->
-  <script defer src="js/menu.js?v=19"></script>
-  <script defer src="js/hero.js?v=19"></script>
-  <script defer src="js/services.js?v=19"></script>
-  <script defer src="js/sizes.js?v=19"></script>
-  <script defer src="js/about.js?v=19"></script>
-  <script defer src="js/testimonials.js?v=19"></script>
-  <script defer src="js/cta.js?v=19"></script>
-  <script defer src="js/footer.js?v=19"></script>
+  <script defer src="js/menu.js?v=20"></script>
+  <script defer src="js/hero.js?v=20"></script>
+  <script defer src="js/services.js?v=20"></script>
+  <script defer src="js/sizes.js?v=20"></script>
+  <script defer src="js/about.js?v=20"></script>
+  <script defer src="js/testimonials.js?v=20"></script>
+  <script defer src="js/cta.js?v=20"></script>
+  <script defer src="js/footer.js?v=20"></script>
 </body>
 </html>

@@ -187,60 +187,90 @@ button { font: inherit; cursor: pointer; }
   gap: clamp(12px, 1.6vw, 22px);
 }
 
+/* Logo (left). flex:1 balances the right cluster so the pill stays centered.
+   A soft drop-shadow keeps it legible over any section background. */
 .nav__logo {
   display: flex;
   align-items: center;
-  flex: 0 0 auto;
-  margin-right: clamp(2px, 1vw, 12px);
+  flex: 1 1 0;
 }
 .nav__logo img {
-  height: clamp(78px, 9vw, 132px);   /* much bigger, stands out */
+  height: clamp(72px, 8vw, 116px);
   width: auto;
+  filter: drop-shadow(0 3px 12px rgba(11, 11, 11, 0.18));
   transition: transform 0.4s var(--ease);
 }
 .nav__logo:hover img { transform: scale(1.04); }
 
-/* right cluster: phone + CTA pushed to the far edge */
+/* Center pill menu — its own glass surface so it reads over any colour */
+.nav__pill {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+          backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 12px 34px rgba(11, 11, 11, 0.14);
+}
+.nav__pill-link {
+  padding: 0.6em 1.15em;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  color: var(--obsidian);
+  white-space: nowrap;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.nav__pill-link:hover,
+.nav__pill-link:focus-visible {
+  background: var(--burnt-red);
+  color: var(--white);
+  outline: none;
+}
+
+/* Right cluster: Book Now stacked over the phone line */
 .nav__right {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 1.8vw, 28px);
-  margin-left: auto;
-  flex: 0 0 auto;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.6vw, 22px);
+  flex: 1 1 0;
 }
+.nav__cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+/* Premium gradient Book Now (amber/gold → burnt red) */
+.btn--book {
+  background: linear-gradient(120deg, var(--amber) 0%, #C0470A 52%, var(--burnt-red) 100%);
+  color: var(--white);
+  box-shadow: 0 10px 26px rgba(176, 36, 0, 0.34);
+}
+.btn--book::before { background: linear-gradient(120deg, var(--burnt-red), var(--amber)); }
+.btn--book:hover,
+.btn--book:focus-visible { color: var(--white); transform: translateY(-2px); box-shadow: 0 16px 34px rgba(176, 36, 0, 0.42); }
+
 .nav__phone {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  color: var(--obsidian);
+  gap: 7px;
+  font-size: 0.82rem;
+  color: rgba(11, 11, 11, 0.7);
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.55);
   transition: color 0.3s var(--ease);
 }
-.nav__phone-icon {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: var(--burnt-red);
-  color: var(--white);
-}
-.nav__phone-icon svg { width: 22px; height: 22px; }
-.nav__phone-text { display: flex; flex-direction: column; line-height: 1.15; }
-.nav__phone-label {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: rgba(11, 11, 11, 0.62);
-}
-.nav__phone-num {
-  font-family: var(--font-head);
-  font-weight: 800;
-  font-size: 1.08rem;
-  color: var(--obsidian);
-}
-.nav__phone:hover .nav__phone-num { color: var(--burnt-red); }
+.nav__phone-dot { color: var(--burnt-red); font-size: 1.1em; line-height: 0; }
+.nav__phone strong { color: var(--obsidian); font-weight: 700; }
+.nav__phone:hover { color: var(--burnt-red); }
+.nav__phone:hover strong { color: var(--burnt-red); }
 
 .nav__cta { flex: 0 0 auto; }
 
@@ -538,13 +568,20 @@ body.menu-open .overlay {
 /* =====================================================================
    RESPONSIVE
    ===================================================================== */
-/* phone text collapses to just the icon on tablet */
+/* DESKTOP: pill menu, no burger */
+@media (min-width: 1025px) {
+  .burger { display: none; }
+}
+/* MOBILE/TABLET: hide the pill + phone, show the burger */
 @media (max-width: 1024px) {
-  .nav__phone-text { display: none; }
+  .nav__pill { display: none; }
+  .nav__phone { display: none; }
+  .nav__logo { flex: 1 1 auto; }
+  .nav__cta-wrap { flex-direction: row; }
 }
 @media (max-width: 860px) {
   :root { --nav-h: 72px; }
-  .nav__logo img { height: clamp(58px, 12vw, 80px); }
+  .nav__logo img { height: clamp(58px, 12vw, 84px); }
   .hero__headline {
     left: var(--gutter);
     right: var(--gutter);
@@ -555,8 +592,7 @@ body.menu-open .overlay {
 }
 
 @media (max-width: 560px) {
-  .nav__phone { display: none; }     /* keep logo + burger + CTA only */
-  .nav__cta { padding: 0.7em 1em; font-size: 0.85rem; }
+  .nav__cta { padding: 0.7em 1.1em; font-size: 0.85rem; }
   .nav__right { gap: 12px; }
   .hero__headline { top: 92px; font-size: clamp(1.9rem, 8.5vw, 3rem); }
 }
