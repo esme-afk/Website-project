@@ -60,15 +60,22 @@
      way up. Stays visible while the overlay menu is open.               */
   let lastY = window.scrollY;
   let ticking = false;
-  const TOP_ZONE = 80;     // always show near the very top (Hero)
   const DELTA = 6;         // ignore tiny scroll jitter
+  const section2 = document.querySelector(".services");
+
+  // The nav stays visible for the WHOLE hero; auto-hide only begins once
+  // Section 2 has scrolled up to the top of the viewport.
+  function inHero() {
+    if (section2) return section2.getBoundingClientRect().top > 4;
+    return window.scrollY < window.innerHeight;
+  }
 
   function updateNav() {
     const y = window.scrollY;
-    if (body.classList.contains("menu-open") || y <= TOP_ZONE) {
-      nav.classList.remove("is-hidden");
+    if (body.classList.contains("menu-open") || inHero()) {
+      nav.classList.remove("is-hidden");   // keep nav on through the hero
     } else if (y > lastY + DELTA) {
-      nav.classList.add("is-hidden");      // scrolling down → hide
+      nav.classList.add("is-hidden");      // scrolling down (past hero) → hide
     } else if (y < lastY - DELTA) {
       nav.classList.remove("is-hidden");   // scrolling up → show
     }
