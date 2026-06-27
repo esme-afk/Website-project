@@ -195,12 +195,21 @@ button { font: inherit; cursor: pointer; }
   flex: 1 1 0;
 }
 .nav__logo img {
-  height: clamp(72px, 8vw, 116px);
+  height: clamp(92px, 9.5vw, 146px);
   width: auto;
   filter: drop-shadow(0 3px 12px rgba(11, 11, 11, 0.18));
   transition: transform 0.4s var(--ease);
 }
 .nav__logo:hover img { transform: scale(1.04); }
+
+/* Center column: phone line stacked on top of the pill menu */
+.nav__center {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
 
 /* Center pill menu — its own glass surface so it reads over any colour */
 .nav__pill {
@@ -234,7 +243,7 @@ button { font: inherit; cursor: pointer; }
   outline: none;
 }
 
-/* Right cluster: Book Now stacked over the phone line */
+/* Right cluster: Book Now (+ burger on mobile) */
 .nav__right {
   display: flex;
   align-items: center;
@@ -261,10 +270,13 @@ button { font: inherit; cursor: pointer; }
 .nav__phone {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-size: 0.82rem;
-  color: rgba(11, 11, 11, 0.7);
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.55);
+  justify-content: center;
+  gap: 8px;
+  font-size: clamp(0.9rem, 1.05vw, 1.02rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(11, 11, 11, 0.72);
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.6);
   transition: color 0.3s var(--ease);
 }
 .nav__phone-dot { color: var(--burnt-red); font-size: 1.1em; line-height: 0; }
@@ -380,7 +392,7 @@ body.menu-open .overlay {
 .hero {
   position: relative;
   min-height: 100vh;
-  background: var(--off-white);
+  background: #ffffff;
 }
 
 .hero__stage {
@@ -389,11 +401,8 @@ body.menu-open .overlay {
   width: 100%;
   overflow: hidden;
   isolation: isolate;
-  /* warm premium wash — stays light so the truck's white bg drops out */
-  background:
-    radial-gradient(120% 90% at 88% 8%, rgba(217,154,33,0.22) 0%, rgba(217,154,33,0) 42%),
-    radial-gradient(90% 80% at 6% 100%, rgba(176,36,0,0.10) 0%, rgba(176,36,0,0) 46%),
-    linear-gradient(160deg, #FFFFFF 0%, #F6F1E7 58%, #EFE7D7 100%);
+  /* pure white hero background */
+  background: #ffffff;
 }
 
 /* Soft brand glow behind the headline (top-right) */
@@ -407,7 +416,7 @@ body.menu-open .overlay {
   max-width: 760px;
   max-height: 760px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(217,154,33,0.30) 0%, rgba(255,201,25,0.10) 38%, rgba(255,201,25,0) 70%);
+  background: radial-gradient(circle, rgba(217,154,33,0.14) 0%, rgba(255,201,25,0.05) 38%, rgba(255,201,25,0) 70%);
   pointer-events: none;
   filter: blur(6px);
 }
@@ -572,8 +581,9 @@ body.menu-open .overlay {
 @media (min-width: 1025px) {
   .burger { display: none; }
 }
-/* MOBILE/TABLET: hide the pill + phone, show the burger */
+/* MOBILE/TABLET: hide the centered phone + pill, show the burger */
 @media (max-width: 1024px) {
+  .nav__center { display: none; }
   .nav__pill { display: none; }
   .nav__phone { display: none; }
   .nav__logo { flex: 1 1 auto; }
@@ -645,14 +655,15 @@ body.menu-open .overlay {
               rgba(11,11,11,0.34) 100%);
 }
 
-/* RIGHT — red content panel (45%) */
+/* RIGHT — off-white content panel (45%). A warm cream, a different shade
+   from the pure-white hero so the two sections read as distinct. */
 .services__panel {
   width: 45%;
   height: 100%;
   display: flex;
   align-items: center;
-  background: linear-gradient(155deg, var(--burnt-red) 0%, #7d1c00 70%, #5e1500 100%);
-  color: var(--off-white);
+  background: linear-gradient(155deg, #F8F4EC 0%, #F1EADC 60%, #ECE3D2 100%);
+  color: var(--obsidian);
 }
 .services__panel-inner {
   width: 100%;
@@ -668,7 +679,7 @@ body.menu-open .overlay {
   font-size: clamp(0.72rem, 1vw, 0.9rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--amber);
+  color: var(--burnt-red);
 }
 .svc-headline {
   margin: 0;
@@ -678,7 +689,7 @@ body.menu-open .overlay {
   line-height: 1.02;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--obsidian);
 }
 .svc-body {
   margin: 0;
@@ -687,7 +698,7 @@ body.menu-open .overlay {
   font-weight: 400;
   font-size: clamp(0.95rem, 1.05vw, 1.1rem);
   line-height: 1.55;
-  color: rgba(243, 239, 232, 0.82);
+  color: rgba(11, 11, 11, 0.68);
 }
 
 .svc-list {
@@ -707,7 +718,7 @@ body.menu-open .overlay {
   font-size: clamp(1.25rem, 2vw, 2rem);
   line-height: 1;
   text-transform: uppercase;
-  color: rgba(243, 239, 232, 0.42);
+  color: rgba(11, 11, 11, 0.32);
   transform-origin: left center;
   transition: color 0.45s var(--ease), opacity 0.45s var(--ease),
               transform 0.45s var(--ease);
@@ -717,14 +728,14 @@ body.menu-open .overlay {
   font-weight: 700;
   font-size: 0.5em;
   letter-spacing: 0.05em;
-  color: rgba(243, 239, 232, 0.4);
+  color: rgba(11, 11, 11, 0.3);
   transition: color 0.45s var(--ease);
 }
 .svc-item.is-active {
-  color: var(--white);
+  color: var(--obsidian);
   transform: scale(1.06);
 }
-.svc-item.is-active .svc-num { color: var(--amber); }
+.svc-item.is-active .svc-num { color: var(--burnt-red); }
 
 .svc-cta { align-self: flex-start; margin-top: clamp(16px, 2vw, 28px); }
 

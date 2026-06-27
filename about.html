@@ -8,7 +8,7 @@
   <meta name="description" content="Learn about Lone Wolf Hauling Inc. — a locally owned, owner-operated dumpster rental and hauling company serving all of San Diego County since 2010." />
 
   <!-- Brand styles -->
-  <link rel="stylesheet" href="css/styles.css?v=20" />
+  <link rel="stylesheet" href="css/styles.css?v=21" />
   <link rel="stylesheet" href="css/about.css?v=22" />
 
   <!-- Preconnect to CDNs -->
@@ -36,24 +36,24 @@
         />
       </a>
 
-      <!-- Pill nav -->
-      <nav class="nav__pill" aria-label="Primary">
-        <a href="about.html"         class="nav__pill-link" aria-current="page">About</a>
-        <a href="index.html#services" class="nav__pill-link">Services</a>
-        <a href="index.html#sizes"    class="nav__pill-link">Sizes</a>
-        <a href="index.html#reviews"  class="nav__pill-link">Reviews</a>
-        <a href="index.html#contact"  class="nav__pill-link">Contact</a>
-      </nav>
+      <!-- Center: phone line on top, rounded pill menu beneath (desktop) -->
+      <div class="nav__center">
+        <a class="nav__phone" href="tel:+17602083563">
+          <span class="nav__phone-dot" aria-hidden="true">&bull;</span>
+          24/7 Customer Service <strong>(760) 208-3563</strong>
+        </a>
+        <nav class="nav__pill" aria-label="Primary">
+          <a href="about.html"         class="nav__pill-link" aria-current="page">About</a>
+          <a href="index.html#services" class="nav__pill-link">Services</a>
+          <a href="index.html#sizes"    class="nav__pill-link">Sizes</a>
+          <a href="index.html#reviews"  class="nav__pill-link">Reviews</a>
+          <a href="index.html#contact"  class="nav__pill-link">Contact</a>
+        </nav>
+      </div>
 
-      <!-- Right: Book Now + phone, burger on mobile -->
+      <!-- Right: Book Now + burger (mobile only) -->
       <div class="nav__right">
-        <div class="nav__cta-wrap">
-          <a href="index.html#contact" class="btn btn--book nav__cta">Book Now</a>
-          <a class="nav__phone" href="tel:+17602083563">
-            <span class="nav__phone-dot" aria-hidden="true">&bull;</span>
-            24/7 Customer Service <strong>(760) 208-3563</strong>
-          </a>
-        </div>
+        <a href="index.html#contact" class="btn btn--book nav__cta">Book Now</a>
         <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlayMenu">
           <span class="burger__line"></span>
           <span class="burger__line"></span>
