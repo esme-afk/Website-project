@@ -9,7 +9,7 @@
 
   <!-- Brand styles -->
   <link rel="stylesheet" href="css/styles.css?v=20" />
-  <link rel="stylesheet" href="css/about.css?v=21" />
+  <link rel="stylesheet" href="css/about.css?v=22" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -77,109 +77,87 @@
   </div>
 
   <!-- ============================== ABOUT HERO ============================== -->
-  <section class="about-hero" id="about-top">
-    <!-- Ambient warm glow -->
-    <div class="about-hero__bg" aria-hidden="true"></div>
-
-    <!-- Decorative road lines -->
-    <svg class="about-hero__roads" aria-hidden="true" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice">
-      <path class="road road--red"   d="M-50 760 C 380 700, 560 880, 1500 690" />
-      <path class="road road--amber" d="M-50 820 C 420 770, 600 940, 1500 760" />
-    </svg>
-
+  <section class="about-hero" id="about-top" aria-label="About Lone Wolf Hauling">
     <div class="about-hero__inner">
-      <!-- Content -->
-      <div class="about-hero__content">
-        <p class="about-hero__eyebrow">San Diego County &nbsp;·&nbsp; Locally Owned Since 2010</p>
+
+      <!-- Heading -->
+      <div class="about-hero__head">
+        <span class="about-hero__eyebrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2.5l1.9 5.1 5.1 1.9-5.1 1.9L12 16.5l-1.9-5.1L5 9.5l5.1-1.9L12 2.5z" fill="currentColor"/>
+            <path d="M19 14l.8 2.2 2.2.8-2.2.8L19 20l-.8-2.2-2.2-.8 2.2-.8L19 14z" fill="currentColor" opacity=".7"/>
+          </svg>
+          San Diego County · Owner-Led Since 2010
+        </span>
 
         <h1 class="about-hero__headline">
-          <span class="about-hero__headline-line">More Than</span>
-          <span class="about-hero__headline-line"><em>a Dumpster</em></span>
-          <span class="about-hero__headline-line">Company.</span>
+          San Diego's Owner-Led Dumpster Rental &amp; Junk Hauling
         </h1>
 
-        <p class="about-hero__body">
-          Lone Wolf Hauling Inc. started with one truck and one promise: be the most dependable hauling service in San Diego County. Since 2010, owner Salvador Rodriguez has personally overseen every job — from single-day garage cleanouts to multi-week construction sites. No call centers. No middlemen. No excuses. Just reliable service and a handshake you can trust.
-          <br /><br />
-          Whether you're a homeowner clearing out years of clutter, a contractor keeping your site clean, or a property manager turning over a unit — Lone Wolf shows up for you.
+        <p class="about-hero__sub">
+          Locally owned, professionally run, and handled personally on every job — see the Lone Wolf difference, from cluttered to cleared.
         </p>
+      </div>
 
-        <div class="about-hero__ctas">
-          <a href="index.html#contact" class="btn btn--quote">
-            <span class="btn__label">Get a Free Quote</span>
-            <span class="btn__arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="tel:+17602083563" class="about-hero__phone">
-            <span class="about-hero__phone-dot" aria-hidden="true">&#9679;</span>
-            (760) 208-3563
-          </a>
+      <!-- Before / After slider — the hero's main visual -->
+      <div class="about-hero__visual">
+        <div class="ba-slider" role="img" aria-label="Drag to compare a job before and after Lone Wolf Hauling">
+
+          <!-- AFTER is the base layer (clean result) -->
+          <div class="ba-after">
+            <img
+              src="https://assets.cdn.filesafe.space/fUiio9PgFijLtpxB7opN/media/6a3f24253c38d825b952f0c1.png"
+              alt="After: clean, cleared garage after Lone Wolf Hauling junk removal"
+              draggable="false"
+            />
+            <span class="ba-label ba-label--after" aria-hidden="true">After</span>
+          </div>
+
+          <!-- BEFORE clips from the right to reveal AFTER underneath -->
+          <div class="ba-before">
+            <img
+              src="https://assets.cdn.filesafe.space/fUiio9PgFijLtpxB7opN/media/6a3f24275aefbd076bac37d5.png"
+              alt="Before: cluttered garage prior to Lone Wolf Hauling junk removal"
+              draggable="false"
+            />
+            <span class="ba-label ba-label--before" aria-hidden="true">Before</span>
+          </div>
+
+          <!-- Drag handle -->
+          <div class="ba-handle" aria-hidden="true">
+            <div class="ba-handle__line"></div>
+            <div class="ba-handle__knob">
+              <svg viewBox="0 0 28 14" aria-hidden="true">
+                <path d="M1 7h26M7 1 1 7l6 6M21 1l6 6-6 6"
+                      stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Owner photo -->
-      <div class="about-hero__media">
-        <img
-          src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b1a91a2b7fa4e0ef76c33.png"
-          alt="Salvador Rodriguez, owner of Lone Wolf Hauling Inc."
-          loading="eager"
-        />
-      </div>
-    </div>
+        <!-- Overlapping ZIP / availability card -->
+        <div class="about-hero__card">
+          <form class="about-hero__form" action="index.html#contact" novalidate>
+            <label class="about-hero__field">
+              <svg class="about-hero__field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+              </svg>
+              <input class="about-hero__input" type="text" inputmode="numeric" name="zip"
+                     placeholder="Enter Zip Code" aria-label="ZIP Code" autocomplete="postal-code" />
+            </label>
+            <button class="about-hero__submit" type="submit">Check Availability</button>
+            <span class="about-hero__note">No credit card required.</span>
+          </form>
 
-    <!-- Large watermark -->
-    <div class="about-hero__watermark" aria-hidden="true">LONE&nbsp;WOLF</div>
-
-    <!-- Scroll cue -->
-    <div class="about-hero__scroll" aria-hidden="true">Scroll</div>
-  </section>
-
-  <!-- ============================== BEFORE / AFTER SLIDER ============================== -->
-  <section class="ba-section" aria-label="Before and after project comparison">
-    <div class="ba-section__head">
-      <p class="ba-eyebrow">Project Spotlight</p>
-      <h2 class="ba-heading">See the Difference We Make</h2>
-      <p class="ba-sub">From cluttered and overwhelming to clean and cleared — this is what Lone Wolf Hauling Inc. delivers, every single time.</p>
-    </div>
-
-    <!-- Slider -->
-    <div class="ba-slider" role="img" aria-label="Drag to compare before and after a Lone Wolf Hauling cleanup">
-
-      <!-- AFTER is the base layer (always visible, clean result) -->
-      <div class="ba-after">
-        <img
-          src="https://assets.cdn.filesafe.space/fUiio9PgFijLtpxB7opN/media/6a3f24253c38d825b952f0c1.png"
-          alt="After: clean, cleared area after Lone Wolf Hauling service"
-          draggable="false"
-          loading="lazy"
-        />
-        <span class="ba-label ba-label--after" aria-hidden="true">After</span>
-      </div>
-
-      <!-- BEFORE is the top layer — clips from the right to reveal AFTER underneath -->
-      <div class="ba-before">
-        <img
-          src="https://assets.cdn.filesafe.space/fUiio9PgFijLtpxB7opN/media/6a3f24275aefbd076bac37d5.png"
-          alt="Before: cluttered area prior to Lone Wolf Hauling service"
-          draggable="false"
-          loading="lazy"
-        />
-        <span class="ba-label ba-label--before" aria-hidden="true">Before</span>
-      </div>
-
-      <!-- Drag handle -->
-      <div class="ba-handle" aria-hidden="true">
-        <div class="ba-handle__line"></div>
-        <div class="ba-handle__knob">
-          <svg viewBox="0 0 28 14" aria-hidden="true">
-            <path d="M1 7h26M7 1 1 7l6 6M21 1l6 6-6 6"
-                  stroke="currentColor" stroke-width="2.2"
-                  stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
+          <div class="about-hero__trust">
+            <span class="about-hero__stars" aria-hidden="true">★★★★★</span>
+            <strong>5.0 Rating</strong>
+            <span class="about-hero__trust-sub">Trusted by homeowners &amp; contractors across San Diego County</span>
+          </div>
         </div>
       </div>
     </div>
-
-    <p class="ba-hint" aria-hidden="true">&larr;&nbsp; Drag to Compare &nbsp;&rarr;</p>
   </section>
 
   <!-- ============================== FOOTER ============================== -->
@@ -248,7 +226,7 @@
   <!-- Scripts -->
   <script defer src="js/menu.js?v=20"></script>
   <script defer src="js/footer.js?v=20"></script>
-  <script defer src="js/slider.js?v=21"></script>
-  <script defer src="js/about-page.js?v=21"></script>
+  <script defer src="js/slider.js?v=22"></script>
+  <script defer src="js/about-page.js?v=22"></script>
 </body>
 </html>
