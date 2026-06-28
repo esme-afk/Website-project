@@ -9,7 +9,7 @@
 
   <!-- Brand styles -->
   <link rel="stylesheet" href="css/styles.css?v=21" />
-  <link rel="stylesheet" href="css/about.css?v=24" />
+  <link rel="stylesheet" href="css/about.css?v=26" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -275,6 +275,91 @@
         </div>
       </article>
 
+    </div>
+  </section>
+
+  <!-- ============================== WHO WE SERVE (MAP) ============================== -->
+  <section class="serve" id="service-areas" aria-label="Areas we serve in San Diego County">
+    <div class="serve__head">
+      <h2 class="serve__title">Proudly Serving San Diego County</h2>
+      <p class="serve__sub">Lone Wolf Hauling Inc. provides dumpster rental and hauling services for homeowners, businesses, and contractors all over San Diego County.</p>
+    </div>
+
+    <div class="serve__grid">
+      <!-- MAP -->
+      <div class="serve__map" role="img" aria-label="Map of San Diego County with Lone Wolf Hauling service areas marked">
+        <div class="serve__map-glow" aria-hidden="true"></div>
+        <svg class="serve__map-shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="serveLand" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="rgba(255,255,255,0.10)"/>
+              <stop offset="1" stop-color="rgba(255,255,255,0.03)"/>
+            </linearGradient>
+            <clipPath id="serveClip">
+              <path d="M10,13 C6,21 9,27 7,33 C5,41 9,49 8,55 C7,63 11,70 15,77 L70,80 L79,30 L62,9 L30,8 Z"/>
+            </clipPath>
+          </defs>
+          <!-- county landmass -->
+          <path d="M10,13 C6,21 9,27 7,33 C5,41 9,49 8,55 C7,63 11,70 15,77 L70,80 L79,30 L62,9 L30,8 Z"
+                fill="url(#serveLand)" stroke="rgba(217,154,33,0.45)" stroke-width="0.5" stroke-linejoin="round"/>
+          <!-- subtle map grid, clipped to the county -->
+          <g clip-path="url(#serveClip)" stroke="rgba(255,255,255,0.06)" stroke-width="0.4">
+            <path d="M0,25 H100 M0,40 H100 M0,55 H100 M0,70 H100"/>
+            <path d="M22,0 V100 M38,0 V100 M54,0 V100 M70,0 V100"/>
+          </g>
+        </svg>
+
+        <!-- glowing service-area dots -->
+        <div class="serve__dots">
+          <span class="serve__dot"               style="left:12%;  top:20%; --d:0.0s"><i class="serve__pin"></i><b class="serve__lbl">Oceanside</b></span>
+          <span class="serve__dot"               style="left:27%;  top:17%; --d:0.5s"><i class="serve__pin"></i><b class="serve__lbl">Vista</b></span>
+          <span class="serve__dot"               style="left:41%;  top:10%; --d:1.1s"><i class="serve__pin"></i><b class="serve__lbl">Fallbrook</b></span>
+          <span class="serve__dot serve__dot--l" style="left:9%;   top:28%; --d:0.8s"><i class="serve__pin"></i><b class="serve__lbl">Carlsbad</b></span>
+          <span class="serve__dot"               style="left:31%;  top:25%; --d:0.3s"><i class="serve__pin"></i><b class="serve__lbl">San Marcos</b></span>
+          <span class="serve__dot"               style="left:47%;  top:20%; --d:1.4s"><i class="serve__pin"></i><b class="serve__lbl">Escondido</b></span>
+          <span class="serve__dot serve__dot--l" style="left:9%;   top:36%; --d:0.6s"><i class="serve__pin"></i><b class="serve__lbl">Encinitas</b></span>
+          <span class="serve__dot"               style="left:25%;  top:35%; --d:1.0s"><i class="serve__pin"></i><b class="serve__lbl">Rancho Santa Fe</b></span>
+          <span class="serve__dot"               style="left:44%;  top:34%; --d:0.2s"><i class="serve__pin"></i><b class="serve__lbl">Poway</b></span>
+          <span class="serve__dot serve__dot--l" style="left:9%;   top:43%; --d:1.3s"><i class="serve__pin"></i><b class="serve__lbl">Solana Beach</b></span>
+          <span class="serve__dot serve__dot--l" style="left:9%;   top:49%; --d:0.4s"><i class="serve__pin"></i><b class="serve__lbl">Del Mar</b></span>
+          <span class="serve__dot"               style="left:47%;  top:46%; --d:0.9s"><i class="serve__pin"></i><b class="serve__lbl">Santee</b></span>
+          <span class="serve__dot"               style="left:51%;  top:53%; --d:1.5s"><i class="serve__pin"></i><b class="serve__lbl">El Cajon</b></span>
+          <span class="serve__dot"               style="left:39%;  top:56%; --d:0.7s"><i class="serve__pin"></i><b class="serve__lbl">La Mesa</b></span>
+          <span class="serve__dot"               style="left:39%;  top:62%; --d:1.2s"><i class="serve__pin"></i><b class="serve__lbl">Lemon Grove</b></span>
+          <span class="serve__dot serve__dot--l" style="left:17%;  top:56%; --d:0.1s"><i class="serve__pin"></i><b class="serve__lbl">San Diego</b></span>
+          <span class="serve__dot"               style="left:23%;  top:65%; --d:1.6s"><i class="serve__pin"></i><b class="serve__lbl">National City</b></span>
+          <span class="serve__dot"               style="left:25%;  top:73%; --d:0.5s"><i class="serve__pin"></i><b class="serve__lbl">Chula Vista</b></span>
+        </div>
+      </div>
+
+      <!-- ASIDE: list + CTA -->
+      <aside class="serve__aside">
+        <div class="serve__areas">
+          <h3 class="serve__areas-title">Areas We Serve</h3>
+          <ul class="serve__areas-list">
+            <li>Vista</li><li>San Marcos</li><li>Oceanside</li><li>Escondido</li>
+            <li>Carlsbad</li><li>Encinitas</li><li>Fallbrook</li><li>Poway</li>
+            <li>Rancho Santa Fe</li><li>Solana Beach</li><li>Del Mar</li><li>San Diego</li>
+            <li>Chula Vista</li><li>La Mesa</li><li>El Cajon</li><li>Santee</li>
+            <li>National City</li><li>Lemon Grove</li>
+          </ul>
+          <p class="serve__areas-more">And surrounding San Diego County areas</p>
+        </div>
+
+        <div class="serve__cta">
+          <p class="serve__cta-copy">Call or text us with your city and project details.</p>
+          <form class="serve__form" action="index.html#contact" novalidate>
+            <label class="serve__field">
+              <svg class="serve__field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+              </svg>
+              <input class="serve__input" type="text" inputmode="numeric" name="zip"
+                     placeholder="Enter ZIP Code" aria-label="ZIP Code" autocomplete="postal-code" />
+            </label>
+            <button class="serve__submit" type="submit">View Availability</button>
+          </form>
+        </div>
+      </aside>
     </div>
   </section>
 
