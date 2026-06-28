@@ -461,3 +461,174 @@
   }
   .story__p--side { text-align: center; }
 }
+
+/* =====================================================================
+   WHAT SETS US APART — expanding card accordion  (About page only)
+   ===================================================================== */
+.apart {
+  position: relative;
+  background: #ffffff;
+  padding: clamp(72px, 10vh, 130px) var(--gutter) clamp(88px, 12vh, 150px);
+}
+
+/* Header row: headline + sub on the left, CTA link on the right */
+.apart__head {
+  max-width: 1240px;
+  margin: 0 auto clamp(40px, 6vw, 72px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+.apart__head-text { max-width: 620px; }
+.apart__title {
+  margin: 0 0 18px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.8vw, 3.1rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--obsidian);
+}
+.apart__sub {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  line-height: 1.6;
+  color: rgba(11, 11, 11, 0.6);
+}
+.apart__link {
+  flex: 0 0 auto;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--burnt-red);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--burnt-red);
+  white-space: nowrap;
+  transition: gap 0.3s var(--ease), color 0.3s var(--ease);
+}
+.apart__link:hover { gap: 14px; color: var(--amber); border-color: var(--amber); }
+
+/* Card row — horizontal expanding accordion */
+.apart__cards {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+  min-height: 440px;
+}
+
+.apart__card {
+  --pad: clamp(20px, 1.8vw, 30px);
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 22px;
+  padding: var(--pad);
+  overflow: hidden;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(160deg, var(--c1) 0%, var(--c2) 100%);
+  box-shadow: 0 22px 50px rgba(11, 11, 11, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  outline: none;
+  transition: flex-grow 0.55s var(--ease), box-shadow 0.45s var(--ease),
+              transform 0.45s var(--ease);
+}
+
+/* Icon (top) */
+.apart__icon {
+  display: inline-flex;
+  width: clamp(46px, 4vw, 58px);
+  height: clamp(46px, 4vw, 58px);
+  color: rgba(255, 255, 255, 0.95);
+}
+.apart__icon svg { width: 100%; height: 100%; }
+
+/* Body (bottom) */
+.apart__card-body { margin-top: auto; }
+.apart__card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 1.7vw, 1.9rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  /* keep the title readable while compact */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.apart__card-text {
+  margin: 14px 0 0;
+  max-width: 34ch;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s var(--ease), transform 0.5s var(--ease),
+              max-height 0.55s var(--ease);
+}
+
+/* Expanded state (hover / keyboard focus) — only where hover exists */
+@media (hover: hover) and (min-width: 901px) {
+  .apart__card:hover,
+  .apart__card:focus-visible {
+    flex-grow: 3.2;
+    box-shadow: 0 30px 70px rgba(11, 11, 11, 0.30);
+  }
+  .apart__card:hover .apart__card-title,
+  .apart__card:focus-visible .apart__card-title {
+    white-space: normal;
+    overflow: visible;
+  }
+  .apart__card:hover .apart__card-text,
+  .apart__card:focus-visible .apart__card-text {
+    opacity: 1;
+    max-height: 260px;
+    transform: none;
+  }
+}
+
+/* Tablet — fewer, wider columns wrap into rows, all readable */
+@media (max-width: 900px) {
+  .apart__head {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .apart__cards {
+    flex-wrap: wrap;
+    min-height: 0;
+  }
+  .apart__card {
+    flex: 1 1 280px;
+    min-height: 320px;
+  }
+  .apart__card-title { white-space: normal; }
+  .apart__card-text {
+    opacity: 1;
+    max-height: none;
+    transform: none;
+  }
+}
+
+/* Phone — single clean stack, every card fully open */
+@media (max-width: 560px) {
+  .apart__card {
+    flex: 1 1 100%;
+    min-height: 0;
+  }
+}
