@@ -16,17 +16,18 @@
   position: relative;
   background: #ffffff;
   text-align: center;
-  padding: calc(var(--nav-h) + clamp(28px, 5vh, 64px)) var(--gutter) clamp(56px, 8vh, 96px);
+  /* extra breathing room between the nav and the headline */
+  padding: calc(var(--nav-h) + clamp(60px, 10vh, 132px)) var(--gutter) clamp(72px, 10vh, 120px);
   overflow: hidden;
 }
 
-/* Barely-there warm glow behind the product for depth (stays white) */
+/* Barely-there warm glow behind the fleet for depth (stays white) */
 .sizes-hero__glow {
   position: absolute;
   left: 50%;
-  top: 46%;
-  width: min(1100px, 92%);
-  height: 60%;
+  top: 62%;
+  width: min(1100px, 94%);
+  height: 46%;
   transform: translate(-50%, -50%);
   background: radial-gradient(ellipse at center, rgba(217, 154, 33, 0.16) 0%, rgba(217, 154, 33, 0) 65%);
   pointer-events: none;
@@ -34,18 +35,7 @@
 }
 
 .sizes-hero__head,
-.sizes-hero__media,
-.sizes-hero__foot { position: relative; z-index: 1; }
-
-/* Small product label (echoes the "iMac" label) */
-.sizes-hero__eyebrow {
-  margin: 0 0 14px;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: clamp(0.86rem, 1vw, 1rem);
-  letter-spacing: 0.04em;
-  color: rgba(11, 11, 11, 0.62);
-}
+.sizes-hero__fleet { position: relative; z-index: 1; }
 
 /* Headline — same font as the About page (Archivo / --font-body, weight 700) */
 .sizes-hero__headline {
@@ -78,76 +68,84 @@
   color: rgba(11, 11, 11, 0.6);
 }
 
-/* Product image — modest size (not full-screen), checkerboard knocked out */
-.sizes-hero__media {
-  margin: clamp(28px, 4.5vh, 56px) auto clamp(24px, 4vh, 44px);
-  max-width: 600px;
+/* Supporting copy */
+.sizes-hero__sub {
+  margin: 20px auto 0;
+  max-width: 620px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1rem, 1.3vw, 1.14rem);
+  line-height: 1.62;
+  color: rgba(11, 11, 11, 0.6);
 }
-.sizes-hero__filter { position: absolute; }
-.sizes-hero__img {
-  width: 100%;
-  height: auto;
+
+/* ---- Roll-off fleet: one image, recolored + scaled into a size lineup ---- */
+.sizes-hero__filter { position: absolute; width: 0; height: 0; }
+
+.sizes-hero__fleet {
+  margin: clamp(40px, 6vh, 80px) auto 0;
+  max-width: 1240px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;          /* all sit on a shared baseline */
+  gap: clamp(4px, 0.8vw, 12px);
+}
+
+/* Each item is a tight cropped window onto the source image (the baked-in
+   labels fall outside the window), recolored via hue-rotate and scaled for
+   size variety so the row reads as a fleet of different sizes. */
+.dz {
+  position: relative;
+  flex: 0 0 auto;
+  height: calc(var(--s, 1) * clamp(92px, 11vw, 132px));
+  aspect-ratio: 1.5 / 1;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease);
+}
+.dz img {
   display: block;
-  /* knock out the light checkerboard background, then add a soft shadow that
-     follows the cut-out shape */
-  filter: url(#lwKnockout) drop-shadow(0 24px 40px rgba(11, 11, 11, 0.20));
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* fills the box — no empty margins, no gaps */
+  object-position: 54% 62%;
+  transform: scale(1.58);     /* zoom past the baked-in labels onto the body */
+  transform-origin: 54% 62%;
+  filter:
+    url(#lwKnockout)
+    hue-rotate(var(--hue, 0deg))
+    saturate(var(--sat, 1))
+    brightness(var(--br, 1));
 }
-
-/* CTA pill */
-.sizes-hero__cta {
-  display: inline-block;
-  padding: 0.85em 2.4em;
-  border-radius: 999px;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(1rem, 1.2vw, 1.12rem);
-  color: #fff;
-  background: linear-gradient(120deg, var(--amber) 0%, #C0470A 52%, var(--burnt-red) 100%);
-  box-shadow: 0 12px 30px rgba(176, 36, 0, 0.34);
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-.sizes-hero__cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(176, 36, 0, 0.45);
-}
-.sizes-hero__cta:active { transform: translateY(0) scale(0.98); }
-
-/* Supporting lines (echo "From $1299…" / "Available starting 11.8") */
-.sizes-hero__meta {
-  margin: 26px 0 6px;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: clamp(1rem, 1.3vw, 1.16rem);
-  color: var(--obsidian);
-}
-.sizes-hero__avail {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
-  color: rgba(11, 11, 11, 0.55);
+@media (hover: hover) {
+  .dz:hover { transform: translateY(-10px); z-index: 20; }
 }
 
 /* ---- Gentle load-in entrance (pure CSS, no JS dependency) ---- */
 @media (prefers-reduced-motion: no-preference) {
-  .sizes-hero__eyebrow,
   .sizes-hero__headline,
   .sizes-hero__sub,
-  .sizes-hero__media,
-  .sizes-hero__cta {
+  .sizes-hero__fleet {
     opacity: 0;
     transform: translateY(22px);
     animation: sizesRise 0.9s var(--ease) forwards;
   }
-  .sizes-hero__headline { animation-delay: 0.08s; }
-  .sizes-hero__sub      { animation-delay: 0.18s; }
-  .sizes-hero__media    { animation-delay: 0.28s; }
-  .sizes-hero__cta      { animation-delay: 0.42s; }
+  .sizes-hero__sub   { animation-delay: 0.12s; }
+  .sizes-hero__fleet { animation-delay: 0.26s; }
 }
 @keyframes sizesRise {
   to { opacity: 1; transform: none; }
 }
 
 /* ---- Responsive ---- */
+@media (max-width: 720px) {
+  .sizes-hero__fleet {
+    gap: 2px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 @media (max-width: 560px) {
   .sizes-hero__headline { font-size: clamp(1.9rem, 9vw, 2.6rem); }
 }
