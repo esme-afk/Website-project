@@ -9,7 +9,7 @@
 
   <!-- Brand styles -->
   <link rel="stylesheet" href="css/styles.css?v=21" />
-  <link rel="stylesheet" href="css/sizes.css?v=9" />
+  <link rel="stylesheet" href="css/sizes.css?v=10" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -85,24 +85,12 @@
       <p class="sizes-hero__sub">The right dumpster size depends on weight, material type, loading space, and rental time — all affect what makes sense for your project. Tell us what you are throwing away and we will help you match the project to the right dumpster size.</p>
     </div>
 
-    <!-- Background knockout: removes the light checkerboard so the dumpsters sit on white -->
-    <svg width="0" height="0" class="sizes-hero__filter" aria-hidden="true">
-      <defs>
-        <filter id="lwKnockout" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-          <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -0.299 -0.587 -0.114 0 1"/>
-          <feComponentTransfer><feFuncA type="discrete" tableValues="0 0 1 1 1"/></feComponentTransfer>
-        </filter>
-      </defs>
-    </svg>
-
-    <!-- Roll-off lineup: one source image, recolored + scaled into a fleet of sizes -->
-    <div class="sizes-hero__fleet" role="img" aria-label="Lone Wolf roll-off dumpsters in a range of sizes and colors">
-      <div class="dz" style="--hue:-25deg; --s:0.82"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="" loading="eager" /></div>
-      <div class="dz" style="--hue:38deg;  --s:0.92"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="" loading="eager" /></div>
-      <div class="dz" style="--hue:110deg; --s:1.00"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="" loading="eager" /></div>
-      <div class="dz" style="--hue:165deg; --s:1.08"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="" loading="eager" /></div>
-      <div class="dz" style="--hue:215deg; --s:0.90"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="" loading="eager" /></div>
-      <div class="dz" style="--sat:0; --br:1.12; --s:0.78"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="" loading="eager" /></div>
+    <!-- Truck lineup: full images, spaced cleanly, each enlarges on hover -->
+    <div class="sizes-hero__fleet" role="img" aria-label="Lone Wolf Hauling trucks">
+      <div class="dz"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling truck" loading="eager" /></div>
+      <div class="dz"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling truck" loading="eager" /></div>
+      <div class="dz"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling truck" loading="eager" /></div>
+      <div class="dz"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling truck" loading="eager" /></div>
     </div>
   </section>
 
