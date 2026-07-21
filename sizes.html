@@ -9,7 +9,7 @@
 
   <!-- Brand styles -->
   <link rel="stylesheet" href="css/styles.css?v=21" />
-  <link rel="stylesheet" href="css/sizes.css?v=17" />
+  <link rel="stylesheet" href="css/sizes.css?v=19" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -331,9 +331,22 @@
 
       <div class="pmatch__screens" id="pmScreens">
         <!-- Form intro -->
-        <div class="pm-screen is-active" data-screen="intro">
-          <h3 class="pm-title">Let's Match Your Project to the Right Dumpster</h3>
-          <p class="pm-text">This only takes a minute. Tell us what you are loading, where the dumpster is going, and when you need it. We will give you the best starting recommendation before you book.</p>
+        <div class="pm-screen is-active pm-intro" data-screen="intro">
+          <div class="pm-intro__media" aria-hidden="true">
+            <span class="pm-intro__blob"></span>
+            <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="" loading="eager" />
+          </div>
+          <div class="pm-intro__body">
+            <span class="pm-intro__badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              About 1 minute &middot; 9 quick questions
+            </span>
+            <h3 class="pm-title">Let's Match Your Project to the Right Dumpster</h3>
+            <p class="pm-text">This only takes a minute. Tell us what you are loading, where the dumpster is going, and when you need it. We will give you the best starting recommendation before you book.</p>
+            <ul class="pm-intro__chips">
+              <li>Material</li><li>Size</li><li>Weight</li><li>Location</li><li>Timing</li>
+            </ul>
+          </div>
         </div>
         <!-- Question screens are injected here by js/match.js -->
 
@@ -408,6 +421,34 @@
       <div class="pmatch__nav" id="pmNav">
         <button class="pm-back" id="pmBack" type="button">&larr; Back</button>
         <button class="pm-next" id="pmNext" type="button">Start</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FINAL CTA ============================== -->
+  <section class="final-cta" aria-label="Get in touch">
+    <div class="final-cta__container">
+      <div class="final-cta__glow" aria-hidden="true"></div>
+
+      <div class="final-cta__content">
+        <h2 class="final-cta__headline">Need a Dumpster for a Cleanup, Jobsite, or Heavy Material&nbsp;Load?</h2>
+        <p class="final-cta__sub">Tell Us About Your Job. We'll Take Care of the Rest.</p>
+
+        <form class="final-cta__form" action="index.html#contact" novalidate>
+          <label class="final-cta__field">
+            <svg class="final-cta__field-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+            </svg>
+            <input class="final-cta__input" type="text" inputmode="numeric" name="zip" placeholder="Enter ZIP Code" aria-label="ZIP Code" autocomplete="postal-code" />
+          </label>
+          <button class="final-cta__submit" type="submit">Check Availability</button>
+        </form>
+
+        <p class="final-cta__phone">Mon - Sat (6AM-6PM) Customer Service <a href="tel:+17602083563">+1 (760) 208-3563</a></p>
+      </div>
+
+      <div class="final-cta__media">
+        <img class="final-cta__img" src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling roll-off dumpster" loading="lazy" />
       </div>
     </div>
   </section>
