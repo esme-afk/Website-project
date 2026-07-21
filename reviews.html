@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0B0B" />
+  <title>Reviews — Lone Wolf Hauling Inc. | San Diego County Dumpster Rental</title>
+  <meta name="description" content="Real customer reviews for Lone Wolf Hauling Inc. — dumpster rentals, hauling, cleanouts, construction debris, and jobsite cleanup across San Diego County." />
+
+  <!-- Brand styles -->
+  <link rel="stylesheet" href="css/styles.css?v=21" />
+  <link rel="stylesheet" href="css/reviews.css?v=1" />
+
+  <!-- Preconnect to CDNs -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+  <!-- Display fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + ScrollTrigger -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="nav__logo" href="index.html" aria-label="Lone Wolf Hauling Inc. — Home">
+        <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png" alt="Lone Wolf Hauling Inc." />
+      </a>
+
+      <div class="nav__center">
+        <a class="nav__phone" href="tel:+17602083563">
+          <span class="nav__phone-dot" aria-hidden="true">&bull;</span>
+          24/7 Customer Service <strong>(760) 208-3563</strong>
+        </a>
+        <nav class="nav__pill" aria-label="Primary">
+          <a href="about.html"          class="nav__pill-link">About</a>
+          <a href="index.html#services" class="nav__pill-link">Services</a>
+          <a href="sizes.html"          class="nav__pill-link">Sizes</a>
+          <a href="reviews.html"        class="nav__pill-link" aria-current="page">Reviews</a>
+          <a href="index.html#contact"  class="nav__pill-link">Contact</a>
+        </nav>
+      </div>
+
+      <div class="nav__right">
+        <a href="index.html#contact" class="btn btn--book nav__cta">Book Now</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlayMenu">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================== OVERLAY MENU ============================== -->
+  <div class="overlay" id="overlayMenu" aria-hidden="true">
+    <nav class="overlay__nav" aria-label="Full menu">
+      <a href="index.html"          class="overlay__link"><span class="overlay__index">01</span> Home</a>
+      <a href="about.html"          class="overlay__link"><span class="overlay__index">02</span> About</a>
+      <a href="index.html#services" class="overlay__link"><span class="overlay__index">03</span> Services</a>
+      <a href="sizes.html"          class="overlay__link"><span class="overlay__index">04</span> Sizes</a>
+      <a href="reviews.html"        class="overlay__link"><span class="overlay__index">05</span> Reviews</a>
+      <a href="index.html#contact"  class="overlay__link"><span class="overlay__index">06</span> Contact Us</a>
+    </nav>
+    <a href="index.html#contact" class="btn btn--book overlay__cta">Book Now</a>
+  </div>
+
+  <!-- ============================== REVIEWS HERO ============================== -->
+  <section class="reviews-hero" id="reviews-top" aria-label="Customer reviews">
+    <div class="reviews-hero__bg" aria-hidden="true">
+      <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a5fff4e3b71bfd7c028adad.jpg"
+           alt="Lone Wolf Hauling Inc. owner standing by the branded hauling truck" loading="eager" />
+    </div>
+    <div class="reviews-hero__scrim" aria-hidden="true"></div>
+
+    <div class="reviews-hero__inner">
+      <div class="reviews-hero__content">
+        <div class="reviews-hero__eyebrow">
+          <span class="reviews-hero__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span>Customer Reviews</span>
+        </div>
+
+        <h1 class="reviews-hero__title">The Best Proof Is How the Job Was Handled</h1>
+
+        <p class="reviews-hero__sub">When someone rents a dumpster, they remember more than the container. They remember if the call was answered, if the price was explained clearly, if the drop-off went smooth, and if the pickup happened without making the project harder.</p>
+        <p class="reviews-hero__sub">That is what we care about at Lone Wolf Hauling Inc. Every review reflects a real customer who trusted us with their home, business, cleanup, or jobsite.</p>
+
+        <form class="reviews-hero__form" action="index.html#contact" novalidate>
+          <label class="reviews-hero__field">
+            <svg class="reviews-hero__field-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+            </svg>
+            <input class="reviews-hero__input" type="text" name="location" placeholder="Rental Location" aria-label="Rental Location" autocomplete="address-level2" />
+          </label>
+          <button class="reviews-hero__submit" type="submit">Check Availability</button>
+        </form>
+
+        <p class="reviews-hero__trust">Read what customers say about working with Lone Wolf for dumpster rentals, hauling, cleanouts, construction debris, and jobsite cleanup across San Diego County.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer" id="contact" aria-label="Footer">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo" href="index.html" aria-label="Lone Wolf Hauling Inc. — Home">
+          <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png" alt="Lone Wolf Hauling Inc." />
+        </a>
+        <p class="site-footer__tagline">Locally owned roll-off and dumpster rental serving San Diego County since 2010.</p>
+
+        <ul class="site-footer__contact">
+          <li><span class="site-footer__contact-label">Call</span><a href="tel:+17602083563">(760) 208-3563</a></li>
+          <li><span class="site-footer__contact-label">Email</span><a href="mailto:salvador@lonewolfhaulinginc.com">salvador@lonewolfhaulinginc.com</a></li>
+          <li><span class="site-footer__contact-label">Hours</span><span>Mon&ndash;Sun: 9AM - 6PM / Sunday: Emergency Only</span></li>
+        </ul>
+
+        <div class="site-footer__social">
+          <a href="#" aria-label="Instagram" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2 1.6 3.5 3.5 3.8v2.5c-1.3 0-2.6-.4-3.6-1.1v5.9a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v2.6a3 3 0 1 0 2.1 2.9V3h2.7z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8.2V14H10.5v7h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="site-footer__col site-footer__col--areas">
+        <h3 class="site-footer__heading">Service Areas</h3>
+        <ul class="site-footer__areas">
+          <li>Vista</li><li>San Marcos</li><li>Escondido</li><li>Oceanside</li>
+          <li>Carlsbad</li><li>Encinitas</li><li>San Diego</li><li>Chula Vista</li>
+          <li>El Cajon</li><li>Santee</li><li>La Mesa</li><li>Poway</li>
+          <li>Ramona</li><li>Fallbrook</li><li>Valley Center</li><li>Rancho Bernardo</li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col site-footer__col--links">
+        <h3 class="site-footer__heading">Quick Links</h3>
+        <ul class="site-footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="sizes.html">Dumpster Sizes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn btn--quote site-footer__quote">
+          <span class="btn__label">Get a Free Quote</span>
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="site-footer__watermark" aria-hidden="true">Lone Wolf</div>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copy">Copyright &copy; 2026 Lone Wolf Hauling Inc. All rights reserved. Serving Vista, CA and all of San Diego County.</p>
+      <p class="site-footer__credit">Website made by <span>Raise The Bar Marketing</span></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="js/menu.js?v=21"></script>
+  <script defer src="js/footer.js?v=21"></script>
+</body>
+</html>
