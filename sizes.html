@@ -9,7 +9,7 @@
 
   <!-- Brand styles -->
   <link rel="stylesheet" href="css/styles.css?v=21" />
-  <link rel="stylesheet" href="css/sizes.css?v=10" />
+  <link rel="stylesheet" href="css/sizes.css?v=13" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -85,12 +85,142 @@
       <p class="sizes-hero__sub">The right dumpster size depends on weight, material type, loading space, and rental time — all affect what makes sense for your project. Tell us what you are throwing away and we will help you match the project to the right dumpster size.</p>
     </div>
 
-    <!-- Truck lineup: full images, spaced cleanly, each enlarges on hover -->
-    <div class="sizes-hero__fleet" role="img" aria-label="Lone Wolf Hauling trucks">
-      <div class="dz"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling truck" loading="eager" /></div>
-      <div class="dz"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling truck" loading="eager" /></div>
-      <div class="dz"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling truck" loading="eager" /></div>
-      <div class="dz"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling truck" loading="eager" /></div>
+    <!-- Background knockout: removes the light checkerboard so the dumpsters sit on white -->
+    <svg width="0" height="0" class="sizes-hero__filter" aria-hidden="true">
+      <defs>
+        <filter id="lwKnockout" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -0.299 -0.587 -0.114 0 1"/>
+          <feComponentTransfer><feFuncA type="discrete" tableValues="0 0 1 1 1"/></feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- Roll-off lineup: one source image, recolored into six colors -->
+    <div class="sizes-hero__fleet" role="img" aria-label="Lone Wolf roll-off dumpsters in six colors">
+      <div class="dz" style="--hue:0deg"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="Red roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--hue:120deg"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="Green roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--hue:52deg; --sat:1.55; --br:1.18"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="Yellow roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--hue:210deg"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="Blue roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--sat:0; --br:0.42"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="Black roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--hue:24deg; --br:1.06"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a41f80fd50c4ff184553289.png" alt="Orange roll-off dumpster" loading="eager" /></div>
+    </div>
+  </section>
+
+  <!-- ============================== SIZE GUIDE ============================== -->
+  <section class="guide" id="size-guide" aria-label="Dumpster size guide">
+    <div class="guide__head">
+      <h2 class="guide__title">Match the Dumpster to the Load</h2>
+      <p class="guide__sub">A small load of concrete can weigh more than a large load of household junk. Green waste, roof tile, clean dirt, asphalt, and trash all fill and weigh differently. The right dumpster is the one that fits the material, the weight, the space on your property, and how long you need it.</p>
+      <p class="guide__sub">Use this guide as a starting point. If you are unsure, call or text us before booking and we will help you choose the right option.</p>
+    </div>
+
+    <!-- 10-Yard Low Boy -->
+    <article class="guide-size">
+      <div class="guide-size__media">
+        <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3a300d0b68a1153c5d292a.jpg" alt="10-Yard Low Boy dumpster" loading="lazy" />
+        <span class="guide-size__badge"><strong>10</strong>YD</span>
+      </div>
+      <div class="guide-size__body">
+        <p class="guide-size__eyebrow">10-Yard Low Boy</p>
+        <h3 class="guide-size__best">Best for heavy material loads</h3>
+        <p class="guide-size__desc">Our 10-yard low boy is built lower to the ground, which makes it easier to load dense materials like clean dirt, concrete, asphalt, sod, grass, and weeds.</p>
+        <p class="guide-size__desc">This is usually the better option when the material is heavy and you need a container that is easier to access without overloading the truck.</p>
+
+        <p class="guide-uses__label">Common Uses</p>
+        <ul class="guide-chips">
+          <li>Clean dirt</li><li>Concrete</li><li>Asphalt</li><li>Sod</li>
+          <li>Grass and weeds</li><li>Small heavy debris projects</li><li>Mixed dirt and concrete loads</li>
+        </ul>
+
+        <div class="guide-size__meta">
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M12 3l-4 4M12 3l4 4M12 21l-4-4M12 21l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>2 ft</strong> tall</span>
+          </div>
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>18 ft</strong> long</span>
+          </div>
+        </div>
+        <p class="guide-size__note">Low boys are typically rented for up to 3 days.</p>
+
+        <a href="index.html#contact" class="guide-size__cta">Get Quote for 10-Yard Low Boy <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <!-- 25-Yard Dumpster (reversed) -->
+    <article class="guide-size guide-size--rev">
+      <div class="guide-size__media">
+        <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3a300bdfe62db453022afd.jpg" alt="25-Yard Roll-Off dumpster" loading="lazy" />
+        <span class="guide-size__badge"><strong>25</strong>YD</span>
+      </div>
+      <div class="guide-size__body">
+        <p class="guide-size__eyebrow">25-Yard Dumpster</p>
+        <h3 class="guide-size__best">Best for mid-size cleanups and roofing material</h3>
+        <p class="guide-size__desc">Our 25-yard dumpster gives you more room for trash, roof tile, home cleanouts, remodel debris, and medium-size cleanup projects.</p>
+        <p class="guide-size__desc">This is a strong choice when you need more capacity than a low boy, but the project does not require the largest dumpster.</p>
+
+        <p class="guide-uses__label">Common Uses</p>
+        <ul class="guide-chips">
+          <li>Trash</li><li>Roof tile</li><li>Garage cleanouts</li><li>Home cleanouts</li>
+          <li>Furniture removal</li><li>Remodel debris</li><li>Medium-size property cleanups</li>
+        </ul>
+
+        <div class="guide-size__meta">
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M12 3l-4 4M12 3l4 4M12 21l-4-4M12 21l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>5 ft</strong> tall</span>
+          </div>
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>18 ft</strong> long</span>
+          </div>
+        </div>
+        <p class="guide-size__note">Trash rentals are typically available for up to 1 week.</p>
+
+        <a href="index.html#contact" class="guide-size__cta">Get Quote for 25-Yard Dumpster <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <!-- 40-Yard Dumpster -->
+    <article class="guide-size">
+      <div class="guide-size__media">
+        <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3a300f21502f4c611099ca.jpg" alt="40-Yard Roll-Off dumpster" loading="lazy" />
+        <span class="guide-size__badge"><strong>40</strong>YD</span>
+      </div>
+      <div class="guide-size__body">
+        <p class="guide-size__eyebrow">40-Yard Dumpster</p>
+        <h3 class="guide-size__best">Best for large cleanups and high-volume debris</h3>
+        <p class="guide-size__desc">Our 40-yard dumpster is made for bigger jobs that need more room. It is commonly used for large trash loads, green waste, demolition debris, commercial cleanouts, and larger jobsite projects.</p>
+        <p class="guide-size__desc">This is the option to consider when volume matters and the project needs more capacity from the start.</p>
+
+        <p class="guide-uses__label">Common Uses</p>
+        <ul class="guide-chips">
+          <li>Large trash loads</li><li>Green waste</li><li>Demolition debris</li><li>Commercial cleanouts</li>
+          <li>Construction debris</li><li>Large property cleanups</li><li>Bigger jobsite projects</li>
+        </ul>
+
+        <div class="guide-size__meta">
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M12 3l-4 4M12 3l4 4M12 21l-4-4M12 21l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>6 ft</strong> tall</span>
+          </div>
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>24 ft</strong> long</span>
+          </div>
+        </div>
+        <p class="guide-size__note">Trash rentals are typically available for up to 1 week. Green waste may be quoted differently depending on weight and material type.</p>
+
+        <a href="index.html#contact" class="guide-size__cta">Get Quote for 40-Yard Dumpster <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <!-- Closing -->
+    <div class="guide__closing">
+      <h3 class="guide__closing-title">Still unsure which dumpster fits your project?</h3>
+      <p class="guide__closing-copy">Send us a photo of the debris, the project location, and what material you are loading. We will help you choose the right size before the dumpster arrives.</p>
+      <a href="index.html#contact" class="guide__closing-cta">Help Me Choose a Dumpster</a>
     </div>
   </section>
 
