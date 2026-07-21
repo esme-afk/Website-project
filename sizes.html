@@ -9,7 +9,7 @@
 
   <!-- Brand styles -->
   <link rel="stylesheet" href="css/styles.css?v=21" />
-  <link rel="stylesheet" href="css/sizes.css?v=15" />
+  <link rel="stylesheet" href="css/sizes.css?v=17" />
 
   <!-- Preconnect to CDNs -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -316,6 +316,102 @@
     </div>
   </section>
 
+  <!-- ============================== PROJECT MATCH ============================== -->
+  <section class="pmatch" id="project-match" aria-label="Dumpster match tool">
+    <div class="pmatch__intro">
+      <p class="pmatch__eyebrow">Not Sure What Size You Need?</p>
+      <h2 class="pmatch__title">Find the Right Dumpster for Your Load</h2>
+      <p class="pmatch__sub">Most dumpster mistakes happen before delivery. The wrong size, wrong material category, or wrong weight estimate can change the cost and slow the project down.</p>
+      <p class="pmatch__sub">Answer a few quick questions and we will match your project to the dumpster that makes the most sense based on material, size, weight, location, and rental time.</p>
+      <button class="pmatch__start" type="button" data-action="scroll-wizard">Start Dumpster Match</button>
+    </div>
+
+    <div class="pmatch__wizard" id="pmWizard">
+      <div class="pmatch__progress" aria-hidden="true"><span class="pmatch__progress-fill" id="pmBar"></span></div>
+
+      <div class="pmatch__screens" id="pmScreens">
+        <!-- Form intro -->
+        <div class="pm-screen is-active" data-screen="intro">
+          <h3 class="pm-title">Let's Match Your Project to the Right Dumpster</h3>
+          <p class="pm-text">This only takes a minute. Tell us what you are loading, where the dumpster is going, and when you need it. We will give you the best starting recommendation before you book.</p>
+        </div>
+        <!-- Question screens are injected here by js/match.js -->
+
+        <!-- Result -->
+        <div class="pm-screen pm-result" data-screen="result">
+          <p class="pm-result__eyebrow">Your Recommended Dumpster Match</p>
+          <p class="pm-result__intro">Based on your project details, this is the best starting recommendation. Final pricing and availability may depend on location, material, weight, delivery timing, and rental duration.</p>
+
+          <!-- 10-Yard -->
+          <div class="pm-rcard" data-result="10" hidden>
+            <div class="pm-rcard__badge"><strong>10</strong>YD Low Boy</div>
+            <h4 class="pm-rcard__title">We Recommend Starting With a 10-Yard Low Boy</h4>
+            <p class="pm-rcard__for"><span>Recommended for</span> Clean dirt, clean concrete, asphalt, sod, grass, weeds, and mixed dirt/concrete loads.</p>
+            <p class="pm-rcard__copy">This is usually the right option when the material is heavy and dense. The lower height also makes loading easier for dirt, concrete, asphalt, sod, and similar materials.</p>
+            <div class="pm-rcard__specs"><span>2 ft tall</span><span>18 ft long</span><span class="pm-rcard__rental">Up to 3 days</span></div>
+            <ul class="pm-rcard__est">
+              <li><span>Clean dirt</span><b>$500</b></li>
+              <li><span>Grass or weeds</span><b>$550</b></li>
+              <li><span>Clean concrete, asphalt, or sod</span><b>$600</b></li>
+              <li><span>Mixed dirt and concrete</span><b>$650</b></li>
+            </ul>
+            <a class="pm-rcard__cta" href="index.html#contact">Confirm 10-Yard Low Boy Quote</a>
+          </div>
+
+          <!-- 25-Yard -->
+          <div class="pm-rcard" data-result="25" hidden>
+            <div class="pm-rcard__badge"><strong>25</strong>YD</div>
+            <h4 class="pm-rcard__title">We Recommend Starting With a 25-Yard Dumpster</h4>
+            <p class="pm-rcard__for"><span>Recommended for</span> Trash, roof tile, garage cleanouts, estate cleanouts, furniture removal, remodel debris, and medium cleanup projects.</p>
+            <p class="pm-rcard__copy">This is a strong option when your project needs more room, but does not require the largest container. It works well for roofing material, trash, home cleanouts, furniture removal, and remodel debris.</p>
+            <div class="pm-rcard__specs"><span>5 ft tall</span><span>18 ft long</span><span class="pm-rcard__rental">Up to 1 week for trash rentals</span></div>
+            <ul class="pm-rcard__est">
+              <li><span>Roof tile <em>Holds up to 20 squares of roof tile</em></span><b>$800</b></li>
+              <li><span>Trash <em>Includes up to 3 tons</em></span><b>$850</b></li>
+              <li><span>Extra weight <em>Per additional ton</em></span><b>$135</b></li>
+            </ul>
+            <a class="pm-rcard__cta" href="index.html#contact">Confirm 25-Yard Dumpster Quote</a>
+          </div>
+
+          <!-- 40-Yard -->
+          <div class="pm-rcard" data-result="40" hidden>
+            <div class="pm-rcard__badge"><strong>40</strong>YD</div>
+            <h4 class="pm-rcard__title">We Recommend Starting With a 40-Yard Dumpster</h4>
+            <p class="pm-rcard__for"><span>Recommended for</span> Large trash loads, green waste, demolition debris, commercial cleanouts, construction debris, large property cleanups, and bigger jobsite projects.</p>
+            <p class="pm-rcard__copy">This is the better starting point when volume matters. It gives you more room for large cleanups, commercial projects, green waste, demo debris, and bigger jobsite loads.</p>
+            <div class="pm-rcard__specs"><span>6 ft tall</span><span>24 ft long</span><span class="pm-rcard__rental">Up to 1 week for trash rentals</span></div>
+            <ul class="pm-rcard__est">
+              <li><span>Trash <em>Includes up to 3 tons</em></span><b>$900</b></li>
+              <li><span>Extra trash weight <em>Per additional ton</em></span><b>$135</b></li>
+              <li><span>Green waste <em>Includes up to 4 tons</em></span><b>$750</b></li>
+              <li><span>Extra green waste weight <em>Per additional ton</em></span><b>$80</b></li>
+              <li><span>Palm <em>Flat rate</em></span><b>$1,000</b></li>
+            </ul>
+            <p class="pm-rcard__note">Palm and bamboo are handled differently than standard green waste. Let us know before loading so we can quote it correctly.</p>
+            <a class="pm-rcard__cta" href="index.html#contact">Confirm 40-Yard Dumpster Quote</a>
+          </div>
+
+          <!-- Needs Review -->
+          <div class="pm-rcard pm-rcard--review" data-result="review" hidden>
+            <div class="pm-rcard__badge">Needs Review</div>
+            <h4 class="pm-rcard__title">Your Project Needs a Quick Review</h4>
+            <p class="pm-rcard__copy">Your answers show a few details we should confirm before recommending a dumpster. This usually happens when the material is mixed, the access area may be tight, or the load could fall into more than one pricing category.</p>
+            <p class="pm-rcard__copy">Send us your project details and we will help you choose the safest option before delivery.</p>
+            <p class="pm-rcard__note">Extra rental days may be available. One extra day may be no cost, then additional days may be $25 per day depending on the rental.</p>
+            <a class="pm-rcard__cta" href="index.html#contact">Review My Project</a>
+          </div>
+
+          <a class="pm-result__secondary" href="tel:+17602083563">Call or Text Now</a>
+        </div>
+      </div>
+
+      <div class="pmatch__nav" id="pmNav">
+        <button class="pm-back" id="pmBack" type="button">&larr; Back</button>
+        <button class="pm-next" id="pmNext" type="button">Start</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================== FOOTER ============================== -->
   <footer class="site-footer" id="contact" aria-label="Footer">
     <div class="site-footer__top">
@@ -382,5 +478,6 @@
   <!-- Scripts -->
   <script defer src="js/menu.js?v=21"></script>
   <script defer src="js/footer.js?v=21"></script>
+  <script defer src="js/match.js?v=16"></script>
 </body>
 </html>
