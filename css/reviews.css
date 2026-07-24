@@ -337,3 +337,86 @@
   .tm__track { animation: none; }
   .tm__row { overflow-x: auto; -webkit-mask: none; mask: none; }
 }
+
+/* =====================================================================
+   LEAVE A REVIEW  (Reviews page only)
+   ===================================================================== */
+.leave {
+  position: relative;
+  padding: clamp(72px, 10vh, 130px) var(--gutter) clamp(80px, 11vh, 140px);
+  background: radial-gradient(120% 130% at 50% 0%, #1B2E48 0%, #16273D 45%, #0C1727 100%);
+  overflow: hidden;
+  text-align: center;
+}
+.leave__glow {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  width: 60%;
+  height: 60%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(176, 36, 0, 0.28) 0%, rgba(176, 36, 0, 0) 68%);
+  pointer-events: none;
+}
+.leave__inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+.leave__eyebrow {
+  margin: 0 0 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.leave__title {
+  margin: 0 0 18px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.leave__sub {
+  margin: 0 auto 38px;
+  max-width: 560px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.25vw, 1.14rem);
+  line-height: 1.64;
+  color: rgba(255, 255, 255, 0.7);
+}
+.leave__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.leave__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 30px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.02rem;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+.leave__btn svg { width: 22px; height: 22px; flex: 0 0 auto; }
+.leave__btn--google {
+  background: #fff;
+  color: #1a1a1a;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+.leave__btn--google:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45); }
+.leave__btn--yelp {
+  background: #D32323;
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(211, 35, 35, 0.4);
+}
+.leave__btn--yelp:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(211, 35, 35, 0.55); }
+
+@media (max-width: 480px) {
+  .leave__actions { flex-direction: column; }
+  .leave__btn { justify-content: center; }
+}
