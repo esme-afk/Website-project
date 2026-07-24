@@ -157,6 +157,7 @@
   var qScreens = Array.prototype.slice.call(screensEl.querySelectorAll('[data-screen="q"]'));
   var flow = [introScreen].concat(qScreens);
   var idx = 0;
+  var firstRender = true;   // don't auto-scroll to the wizard on initial load
 
   function currentCfg() {
     if (idx === 0) return null;
@@ -194,8 +195,10 @@
       : (idx === flow.length - 1 ? "Show My Dumpster Match" : "Continue");
     setBar();
     refreshNav();
-    // keep the wizard in view as steps change
-    wizard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    // keep the wizard in view as steps change — but never on the first
+    // render (that would scroll the page down to the wizard on load)
+    if (!firstRender) wizard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    firstRender = false;
   }
 
   /* ----------------------------- Matching ----------------------------- */
