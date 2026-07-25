@@ -18,6 +18,7 @@
   /* ----------------------------- Overlay menu ----------------------- */
   function openMenu() {
     body.classList.add("menu-open");
+    nav.classList.remove("is-hidden");   // always reveal the nav when opening
     burger.setAttribute("aria-expanded", "true");
     burger.setAttribute("aria-label", "Close menu");
     overlay.setAttribute("aria-hidden", "false");
@@ -53,12 +54,38 @@
     if (e.key === "Escape" && body.classList.contains("menu-open")) closeMenu();
   });
 
-  /* ----------------------------- Sticky nav ------------------------- */
-  const onScroll = () => {
-    nav.classList.toggle("is-stuck", window.scrollY > 24);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  /* --------------------- Auto-hide nav on scroll -------------------- *
+     No background block. Visible at the top (Hero); hides smoothly when
+     scrolling down so it never covers the next section; returns on the
+     way up. Stays visible while the overlay menu is open.               */
+  let lastY = window.scrollY;
+  let ticking = false;
+  const DELTA = 6;         // ignore tiny scroll jitter
+  const section2 = document.querySelector(".services");
+
+  // The nav stays visible for the WHOLE hero; auto-hide only begins once
+  // Section 2 has scrolled up to the top of the viewport.
+  function inHero() {
+    if (section2) return section2.getBoundingClientRect().top > 4;
+    return window.scrollY < window.innerHeight;
+  }
+
+  function updateNav() {
+    const y = window.scrollY;
+    if (body.classList.contains("menu-open") || inHero()) {
+      nav.classList.remove("is-hidden");   // keep nav on through the hero
+    } else if (y > lastY + DELTA) {
+      nav.classList.add("is-hidden");      // scrolling down (past hero) → hide
+    } else if (y < lastY - DELTA) {
+      nav.classList.remove("is-hidden");   // scrolling up → show
+    }
+    lastY = y;
+    ticking = false;
+  }
+  window.addEventListener("scroll", () => {
+    if (!ticking) { window.requestAnimationFrame(updateNav); ticking = true; }
+  }, { passive: true });
+  updateNav();
 
   /* --------------------- Button ripple micro-interaction ------------ *
      Acknowledges the click with a quick ripple from the cursor point.  */

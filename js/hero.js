@@ -1,215 +1,185 @@
 /* =====================================================================
    Lone Wolf Hauling — Hero
-   Scroll-driven frame animation rendered with Three.js.
+   Scroll-driven frame animation on a plain 2D <canvas> (no Three.js).
 
    • The 360° truck reveal plays FORWARD as you scroll down and REVERSES
      as you scroll up (GSAP ScrollTrigger `scrub`).
-   • Frames are drawn onto an offscreen 2D canvas ("contain" on white),
-     fed to Three.js as a CanvasTexture on a full-screen quad.
+   • Each frame is painted with ctx.drawImage — no WebGL, no pixel reads,
+     so the cross-origin R2 frames render without needing CORS headers.
+   • The canvas uses CSS mix-blend-mode:multiply so the frames' white
+     background drops out, letting the BACK headline show through and the
+     truck sit in front of it. A masked FRONT headline copy crosses over
+     the truck body for a layered 3D depth effect.
    • Scroll speed is intentionally slowed by 40%.
-   • The headline gets a subtle parallax against the truck.
    ===================================================================== */
+(function () {
+  "use strict";
 
-import * as THREE from "three";
+  /* ----------------------------- Config ---------------------------- */
+  var FRAME_COUNT  = 145;
+  // Pre-keyed transparent WebP frames, hosted same-origin (no CORS issues),
+  // so the truck is a real cutout that occludes the headline behind it.
+  var FRAMES_BASE  = "assets/frames-web/";
+  var FRAME_PATH   = function (i) {
+    return FRAMES_BASE + "frame_" + String(i).padStart(4, "0") + ".webp";
+  };
 
-/* ----------------------------- Config ------------------------------ */
-const FRAME_COUNT = 169;                       // frames in /assets/frames
-const FRAME_PATH  = (i) =>
-  `assets/frames/frame_${String(i).padStart(4, "0")}.jpg`;
+  // 1.0 = normal scroll, 0.6 = 40% slower (sequence takes ~167% of scroll)
+  var SPEED_FACTOR = 0.6;
+  var scrollLength = function () { return (window.innerHeight * 3) / SPEED_FACTOR; };
 
-// Scroll distance that the pinned sequence occupies.
-// BASE feels natural for this many frames; dividing by 0.6 makes the
-// whole thing 40% SLOWER (it now takes ~167% of the original scroll).
-const speedFactor = 0.6;                        // 1.0 = normal, 0.6 = −40%
-const scrollLength = () => (window.innerHeight * 3) / speedFactor;
+  /* ------------------------------ DOM ------------------------------ */
+  var canvas     = document.getElementById("heroCanvas");
+  var loaderEl   = document.getElementById("heroLoader");
+  var loaderFill = document.getElementById("heroLoaderFill");
+  if (!canvas) return;
 
-// Nudge the truck toward the right so it clears the center-left headline.
-const truckShiftX = () => (window.innerWidth > 860 ? window.innerWidth * 0.14 : 0);
-const truckScale  = () => (window.innerWidth > 860 ? 1.02 : 0.96);
+  var ctx = canvas.getContext("2d");
+  var images = new Array(FRAME_COUNT);
+  var seq = { frame: 0 };
+  // Cap DPR at 1.5 — full 2x on Retina doubles the per-frame pixel work and
+  // is the main scroll-lag source; 1.5 looks crisp and is much lighter.
+  var DPR_CAP = 1.5;
+  var dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+  var lastFrame = -1;
 
-const prefersReduced =
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ----------------------------- DOM --------------------------------- */
-const canvas      = document.getElementById("heroCanvas");
-const loaderEl    = document.getElementById("heroLoader");
-const loaderFill  = document.getElementById("heroLoaderFill");
-const scrollCue   = document.getElementById("scrollCue");
+  /* --------------------------- Rendering --------------------------- */
+  // Truck is drawn "contain" (never cropped) and scaled down with generous
+  // margins so it can't crop on any viewport. Shifted toward the LEFT so the
+  // right-side headline stays clear and readable.
+  function truckScale() { return window.innerWidth > 860 ? 0.97 : 1.0; }
+  function truckShiftX() { return window.innerWidth > 860 ? -0.30 : 0; } // fraction of width
 
-/* ----------------------- Offscreen frame canvas -------------------- */
-const frameCanvas = document.createElement("canvas");
-const fctx = frameCanvas.getContext("2d");
+  function drawFrame(index, force) {
+    var i = Math.round(index);
+    // Skip redundant redraws — only repaint when the frame actually changes.
+    // (Scrub fires every pixel; this cuts canvas work to ~145 paints total.)
+    if (i === lastFrame && !force) return;
+    lastFrame = i;
+    var img = images[i];
+    var w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);   // transparent — let the hero gradient show
+    if (!img || !img.naturalWidth) return;
 
-/* ----------------------------- Three.js ---------------------------- */
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
-renderer.setClearColor(0xffffff, 1);
+    var fit = Math.min(w / img.naturalWidth, h / img.naturalHeight) * truckScale();
+    var dw = img.naturalWidth * fit;
+    var dh = img.naturalHeight * fit;
+    var dx = (w - dw) / 2 + w * truckShiftX();
+    var dy = (h - dh) / 2;
+    // HARD CLAMP inside the canvas — cropping is now mathematically impossible
+    // (dw <= w and dh <= h because scale < 1 with a contain fit).
+    dx = Math.max(0, Math.min(dx, w - dw));
+    dy = Math.max(0, Math.min(dy, h - dh));
+    ctx.drawImage(img, dx, dy, dw, dh);
+  }
 
-const scene  = new THREE.Scene();
-// Orthographic clip-space camera + a 2×2 plane = a perfect full-screen quad.
-const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width  = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    drawFrame(seq.frame, true);   // force — canvas was cleared by resize
+  }
 
-const texture = new THREE.CanvasTexture(frameCanvas);
-texture.minFilter = THREE.LinearFilter;
-texture.magFilter = THREE.LinearFilter;
-texture.generateMipmaps = false;
-
-const quad = new THREE.Mesh(
-  new THREE.PlaneGeometry(2, 2),
-  new THREE.MeshBasicMaterial({ map: texture })
-);
-scene.add(quad);
-
-/* ----------------------------- State ------------------------------- */
-const images = new Array(FRAME_COUNT);
-const seq = { frame: 0 };          // tweened by ScrollTrigger
-let dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-/* Draw the current frame, contained on white, shifted right of headline */
-function drawFrame(index) {
-  const img = images[Math.round(index)];
-  const w = frameCanvas.width;
-  const h = frameCanvas.height;
-
-  fctx.fillStyle = "#ffffff";
-  fctx.fillRect(0, 0, w, h);
-  if (!img) return;
-
-  const fit = Math.min(w / img.width, h / img.height) * truckScale();
-  const dw = img.width * fit;
-  const dh = img.height * fit;
-  const dx = (w - dw) / 2 + truckShiftX() * dpr;
-  const dy = (h - dh) / 2;
-
-  fctx.drawImage(img, dx, dy, dw, dh);
-  texture.needsUpdate = true;
-  renderer.render(scene, camera);
-}
-
-/* ----------------------------- Resize ------------------------------ */
-function resize() {
-  dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const w = canvas.clientWidth;
-  const h = canvas.clientHeight;
-
-  renderer.setPixelRatio(dpr);
-  renderer.setSize(w, h, false);
-
-  frameCanvas.width  = Math.round(w * dpr);
-  frameCanvas.height = Math.round(h * dpr);
-
-  drawFrame(seq.frame);
-}
-
-/* --------------------------- Preloading ---------------------------- */
-function preload() {
-  return new Promise((resolve) => {
-    let loaded = 0;
-    for (let i = 0; i < FRAME_COUNT; i++) {
-      const img = new Image();
-      img.decoding = "async";
-      img.onload = img.onerror = () => {
-        images[i] = img.naturalWidth ? img : null;
+  /* --------------------------- Preloading -------------------------- */
+  // NOTE: no img.crossOrigin — drawImage works with cross-origin images
+  // and we never call getImageData, so CORS headers aren't required.
+  function preload() {
+    return new Promise(function (resolve) {
+      var loaded = 0;
+      var done = function () {
         loaded++;
         if (loaderFill) loaderFill.style.width = (loaded / FRAME_COUNT) * 100 + "%";
         if (loaded === FRAME_COUNT) resolve();
       };
-      img.src = FRAME_PATH(i + 1);
+      for (var i = 0; i < FRAME_COUNT; i++) {
+        (function (i) {
+          var img = new Image();
+          img.decoding = "async";
+          img.onload = function () { images[i] = img; done(); };
+          img.onerror = function () { images[i] = null; done(); };
+          img.src = FRAME_PATH(i + 1);
+        })(i);
+      }
+    });
+  }
+
+  /* --------------------------- Animation --------------------------- */
+  function buildScroll() {
+    var gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
+    if (!gsap || !ScrollTrigger) { drawFrame(0); return; }
+    gsap.registerPlugin(ScrollTrigger);
+
+    var lines = gsap.utils.toArray(".hero__headline .hl-inner");
+
+    if (prefersReduced) {
+      // No motion: show the truck + everything in place.
+      drawFrame(0);
+      return;
     }
-  });
-}
 
-/* --------------------------- Animation ----------------------------- */
-function buildScrollAnimation() {
-  const gsap = window.gsap;
-  const ScrollTrigger = window.ScrollTrigger;
+    // Hidden starting state for the choreographed reveals
+    gsap.set(lines, { yPercent: 120, opacity: 0 });
+    gsap.set(".hero__card", { y: 60, autoAlpha: 0 });
 
-  if (!gsap || !ScrollTrigger) {
-    // Library CDN unavailable — degrade gracefully to the first frame.
-    console.warn("[hero] GSAP/ScrollTrigger not found; static hero shown.");
-    drawFrame(0);
-    return;
-  }
-  gsap.registerPlugin(ScrollTrigger);
-
-  if (prefersReduced) {
-    drawFrame(0);
-    return;
-  }
-
-  // 1) The scrubbed frame sequence (forward on down, reverse on up)
-  gsap.to(seq, {
-    frame: FRAME_COUNT - 1,
-    ease: "none",
-    snap: { frame: 1 },
-    onUpdate: () => drawFrame(seq.frame),
-    scrollTrigger: {
-      trigger: ".hero",
-      start: "top top",
-      end: () => "+=" + scrollLength(),
-      scrub: 0.7,                 // smoothing gives the reverse a nice glide
-      pin: ".hero__stage",
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        if (scrollCue) scrollCue.classList.toggle("is-hidden", self.progress > 0.02);
-      },
-    },
-  });
-
-  // 2) Subtle headline parallax — each element drifts up at its own rate
-  gsap.utils.toArray("[data-parallax]").forEach((el) => {
-    const factor = parseFloat(el.dataset.parallax) || 0.1;
-    gsap.to(el, {
-      yPercent: -factor * 100,
-      ease: "none",
+    // One timeline scrubbed by the pinned scroll drives EVERYTHING:
+    //   • the truck frame sequence (forward on down / reverse on up)
+    //   • each headline line sliding up in sequence
+    //   • the body card + CTA appearing last (once you've scrolled through)
+    var tl = gsap.timeline({
+      defaults: { ease: "none" },
       scrollTrigger: {
         trigger: ".hero",
         start: "top top",
-        end: () => "+=" + scrollLength(),
-        scrub: 1,
+        end: function () { return "+=" + scrollLength(); },
+        scrub: 0.6,
+        pin: ".hero__stage",
+        anticipatePin: 1,
         invalidateOnRefresh: true,
-      },
+        refreshPriority: 2   // hero (higher on page) refreshes first so its
+                             // pin spacing is set before Section 2 is measured
+      }
     });
-  });
 
-  // 3) Gently fade the copy out as the reveal completes
-  gsap.to(".hero__content", {
-    autoAlpha: 0.15,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".hero",
-      start: () => "top+=" + scrollLength() * 0.55 + " top",
-      end: () => "+=" + scrollLength() * 0.4,
-      scrub: true,
-      invalidateOnRefresh: true,
-    },
-  });
+    // Frame sequence spans the whole timeline (0 → 10 units)
+    tl.to(seq, {
+      frame: FRAME_COUNT - 1,
+      snap: { frame: 1 },
+      duration: 10,
+      onUpdate: function () { drawFrame(seq.frame); }
+    }, 0);
 
-  // Intro: ease the headline + CTA in once frames are ready
-  gsap.from(".hero__eyebrow, .hero__headline, .hero__cta", {
-    y: 26,
-    opacity: 0,
-    duration: 0.9,
-    ease: "power3.out",
-    stagger: 0.12,
-    delay: 0.1,
-  });
+    // Headline lines reveal one after another as you scroll
+    lines.forEach(function (ln, i) {
+      tl.to(ln, { yPercent: 0, opacity: 1, ease: "power3.out", duration: 1.1 }, 0.4 + i * 1.5);
+    });
 
-  ScrollTrigger.refresh();
-}
+    // Body card + CTA — the last thing to appear, near the end of the scroll
+    tl.to(".hero__card", { y: 0, autoAlpha: 1, ease: "power3.out", duration: 1.6 }, 7.6);
 
-/* ----------------------------- Boot -------------------------------- */
-function reveal() {
-  if (loaderEl) loaderEl.classList.add("is-done");
-}
+    ScrollTrigger.refresh();
+  }
 
-resize();
-window.addEventListener("resize", resize);
+  /* ----------------------------- Boot ------------------------------ */
+  resize();
+  window.addEventListener("resize", resize);
 
-preload().then(() => {
-  drawFrame(0);
-  reveal();
-  buildScrollAnimation();
-  // a second refresh after layout settles avoids first-paint offset
-  requestAnimationFrame(() => window.ScrollTrigger && window.ScrollTrigger.refresh());
-});
+  function start() {
+    preload().then(function () {
+      drawFrame(0);
+      if (loaderEl) loaderEl.classList.add("is-done");
+      buildScroll();
+      requestAnimationFrame(function () {
+        if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();

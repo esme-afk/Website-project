@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0B0B" />
+  <title>Dumpster Sizes — Lone Wolf Hauling Inc. | 10, 25 &amp; 40-Yard Roll-Offs</title>
+  <meta name="description" content="Lone Wolf Hauling Inc. dumpster sizes — 10-yard low boy, 25-yard and 40-yard roll-offs for cleanouts, jobsites, and heavy material across San Diego County." />
+
+  <!-- Brand styles -->
+  <link rel="stylesheet" href="css/styles.css?v=22" />
+  <link rel="stylesheet" href="css/sizes.css?v=19" />
+
+  <!-- Preconnect to CDNs -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+  <!-- Display fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + ScrollTrigger -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <!-- Logo -->
+      <a class="nav__logo" href="index.html" aria-label="Lone Wolf Hauling Inc. — Home">
+        <img
+          src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png"
+          alt="Lone Wolf Hauling Inc."
+        />
+      </a>
+
+      <!-- Center: phone line on top, rounded pill menu beneath (desktop) -->
+      <div class="nav__center">
+        <a class="nav__phone" href="tel:+17602083563">
+          <span class="nav__phone-dot" aria-hidden="true">&bull;</span>
+          Mon - Sat (6AM-6PM) Service <strong>(760) 208-3563</strong>
+        </a>
+        <nav class="nav__pill" aria-label="Primary">
+          <a href="about.html"          class="nav__pill-link">About</a>
+          <a href="services.html" class="nav__pill-link">Services</a>
+          <a href="sizes.html"          class="nav__pill-link" aria-current="page">Sizes</a>
+          <a href="reviews.html"  class="nav__pill-link">Reviews</a>
+          <a href="contact.html"  class="nav__pill-link">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Right: Book Now + burger (mobile only) -->
+      <div class="nav__right">
+        <a href="index.html#contact" class="btn btn--book nav__cta">Book Now</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlayMenu">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================== OVERLAY MENU ============================== -->
+  <div class="overlay" id="overlayMenu" aria-hidden="true">
+    <nav class="overlay__nav" aria-label="Full menu">
+      <a href="index.html"          class="overlay__link"><span class="overlay__index">01</span> Home</a>
+      <a href="about.html"          class="overlay__link"><span class="overlay__index">02</span> About</a>
+      <a href="services.html" class="overlay__link"><span class="overlay__index">03</span> Services</a>
+      <a href="sizes.html"          class="overlay__link"><span class="overlay__index">04</span> Sizes</a>
+      <a href="reviews.html"  class="overlay__link"><span class="overlay__index">05</span> Reviews</a>
+      <a href="contact.html"  class="overlay__link"><span class="overlay__index">06</span> Contact Us</a>
+    </nav>
+    <a href="index.html#contact" class="btn btn--book overlay__cta">Book Now</a>
+  </div>
+
+  <!-- ============================== SIZES HERO ============================== -->
+  <section class="sizes-hero" id="sizes-top" aria-label="Dumpster sizes">
+    <div class="sizes-hero__glow" aria-hidden="true"></div>
+
+    <div class="sizes-hero__head">
+      <h1 class="sizes-hero__headline">Choose the <em>Right Dumpster</em> for Your Project</h1>
+      <p class="sizes-hero__sub">The right dumpster size depends on weight, material type, loading space, and rental time — all affect what makes sense for your project. Tell us what you are throwing away and we will help you match the project to the right dumpster size.</p>
+    </div>
+
+    <!-- Roll-off lineup: one clean source image, recolored into six colors -->
+    <div class="sizes-hero__fleet" role="img" aria-label="Roll-off dumpsters in six colors">
+      <div class="dz" style="--hue:0deg"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Red roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--hue:120deg"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Green roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--hue:60deg; --sat:1.6; --br:1.16"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Yellow roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--hue:210deg"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Blue roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--sat:0; --br:0.34"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Black roll-off dumpster" loading="eager" /></div>
+      <div class="dz" style="--hue:25deg; --br:1.05"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Orange roll-off dumpster" loading="eager" /></div>
+    </div>
+  </section>
+
+  <!-- ============================== SIZE GUIDE ============================== -->
+  <section class="guide" id="size-guide" aria-label="Dumpster size guide">
+    <div class="guide__head">
+      <h2 class="guide__title">Match the Dumpster to the Load</h2>
+      <p class="guide__sub">A small load of concrete can weigh more than a large load of household junk. Green waste, roof tile, clean dirt, asphalt, and trash all fill and weigh differently. The right dumpster is the one that fits the material, the weight, the space on your property, and how long you need it.</p>
+      <p class="guide__sub">Use this guide as a starting point. If you are unsure, call or text us before booking and we will help you choose the right option.</p>
+    </div>
+
+    <!-- 10-Yard Low Boy -->
+    <article class="guide-size">
+      <div class="guide-size__media">
+        <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3a300d0b68a1153c5d292a.jpg" alt="10-Yard Low Boy dumpster" loading="lazy" />
+        <span class="guide-size__badge"><strong>10</strong>YD</span>
+      </div>
+      <div class="guide-size__body">
+        <p class="guide-size__eyebrow">10-Yard Low Boy</p>
+        <h3 class="guide-size__best">Best for heavy material loads</h3>
+        <p class="guide-size__desc">Our 10-yard low boy is built lower to the ground, which makes it easier to load dense materials like clean dirt, concrete, asphalt, sod, grass, and weeds.</p>
+        <p class="guide-size__desc">This is usually the better option when the material is heavy and you need a container that is easier to access without overloading the truck.</p>
+
+        <p class="guide-uses__label">Common Uses</p>
+        <ul class="guide-chips">
+          <li>Clean dirt</li><li>Concrete</li><li>Asphalt</li><li>Sod</li>
+          <li>Grass and weeds</li><li>Small heavy debris projects</li><li>Mixed dirt and concrete loads</li>
+        </ul>
+
+        <div class="guide-size__meta">
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M12 3l-4 4M12 3l4 4M12 21l-4-4M12 21l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>2 ft</strong> tall</span>
+          </div>
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>18 ft</strong> long</span>
+          </div>
+        </div>
+        <p class="guide-size__note">Low boys are typically rented for up to 3 days.</p>
+
+        <a href="index.html#contact" class="guide-size__cta">Get Quote for 10-Yard Low Boy <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <!-- 25-Yard Dumpster (reversed) -->
+    <article class="guide-size guide-size--rev">
+      <div class="guide-size__media">
+        <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3a300bdfe62db453022afd.jpg" alt="25-Yard Roll-Off dumpster" loading="lazy" />
+        <span class="guide-size__badge"><strong>25</strong>YD</span>
+      </div>
+      <div class="guide-size__body">
+        <p class="guide-size__eyebrow">25-Yard Dumpster</p>
+        <h3 class="guide-size__best">Best for mid-size cleanups and roofing material</h3>
+        <p class="guide-size__desc">Our 25-yard dumpster gives you more room for trash, roof tile, home cleanouts, remodel debris, and medium-size cleanup projects.</p>
+        <p class="guide-size__desc">This is a strong choice when you need more capacity than a low boy, but the project does not require the largest dumpster.</p>
+
+        <p class="guide-uses__label">Common Uses</p>
+        <ul class="guide-chips">
+          <li>Trash</li><li>Roof tile</li><li>Garage cleanouts</li><li>Home cleanouts</li>
+          <li>Furniture removal</li><li>Remodel debris</li><li>Medium-size property cleanups</li>
+        </ul>
+
+        <div class="guide-size__meta">
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M12 3l-4 4M12 3l4 4M12 21l-4-4M12 21l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>5 ft</strong> tall</span>
+          </div>
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>18 ft</strong> long</span>
+          </div>
+        </div>
+        <p class="guide-size__note">Trash rentals are typically available for up to 1 week.</p>
+
+        <a href="index.html#contact" class="guide-size__cta">Get Quote for 25-Yard Dumpster <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <!-- 40-Yard Dumpster -->
+    <article class="guide-size">
+      <div class="guide-size__media">
+        <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3a300f21502f4c611099ca.jpg" alt="40-Yard Roll-Off dumpster" loading="lazy" />
+        <span class="guide-size__badge"><strong>40</strong>YD</span>
+      </div>
+      <div class="guide-size__body">
+        <p class="guide-size__eyebrow">40-Yard Dumpster</p>
+        <h3 class="guide-size__best">Best for large cleanups and high-volume debris</h3>
+        <p class="guide-size__desc">Our 40-yard dumpster is made for bigger jobs that need more room. It is commonly used for large trash loads, green waste, demolition debris, commercial cleanouts, and larger jobsite projects.</p>
+        <p class="guide-size__desc">This is the option to consider when volume matters and the project needs more capacity from the start.</p>
+
+        <p class="guide-uses__label">Common Uses</p>
+        <ul class="guide-chips">
+          <li>Large trash loads</li><li>Green waste</li><li>Demolition debris</li><li>Commercial cleanouts</li>
+          <li>Construction debris</li><li>Large property cleanups</li><li>Bigger jobsite projects</li>
+        </ul>
+
+        <div class="guide-size__meta">
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M12 3l-4 4M12 3l4 4M12 21l-4-4M12 21l4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>6 ft</strong> tall</span>
+          </div>
+          <div class="guide-spec">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>24 ft</strong> long</span>
+          </div>
+        </div>
+        <p class="guide-size__note">Trash rentals are typically available for up to 1 week. Green waste may be quoted differently depending on weight and material type.</p>
+
+        <a href="index.html#contact" class="guide-size__cta">Get Quote for 40-Yard Dumpster <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+
+    <!-- Closing -->
+    <div class="guide__closing">
+      <h3 class="guide__closing-title">Still unsure which dumpster fits your project?</h3>
+      <p class="guide__closing-copy">Send us a photo of the debris, the project location, and what material you are loading. We will help you choose the right size before the dumpster arrives.</p>
+      <a href="index.html#contact" class="guide__closing-cta">Help Me Choose a Dumpster</a>
+    </div>
+  </section>
+
+  <!-- ============================== SIZE CARDS ============================== -->
+  <section class="scards" id="pricing" aria-label="Dumpster sizes and pricing">
+    <div class="scards__head">
+      <h2 class="scards__title">Dumpster Sizes Built for Different Loads, Jobs, and Weight Limits</h2>
+      <p class="scards__sub">The best dumpster is the one that matches what you are actually loading. A heavy material job needs a different setup than a full garage cleanout, roof tile load, or green waste project. These are the roll-off options we offer and how we typically recommend them.</p>
+    </div>
+
+    <div class="scards__grid">
+
+      <!-- 10-Yard Low Boy -->
+      <article class="scard">
+        <div class="scard__media"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="10-Yard Low Boy roll-off" loading="lazy" style="--hue:42deg; --sat:1.4; --br:1.1" /></div>
+        <div class="scard__top">
+          <h3 class="scard__name">10-Yard Low Boy</h3>
+          <div class="scard__dims">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M12 4l-3 3M12 4l3 3M12 20l-3-3M12 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>2 ft tall</span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 12l3-3M4 12l3 3M20 12l-3-3M20 12l-3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>18 ft long</span>
+          </div>
+        </div>
+        <div class="scard__block">
+          <p class="scard__label">Best For</p>
+          <ul class="scard__best">
+            <li>Clean dirt</li><li>Clean concrete</li><li>Asphalt</li><li>Sod</li>
+            <li>Grass and weeds</li><li>Mixed dirt and concrete loads</li><li>Small heavy debris projects</li>
+          </ul>
+        </div>
+        <p class="scard__rental"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rental time <strong>Up to 3 days</strong></p>
+        <div class="scard__block">
+          <p class="scard__label">Pricing Guide</p>
+          <ul class="scard__prices">
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Clean dirt</span><span class="scard__price-val">$500</span></div></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Grass and weeds</span><span class="scard__price-val">$550</span></div></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Clean concrete, asphalt, or sod</span><span class="scard__price-val">$600</span></div></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Mixed load, concrete and dirt</span><span class="scard__price-val">$650</span></div></li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="scard__cta">Rent 10-Yard Low Boy</a>
+      </article>
+
+      <!-- 25-Yard Dumpster (featured) -->
+      <article class="scard scard--featured">
+        <div class="scard__media"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="25-Yard roll-off dumpster" loading="lazy" style="--hue:0deg" /></div>
+        <div class="scard__top">
+          <h3 class="scard__name">25-Yard Dumpster</h3>
+          <div class="scard__dims">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M12 4l-3 3M12 4l3 3M12 20l-3-3M12 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>5 ft tall</span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 12l3-3M4 12l3 3M20 12l-3-3M20 12l-3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>18 ft long</span>
+          </div>
+        </div>
+        <div class="scard__block">
+          <p class="scard__label">Best For</p>
+          <ul class="scard__best">
+            <li>Trash</li><li>Roof tile</li><li>Garage cleanouts</li><li>Estate cleanouts</li>
+            <li>Furniture removal</li><li>Home remodel debris</li><li>Medium property cleanups</li><li>Roofing projects</li>
+          </ul>
+        </div>
+        <p class="scard__rental"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rental time <strong>Up to 1 week for trash rentals</strong></p>
+        <div class="scard__block">
+          <p class="scard__label">Pricing Guide</p>
+          <ul class="scard__prices">
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Roof tile</span><span class="scard__price-val">$800</span></div><p class="scard__price-note">Holds up to 20 squares of roof tile</p></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Trash</span><span class="scard__price-val">$850</span></div><p class="scard__price-note">Includes up to 3 tons</p></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Extra weight</span><span class="scard__price-val">$135</span></div><p class="scard__price-note">Per additional ton</p></li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="scard__cta">Rent 25-Yard Dumpster</a>
+      </article>
+
+      <!-- 40-Yard Dumpster -->
+      <article class="scard">
+        <div class="scard__media"><img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="40-Yard roll-off dumpster" loading="lazy" style="--sat:0; --br:0.38" /></div>
+        <div class="scard__top">
+          <h3 class="scard__name">40-Yard Dumpster</h3>
+          <div class="scard__dims">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M12 4l-3 3M12 4l3 3M12 20l-3-3M12 20l3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>6 ft tall</span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 12l3-3M4 12l3 3M20 12l-3-3M20 12l-3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>24 ft long</span>
+          </div>
+        </div>
+        <div class="scard__block">
+          <p class="scard__label">Best For</p>
+          <ul class="scard__best">
+            <li>Large trash loads</li><li>Green waste</li><li>Demolition debris</li><li>Commercial cleanouts</li>
+            <li>Construction debris</li><li>Large property cleanups</li><li>Bulky material</li><li>Bigger jobsite projects</li>
+          </ul>
+        </div>
+        <p class="scard__rental"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rental time <strong>Up to 1 week for trash rentals</strong></p>
+        <div class="scard__block">
+          <p class="scard__label">Pricing Guide</p>
+          <ul class="scard__prices">
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Trash</span><span class="scard__price-val">$900</span></div><p class="scard__price-note">Includes up to 3 tons</p></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Extra trash weight</span><span class="scard__price-val">$135</span></div><p class="scard__price-note">Per additional ton</p></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Green waste</span><span class="scard__price-val">$750</span></div><p class="scard__price-note">Includes up to 4 tons</p></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Extra green waste weight</span><span class="scard__price-val">$80</span></div><p class="scard__price-note">Per additional ton</p></li>
+            <li class="scard__price"><div class="scard__price-row"><span class="scard__price-name">Palm</span><span class="scard__price-val">$1,000</span></div><p class="scard__price-note">Flat rate</p></li>
+          </ul>
+        </div>
+        <a href="index.html#contact" class="scard__cta">Rent 40-Yard Dumpster</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================== PROJECT MATCH ============================== -->
+  <section class="pmatch" id="project-match" aria-label="Dumpster match tool">
+    <div class="pmatch__intro">
+      <p class="pmatch__eyebrow">Not Sure What Size You Need?</p>
+      <h2 class="pmatch__title">Find the Right Dumpster for Your Load</h2>
+      <p class="pmatch__sub">Most dumpster mistakes happen before delivery. The wrong size, wrong material category, or wrong weight estimate can change the cost and slow the project down.</p>
+      <p class="pmatch__sub">Answer a few quick questions and we will match your project to the dumpster that makes the most sense based on material, size, weight, location, and rental time.</p>
+      <button class="pmatch__start" type="button" data-action="scroll-wizard">Start Dumpster Match</button>
+    </div>
+
+    <div class="pmatch__wizard" id="pmWizard">
+      <div class="pmatch__progress" aria-hidden="true"><span class="pmatch__progress-fill" id="pmBar"></span></div>
+
+      <div class="pmatch__screens" id="pmScreens">
+        <!-- Form intro -->
+        <div class="pm-screen is-active pm-intro" data-screen="intro">
+          <div class="pm-intro__media" aria-hidden="true">
+            <span class="pm-intro__blob"></span>
+            <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="" loading="eager" />
+          </div>
+          <div class="pm-intro__body">
+            <span class="pm-intro__badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              About 1 minute &middot; 9 quick questions
+            </span>
+            <h3 class="pm-title">Let's Match Your Project to the Right Dumpster</h3>
+            <p class="pm-text">This only takes a minute. Tell us what you are loading, where the dumpster is going, and when you need it. We will give you the best starting recommendation before you book.</p>
+            <ul class="pm-intro__chips">
+              <li>Material</li><li>Size</li><li>Weight</li><li>Location</li><li>Timing</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Question screens are injected here by js/match.js -->
+
+        <!-- Result -->
+        <div class="pm-screen pm-result" data-screen="result">
+          <p class="pm-result__eyebrow">Your Recommended Dumpster Match</p>
+          <p class="pm-result__intro">Based on your project details, this is the best starting recommendation. Final pricing and availability may depend on location, material, weight, delivery timing, and rental duration.</p>
+
+          <!-- 10-Yard -->
+          <div class="pm-rcard" data-result="10" hidden>
+            <div class="pm-rcard__badge"><strong>10</strong>YD Low Boy</div>
+            <h4 class="pm-rcard__title">We Recommend Starting With a 10-Yard Low Boy</h4>
+            <p class="pm-rcard__for"><span>Recommended for</span> Clean dirt, clean concrete, asphalt, sod, grass, weeds, and mixed dirt/concrete loads.</p>
+            <p class="pm-rcard__copy">This is usually the right option when the material is heavy and dense. The lower height also makes loading easier for dirt, concrete, asphalt, sod, and similar materials.</p>
+            <div class="pm-rcard__specs"><span>2 ft tall</span><span>18 ft long</span><span class="pm-rcard__rental">Up to 3 days</span></div>
+            <ul class="pm-rcard__est">
+              <li><span>Clean dirt</span><b>$500</b></li>
+              <li><span>Grass or weeds</span><b>$550</b></li>
+              <li><span>Clean concrete, asphalt, or sod</span><b>$600</b></li>
+              <li><span>Mixed dirt and concrete</span><b>$650</b></li>
+            </ul>
+            <a class="pm-rcard__cta" href="index.html#contact">Confirm 10-Yard Low Boy Quote</a>
+          </div>
+
+          <!-- 25-Yard -->
+          <div class="pm-rcard" data-result="25" hidden>
+            <div class="pm-rcard__badge"><strong>25</strong>YD</div>
+            <h4 class="pm-rcard__title">We Recommend Starting With a 25-Yard Dumpster</h4>
+            <p class="pm-rcard__for"><span>Recommended for</span> Trash, roof tile, garage cleanouts, estate cleanouts, furniture removal, remodel debris, and medium cleanup projects.</p>
+            <p class="pm-rcard__copy">This is a strong option when your project needs more room, but does not require the largest container. It works well for roofing material, trash, home cleanouts, furniture removal, and remodel debris.</p>
+            <div class="pm-rcard__specs"><span>5 ft tall</span><span>18 ft long</span><span class="pm-rcard__rental">Up to 1 week for trash rentals</span></div>
+            <ul class="pm-rcard__est">
+              <li><span>Roof tile <em>Holds up to 20 squares of roof tile</em></span><b>$800</b></li>
+              <li><span>Trash <em>Includes up to 3 tons</em></span><b>$850</b></li>
+              <li><span>Extra weight <em>Per additional ton</em></span><b>$135</b></li>
+            </ul>
+            <a class="pm-rcard__cta" href="index.html#contact">Confirm 25-Yard Dumpster Quote</a>
+          </div>
+
+          <!-- 40-Yard -->
+          <div class="pm-rcard" data-result="40" hidden>
+            <div class="pm-rcard__badge"><strong>40</strong>YD</div>
+            <h4 class="pm-rcard__title">We Recommend Starting With a 40-Yard Dumpster</h4>
+            <p class="pm-rcard__for"><span>Recommended for</span> Large trash loads, green waste, demolition debris, commercial cleanouts, construction debris, large property cleanups, and bigger jobsite projects.</p>
+            <p class="pm-rcard__copy">This is the better starting point when volume matters. It gives you more room for large cleanups, commercial projects, green waste, demo debris, and bigger jobsite loads.</p>
+            <div class="pm-rcard__specs"><span>6 ft tall</span><span>24 ft long</span><span class="pm-rcard__rental">Up to 1 week for trash rentals</span></div>
+            <ul class="pm-rcard__est">
+              <li><span>Trash <em>Includes up to 3 tons</em></span><b>$900</b></li>
+              <li><span>Extra trash weight <em>Per additional ton</em></span><b>$135</b></li>
+              <li><span>Green waste <em>Includes up to 4 tons</em></span><b>$750</b></li>
+              <li><span>Extra green waste weight <em>Per additional ton</em></span><b>$80</b></li>
+              <li><span>Palm <em>Flat rate</em></span><b>$1,000</b></li>
+            </ul>
+            <p class="pm-rcard__note">Palm and bamboo are handled differently than standard green waste. Let us know before loading so we can quote it correctly.</p>
+            <a class="pm-rcard__cta" href="index.html#contact">Confirm 40-Yard Dumpster Quote</a>
+          </div>
+
+          <!-- Needs Review -->
+          <div class="pm-rcard pm-rcard--review" data-result="review" hidden>
+            <div class="pm-rcard__badge">Needs Review</div>
+            <h4 class="pm-rcard__title">Your Project Needs a Quick Review</h4>
+            <p class="pm-rcard__copy">Your answers show a few details we should confirm before recommending a dumpster. This usually happens when the material is mixed, the access area may be tight, or the load could fall into more than one pricing category.</p>
+            <p class="pm-rcard__copy">Send us your project details and we will help you choose the safest option before delivery.</p>
+            <p class="pm-rcard__note">Extra rental days may be available. One extra day may be no cost, then additional days may be $25 per day depending on the rental.</p>
+            <a class="pm-rcard__cta" href="index.html#contact">Review My Project</a>
+          </div>
+
+          <a class="pm-result__secondary" href="tel:+17602083563">Call or Text Now</a>
+        </div>
+      </div>
+
+      <div class="pmatch__nav" id="pmNav">
+        <button class="pm-back" id="pmBack" type="button">&larr; Back</button>
+        <button class="pm-next" id="pmNext" type="button">Start</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FINAL CTA ============================== -->
+  <section class="final-cta" aria-label="Get in touch">
+    <div class="final-cta__container">
+      <div class="final-cta__glow" aria-hidden="true"></div>
+
+      <div class="final-cta__content">
+        <h2 class="final-cta__headline">Need a Dumpster for a Cleanup, Jobsite, or Heavy Material&nbsp;Load?</h2>
+        <p class="final-cta__sub">Tell Us About Your Job. We'll Take Care of the Rest.</p>
+
+        <form class="final-cta__form" action="index.html#contact" novalidate>
+          <label class="final-cta__field">
+            <svg class="final-cta__field-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+            </svg>
+            <input class="final-cta__input" type="text" inputmode="numeric" name="zip" placeholder="Enter ZIP Code" aria-label="ZIP Code" autocomplete="postal-code" />
+          </label>
+          <button class="final-cta__submit" type="submit">Check Availability</button>
+        </form>
+
+        <p class="final-cta__phone">Mon - Sat (6AM-6PM) Customer Service <a href="tel:+17602083563">+1 (760) 208-3563</a></p>
+      </div>
+
+      <div class="final-cta__media">
+        <img class="final-cta__img" src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a3b85d6659bec99fcce51e1.png" alt="Lone Wolf Hauling roll-off dumpster" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer" id="contact" aria-label="Footer">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo" href="index.html" aria-label="Lone Wolf Hauling Inc. — Home">
+          <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png" alt="Lone Wolf Hauling Inc." />
+        </a>
+        <p class="site-footer__tagline">Locally owned roll-off and dumpster rental serving San Diego County since 2010.</p>
+
+        <ul class="site-footer__contact">
+          <li><span class="site-footer__contact-label">Call</span><a href="tel:+17602083563">(760) 208-3563</a></li>
+          <li><span class="site-footer__contact-label">Email</span><a href="mailto:salvador@lonewolfhaulinginc.com">salvador@lonewolfhaulinginc.com</a></li>
+          <li><span class="site-footer__contact-label">Hours</span><span>Mon&ndash;Sun: 9AM - 6PM / Sunday: Emergency Only</span></li>
+        </ul>
+
+        <div class="site-footer__social">
+          <a href="#" aria-label="Instagram" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2 1.6 3.5 3.5 3.8v2.5c-1.3 0-2.6-.4-3.6-1.1v5.9a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v2.6a3 3 0 1 0 2.1 2.9V3h2.7z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8.2V14H10.5v7h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="site-footer__col site-footer__col--areas">
+        <h3 class="site-footer__heading">Service Areas</h3>
+        <ul class="site-footer__areas">
+          <li>Vista</li><li>San Marcos</li><li>Escondido</li><li>Oceanside</li>
+          <li>Carlsbad</li><li>Encinitas</li><li>San Diego</li><li>Chula Vista</li>
+          <li>El Cajon</li><li>Santee</li><li>La Mesa</li><li>Poway</li>
+          <li>Ramona</li><li>Fallbrook</li><li>Valley Center</li><li>Rancho Bernardo</li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col site-footer__col--links">
+        <h3 class="site-footer__heading">Quick Links</h3>
+        <ul class="site-footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="sizes.html">Dumpster Sizes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn btn--quote site-footer__quote">
+          <span class="btn__label">Get a Free Quote</span>
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="site-footer__watermark" aria-hidden="true">Lone Wolf</div>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copy">Copyright &copy; 2026 Lone Wolf Hauling Inc. All rights reserved. Serving Vista, CA and all of San Diego County.</p>
+      <p class="site-footer__credit">Website made by <span>Raise The Bar Marketing</span></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="js/menu.js?v=21"></script>
+  <script defer src="js/footer.js?v=21"></script>
+  <script defer src="js/match.js?v=17"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0B0B" />
+  <title>About — Lone Wolf Hauling Inc. | San Diego's Owner-Led Dumpster Rental</title>
+  <meta name="description" content="Learn about Lone Wolf Hauling Inc. — a locally owned, owner-operated dumpster rental and hauling company serving all of San Diego County since 2010." />
+
+  <!-- Brand styles -->
+  <link rel="stylesheet" href="css/styles.css?v=22" />
+  <link rel="stylesheet" href="css/about.css?v=26" />
+
+  <!-- Preconnect to CDNs -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+  <!-- Display fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + ScrollTrigger -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <!-- Logo -->
+      <a class="nav__logo" href="index.html" aria-label="Lone Wolf Hauling Inc. — Home">
+        <img
+          src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png"
+          alt="Lone Wolf Hauling Inc."
+        />
+      </a>
+
+      <!-- Center: phone line on top, rounded pill menu beneath (desktop) -->
+      <div class="nav__center">
+        <a class="nav__phone" href="tel:+17602083563">
+          <span class="nav__phone-dot" aria-hidden="true">&bull;</span>
+          Mon - Sat (6AM-6PM) Service <strong>(760) 208-3563</strong>
+        </a>
+        <nav class="nav__pill" aria-label="Primary">
+          <a href="about.html"         class="nav__pill-link" aria-current="page">About</a>
+          <a href="services.html" class="nav__pill-link">Services</a>
+          <a href="sizes.html"    class="nav__pill-link">Sizes</a>
+          <a href="reviews.html"  class="nav__pill-link">Reviews</a>
+          <a href="contact.html"  class="nav__pill-link">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Right: Book Now + burger (mobile only) -->
+      <div class="nav__right">
+        <a href="index.html#contact" class="btn btn--book nav__cta">Book Now</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlayMenu">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================== OVERLAY MENU ============================== -->
+  <div class="overlay" id="overlayMenu" aria-hidden="true">
+    <nav class="overlay__nav" aria-label="Full menu">
+      <a href="index.html"          class="overlay__link"><span class="overlay__index">01</span> Home</a>
+      <a href="about.html"          class="overlay__link"><span class="overlay__index">02</span> About</a>
+      <a href="services.html" class="overlay__link"><span class="overlay__index">03</span> Services</a>
+      <a href="sizes.html"    class="overlay__link"><span class="overlay__index">04</span> Sizes</a>
+      <a href="reviews.html"  class="overlay__link"><span class="overlay__index">05</span> Reviews</a>
+      <a href="contact.html"  class="overlay__link"><span class="overlay__index">06</span> Contact Us</a>
+    </nav>
+    <a href="index.html#contact" class="btn btn--book overlay__cta">Book Now</a>
+  </div>
+
+  <!-- ============================== ABOUT HERO ============================== -->
+  <section class="about-hero" id="about-top" aria-label="About Lone Wolf Hauling">
+    <div class="about-hero__inner">
+
+      <!-- Heading -->
+      <div class="about-hero__head">
+        <span class="about-hero__eyebrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2.5l1.9 5.1 5.1 1.9-5.1 1.9L12 16.5l-1.9-5.1L5 9.5l5.1-1.9L12 2.5z" fill="currentColor"/>
+            <path d="M19 14l.8 2.2 2.2.8-2.2.8L19 20l-.8-2.2-2.2-.8 2.2-.8L19 14z" fill="currentColor" opacity=".7"/>
+          </svg>
+          San Diego County · Owner-Led Since 2010
+        </span>
+
+        <h1 class="about-hero__headline">
+          San Diego's Owner-Led Dumpster Rental &amp; Junk Hauling
+        </h1>
+
+        <p class="about-hero__sub">
+          Locally owned, professionally run, and handled personally on every job — see the Lone Wolf difference, from cluttered to cleared.
+        </p>
+      </div>
+
+      <!-- Before / After slider — the hero's main visual -->
+      <div class="about-hero__visual">
+        <div class="ba-slider" role="img" aria-label="Drag to compare a job before and after Lone Wolf Hauling">
+
+          <!-- AFTER is the base layer (clean result) -->
+          <div class="ba-after">
+            <img
+              src="https://assets.cdn.filesafe.space/fUiio9PgFijLtpxB7opN/media/6a3f24253c38d825b952f0c1.png"
+              alt="After: clean, cleared garage after Lone Wolf Hauling junk removal"
+              draggable="false"
+            />
+            <span class="ba-label ba-label--after" aria-hidden="true">After</span>
+          </div>
+
+          <!-- BEFORE clips from the right to reveal AFTER underneath -->
+          <div class="ba-before">
+            <img
+              src="https://assets.cdn.filesafe.space/fUiio9PgFijLtpxB7opN/media/6a3f24275aefbd076bac37d5.png"
+              alt="Before: cluttered garage prior to Lone Wolf Hauling junk removal"
+              draggable="false"
+            />
+            <span class="ba-label ba-label--before" aria-hidden="true">Before</span>
+          </div>
+
+          <!-- Drag handle -->
+          <div class="ba-handle" aria-hidden="true">
+            <div class="ba-handle__line"></div>
+            <div class="ba-handle__knob">
+              <svg viewBox="0 0 28 14" aria-hidden="true">
+                <path d="M1 7h26M7 1 1 7l6 6M21 1l6 6-6 6"
+                      stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overlapping ZIP / availability card -->
+        <div class="about-hero__card">
+          <form class="about-hero__form" action="index.html#contact" novalidate>
+            <label class="about-hero__field">
+              <svg class="about-hero__field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+              </svg>
+              <input class="about-hero__input" type="text" inputmode="numeric" name="zip"
+                     placeholder="Enter Zip Code" aria-label="ZIP Code" autocomplete="postal-code" />
+            </label>
+            <button class="about-hero__submit" type="submit">Check Availability</button>
+            <span class="about-hero__note">No credit card required.</span>
+          </form>
+
+          <div class="about-hero__trust">
+            <span class="about-hero__stars" aria-hidden="true">★★★★★</span>
+            <strong>5.0 Rating</strong>
+            <span class="about-hero__trust-sub">Trusted by homeowners &amp; contractors across San Diego County</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== STORY BEHIND BRAND ============================== -->
+  <section class="story" id="story" aria-label="The story behind Lone Wolf Hauling">
+    <div class="story__track">
+      <h2 class="story__headline">Story Behind Lone Wolf</h2>
+
+      <!-- Body 1 — full width -->
+      <p class="story__p story__p--full" data-body="1">Lone Wolf Hauling Inc. was built by Salvador Mendez with a simple standard: treat every project like the customer is trusting us with more than just debris. Whether it is a home cleanout, a jobsite, or a business cleanup, people need clear answers, reliable timing, and someone who takes the details seriously.</p>
+
+      <!-- Body 2 — split: image left, words right, divider between -->
+      <div class="story__row">
+        <figure class="story__media">
+          <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a40a8fdc408020f97ec580d.jpg"
+               alt="Salvador Mendez, owner of Lone Wolf Hauling Inc." loading="lazy" />
+        </figure>
+        <span class="story__divider" aria-hidden="true"></span>
+        <p class="story__p story__p--side" data-body="2">With over decades in business, Lone Wolf is family-owned, owner-led, and built around trust.</p>
+      </div>
+
+      <!-- Body 3 — full width -->
+      <p class="story__p story__p--full" data-body="3">The name Lone Wolf represents strength, independence, instinct, and protection. For us, that means showing up with the right equipment, helping customers choose the right dumpster, and making the rental process feel easier from the first call. We know most people do not rent dumpsters every day, so we explain what matters before the container lands on the property. That is the kind of service we want customers to remember.</p>
+    </div>
+  </section>
+
+  <!-- ============================== WHAT SETS US APART ============================== -->
+  <section class="apart" id="standards" aria-label="What sets Lone Wolf apart">
+    <div class="apart__head">
+      <div class="apart__head-text">
+        <h2 class="apart__title">The Standard We Bring to Every Drop-Off</h2>
+        <p class="apart__sub">We know customers have choices when it comes to renting a dumpster. What makes us different is how we handle the details before, during, and after the rental.</p>
+      </div>
+      <a class="apart__link" href="index.html#contact">
+        Get a Free Quote <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="apart__cards">
+
+      <!-- Card 1 — Fast & Reliable -->
+      <article class="apart__card" style="--c1:#D63A1A; --c2:#A82910;" tabindex="0">
+        <span class="apart__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 15h20v17H5z"/>
+            <path d="M25 20h7l6 6v6h-13z"/>
+            <circle cx="14" cy="34" r="3"/><circle cx="33" cy="34" r="3"/>
+            <path d="M1 19h5M1 24h7M1 29h4"/>
+          </svg>
+        </span>
+        <div class="apart__card-body">
+          <h3 class="apart__card-title">Fast &amp; Reliable Service</h3>
+          <p class="apart__card-text">When a project is moving, timing matters. We work to make delivery, pickup, and communication simple so your cleanup does not slow down the rest of the job.</p>
+        </div>
+      </article>
+
+      <!-- Card 2 — Competitive Pricing -->
+      <article class="apart__card" style="--c1:#E6A21B; --c2:#C07D08;" tabindex="0">
+        <span class="apart__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="24" r="16"/>
+            <path d="M24 13v22"/>
+            <path d="M29 18c-1.6-2.2-11-2.6-11 1.8 0 4.2 11 2.4 11 6.8 0 4.6-9.6 4-11 1.6"/>
+          </svg>
+        </span>
+        <div class="apart__card-body">
+          <h3 class="apart__card-title">Competitive Pricing</h3>
+          <p class="apart__card-text">We believe customers deserve fair pricing without feeling confused about what they are paying for. We explain what affects the cost, including dumpster size, material type, weight, location, and rental time.</p>
+        </div>
+      </article>
+
+      <!-- Card 3 — Free No-Obligation Estimates -->
+      <article class="apart__card" style="--c1:#157A63; --c2:#0E5A49;" tabindex="0">
+        <span class="apart__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="11" y="8" width="26" height="34" rx="3"/>
+            <path d="M18 8h12v5H18z"/>
+            <path d="M16.5 23l3.5 3.5 7-8"/>
+            <path d="M17 31h14M17 36h9"/>
+          </svg>
+        </span>
+        <div class="apart__card-body">
+          <h3 class="apart__card-title">Free No-Obligation Estimates</h3>
+          <p class="apart__card-text">You can reach out, ask questions, and get a clear estimate before making a decision. We will help you understand your options without pressure.</p>
+        </div>
+      </article>
+
+      <!-- Card 4 — Decades of Experience -->
+      <article class="apart__card" style="--c1:#1F6FB2; --c2:#15518A;" tabindex="0">
+        <span class="apart__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="19" r="11"/>
+            <path d="M24 13.5l2.2 4.5 5 .7-3.6 3.5.8 4.9-4.4-2.3-4.4 2.3.8-4.9-3.6-3.5 5-.7z"/>
+            <path d="M18 28.5 14 41l10-5 10 5-4-12.5"/>
+          </svg>
+        </span>
+        <div class="apart__card-body">
+          <h3 class="apart__card-title">Decades of Experience</h3>
+          <p class="apart__card-text">Our work is backed by years of hands-on experience in hauling, cleanup, equipment, materials, and jobsite needs. That experience helps us guide customers toward the right dumpster for the job.</p>
+        </div>
+      </article>
+
+      <!-- Card 5 — Clean, Well-Maintained Roll-Offs -->
+      <article class="apart__card" style="--c1:#16273D; --c2:#0C1727;" tabindex="0">
+        <span class="apart__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 19h28l-3.5 15H10.5z"/>
+            <path d="M7 19l3.5-6h20L35 19"/>
+            <path d="M11 34l-2 5M31 34l2 5"/>
+            <path d="M39.5 11l1.3 2.7 3 .4-2.2 2.1.5 2.9-2.6-1.4-2.6 1.4.5-2.9-2.1-2.1 3-.4z"/>
+          </svg>
+        </span>
+        <div class="apart__card-body">
+          <h3 class="apart__card-title">Clean, Well-Maintained Roll-Offs</h3>
+          <p class="apart__card-text">The dumpster sitting on your property represents our company. We take care of our roll-offs so they show up ready for real work and look professional on homes, businesses, and jobsites.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================== WHO WE SERVE (MAP) ============================== -->
+  <section class="serve" id="service-areas" aria-label="Areas we serve in San Diego County">
+    <div class="serve__head">
+      <h2 class="serve__title">Proudly Serving San Diego County</h2>
+      <p class="serve__sub">Lone Wolf Hauling Inc. provides dumpster rental and hauling services for homeowners, businesses, and contractors all over San Diego County.</p>
+    </div>
+
+    <div class="serve__grid">
+      <!-- MAP -->
+      <div class="serve__map" role="img" aria-label="Map of San Diego County with Lone Wolf Hauling service areas marked">
+        <div class="serve__map-glow" aria-hidden="true"></div>
+        <svg class="serve__map-shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="serveLand" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="rgba(255,255,255,0.10)"/>
+              <stop offset="1" stop-color="rgba(255,255,255,0.03)"/>
+            </linearGradient>
+            <clipPath id="serveClip">
+              <path d="M10,13 C6,21 9,27 7,33 C5,41 9,49 8,55 C7,63 11,70 15,77 L70,80 L79,30 L62,9 L30,8 Z"/>
+            </clipPath>
+          </defs>
+          <!-- county landmass -->
+          <path d="M10,13 C6,21 9,27 7,33 C5,41 9,49 8,55 C7,63 11,70 15,77 L70,80 L79,30 L62,9 L30,8 Z"
+                fill="url(#serveLand)" stroke="rgba(217,154,33,0.45)" stroke-width="0.5" stroke-linejoin="round"/>
+          <!-- subtle map grid, clipped to the county -->
+          <g clip-path="url(#serveClip)" stroke="rgba(255,255,255,0.06)" stroke-width="0.4">
+            <path d="M0,25 H100 M0,40 H100 M0,55 H100 M0,70 H100"/>
+            <path d="M22,0 V100 M38,0 V100 M54,0 V100 M70,0 V100"/>
+          </g>
+        </svg>
+
+        <!-- glowing service-area dots -->
+        <div class="serve__dots">
+          <span class="serve__dot"               style="left:12%;  top:20%; --d:0.0s"><i class="serve__pin"></i><b class="serve__lbl">Oceanside</b></span>
+          <span class="serve__dot"               style="left:27%;  top:17%; --d:0.5s"><i class="serve__pin"></i><b class="serve__lbl">Vista</b></span>
+          <span class="serve__dot"               style="left:41%;  top:10%; --d:1.1s"><i class="serve__pin"></i><b class="serve__lbl">Fallbrook</b></span>
+          <span class="serve__dot serve__dot--l" style="left:9%;   top:28%; --d:0.8s"><i class="serve__pin"></i><b class="serve__lbl">Carlsbad</b></span>
+          <span class="serve__dot"               style="left:31%;  top:25%; --d:0.3s"><i class="serve__pin"></i><b class="serve__lbl">San Marcos</b></span>
+          <span class="serve__dot"               style="left:47%;  top:20%; --d:1.4s"><i class="serve__pin"></i><b class="serve__lbl">Escondido</b></span>
+          <span class="serve__dot serve__dot--l" style="left:9%;   top:36%; --d:0.6s"><i class="serve__pin"></i><b class="serve__lbl">Encinitas</b></span>
+          <span class="serve__dot"               style="left:25%;  top:35%; --d:1.0s"><i class="serve__pin"></i><b class="serve__lbl">Rancho Santa Fe</b></span>
+          <span class="serve__dot"               style="left:44%;  top:34%; --d:0.2s"><i class="serve__pin"></i><b class="serve__lbl">Poway</b></span>
+          <span class="serve__dot serve__dot--l" style="left:9%;   top:43%; --d:1.3s"><i class="serve__pin"></i><b class="serve__lbl">Solana Beach</b></span>
+          <span class="serve__dot serve__dot--l" style="left:9%;   top:49%; --d:0.4s"><i class="serve__pin"></i><b class="serve__lbl">Del Mar</b></span>
+          <span class="serve__dot"               style="left:47%;  top:46%; --d:0.9s"><i class="serve__pin"></i><b class="serve__lbl">Santee</b></span>
+          <span class="serve__dot"               style="left:51%;  top:53%; --d:1.5s"><i class="serve__pin"></i><b class="serve__lbl">El Cajon</b></span>
+          <span class="serve__dot"               style="left:39%;  top:56%; --d:0.7s"><i class="serve__pin"></i><b class="serve__lbl">La Mesa</b></span>
+          <span class="serve__dot"               style="left:39%;  top:62%; --d:1.2s"><i class="serve__pin"></i><b class="serve__lbl">Lemon Grove</b></span>
+          <span class="serve__dot serve__dot--l" style="left:17%;  top:56%; --d:0.1s"><i class="serve__pin"></i><b class="serve__lbl">San Diego</b></span>
+          <span class="serve__dot"               style="left:23%;  top:65%; --d:1.6s"><i class="serve__pin"></i><b class="serve__lbl">National City</b></span>
+          <span class="serve__dot"               style="left:25%;  top:73%; --d:0.5s"><i class="serve__pin"></i><b class="serve__lbl">Chula Vista</b></span>
+        </div>
+      </div>
+
+      <!-- ASIDE: list + CTA -->
+      <aside class="serve__aside">
+        <div class="serve__areas">
+          <h3 class="serve__areas-title">Areas We Serve</h3>
+          <ul class="serve__areas-list">
+            <li>Vista</li><li>San Marcos</li><li>Oceanside</li><li>Escondido</li>
+            <li>Carlsbad</li><li>Encinitas</li><li>Fallbrook</li><li>Poway</li>
+            <li>Rancho Santa Fe</li><li>Solana Beach</li><li>Del Mar</li><li>San Diego</li>
+            <li>Chula Vista</li><li>La Mesa</li><li>El Cajon</li><li>Santee</li>
+            <li>National City</li><li>Lemon Grove</li>
+          </ul>
+          <p class="serve__areas-more">And surrounding San Diego County areas</p>
+        </div>
+
+        <div class="serve__cta">
+          <p class="serve__cta-copy">Call or text us with your city and project details.</p>
+          <form class="serve__form" action="index.html#contact" novalidate>
+            <label class="serve__field">
+              <svg class="serve__field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/>
+              </svg>
+              <input class="serve__input" type="text" inputmode="numeric" name="zip"
+                     placeholder="Enter ZIP Code" aria-label="ZIP Code" autocomplete="postal-code" />
+            </label>
+            <button class="serve__submit" type="submit">View Availability</button>
+          </form>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer" id="contact" aria-label="Footer">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo" href="index.html" aria-label="Lone Wolf Hauling Inc. — Home">
+          <img src="https://assets.cdn.filesafe.space/PAnnpKnujnhgYptCcXm1/media/6a24ce9efc95b24549a3cec6.png" alt="Lone Wolf Hauling Inc." />
+        </a>
+        <p class="site-footer__tagline">Locally owned roll-off and dumpster rental serving San Diego County since 2010.</p>
+
+        <ul class="site-footer__contact">
+          <li><span class="site-footer__contact-label">Call</span><a href="tel:+17602083563">(760) 208-3563</a></li>
+          <li><span class="site-footer__contact-label">Email</span><a href="mailto:salvador@lonewolfhaulinginc.com">salvador@lonewolfhaulinginc.com</a></li>
+          <li><span class="site-footer__contact-label">Hours</span><span>Mon&ndash;Sun: 9AM - 6PM / Sunday: Emergency Only</span></li>
+        </ul>
+
+        <div class="site-footer__social">
+          <a href="#" aria-label="Instagram" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2 1.6 3.5 3.5 3.8v2.5c-1.3 0-2.6-.4-3.6-1.1v5.9a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v2.6a3 3 0 1 0 2.1 2.9V3h2.7z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8.2V14H10.5v7h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="site-footer__col site-footer__col--areas">
+        <h3 class="site-footer__heading">Service Areas</h3>
+        <ul class="site-footer__areas">
+          <li>Vista</li><li>San Marcos</li><li>Escondido</li><li>Oceanside</li>
+          <li>Carlsbad</li><li>Encinitas</li><li>San Diego</li><li>Chula Vista</li>
+          <li>El Cajon</li><li>Santee</li><li>La Mesa</li><li>Poway</li>
+          <li>Ramona</li><li>Fallbrook</li><li>Valley Center</li><li>Rancho Bernardo</li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col site-footer__col--links">
+        <h3 class="site-footer__heading">Quick Links</h3>
+        <ul class="site-footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="sizes.html">Dumpster Sizes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn btn--quote site-footer__quote">
+          <span class="btn__label">Get a Free Quote</span>
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="site-footer__watermark" aria-hidden="true">Lone Wolf</div>
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copy">Copyright &copy; 2026 Lone Wolf Hauling Inc. All rights reserved. Serving Vista, CA and all of San Diego County.</p>
+      <p class="site-footer__credit">Website made by <span>Raise The Bar Marketing</span></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="js/menu.js?v=20"></script>
+  <script defer src="js/footer.js?v=20"></script>
+  <script defer src="js/slider.js?v=22"></script>
+  <script defer src="js/about-page.js?v=22"></script>
+  <script defer src="js/story.js?v=23"></script>
+</body>
+</html>
