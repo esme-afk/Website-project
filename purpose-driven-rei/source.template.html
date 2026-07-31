@@ -1,0 +1,732 @@
+<!-- ============================================================================
+     PURPOSE DRIVEN REI — Home (single self-contained block for GoHighLevel)
+     Palette  green #123C35 · ink #202624 · cream #F7F4EC · gold #C7A76A · stone #B7AA98
+     Type     IvyPresto Display (display) + Manrope (ui/body)
+     Motion   GSAP + ScrollTrigger (inlined)
+     ============================================================================ -->
+<style>
+/*__INLINE_FONTS__*/
+
+:root{
+  --green:#123C35; --green-2:#0d2e29; --ink:#202624; --cream:#F7F4EC;
+  --gold:#C7A76A; --gold-2:#d8bd8b; --stone:#B7AA98; --stone-soft:#e7e0d3;
+  --serif:"ivypresto-display","Playfair Display",Georgia,serif;
+  --sans:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --maxw:1240px; --gutter:clamp(20px,5vw,64px);
+  --r:14px; --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+.pdrei{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:var(--sans); font-size:20px; line-height:1.6; font-weight:400;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.pdrei img{max-width:100%;display:block}
+.pdrei a{color:inherit;text-decoration:none}
+.pdrei h1,.pdrei h2,.pdrei h3{font-family:var(--serif);font-weight:600;margin:0;line-height:1.04;letter-spacing:-.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);width:100%}
+.eyebrow{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin:0 0 22px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);display:inline-block;opacity:.8}
+.eyebrow.center{justify-content:center}
+.lede{font-size:clamp(19px,2vw,22px);line-height:1.65;color:#3a423e;max-width:60ch}
+.muted{color:#5c635e}
+
+/* ---------- Buttons / micro-interactions ---------- */
+.btn{
+  --bg:var(--gold); --fg:var(--green);
+  position:relative;display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  padding:17px 30px;border-radius:100px;border:1px solid var(--bg);
+  color:var(--fg);background:transparent;cursor:pointer;overflow:hidden;
+  isolation:isolate;transition:color .45s var(--ease),border-color .45s var(--ease),transform .3s var(--ease);
+}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bg);transform:translateY(0);transition:transform .5s var(--ease),background .4s var(--ease)}
+.btn:hover{color:var(--fg)}
+.btn:hover::before{background:var(--gold-2)}
+.btn .ar{display:inline-block;transition:transform .45s var(--ease)}
+.btn:hover .ar{transform:translateX(6px)}
+.btn:active{transform:scale(.96)}
+.btn.clicked::before{background:#fff}
+/* ghost / outline variant sits transparent, fills gold on hover */
+.btn--ghost{--bg:transparent;--fg:var(--green);border-color:var(--stone)}
+.btn--ghost::before{background:var(--gold);transform:translateY(101%)}
+.btn--ghost:hover{--fg:var(--green);border-color:var(--gold)}
+.btn--ghost:hover::before{transform:translateY(0)}
+.btn--onDark{--fg:var(--green);border-color:var(--gold)}
+.btn--onDark.btn--ghost{--fg:var(--cream);border-color:rgba(199,167,106,.5)}
+.btn--onDark.btn--ghost:hover{--fg:var(--green)}
+.btnrow{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+
+.txtlink{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);display:inline-flex;gap:10px;align-items:center;position:relative}
+.txtlink::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.txtlink:hover::after{transform:scaleX(1)}
+.txtlink .ar{transition:transform .45s var(--ease)}
+.txtlink:hover .ar{transform:translateX(6px)}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;transition:background .5s var(--ease),box-shadow .5s var(--ease),padding .5s var(--ease);padding:22px 0}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav__logo{display:flex;align-items:center;gap:12px;height:46px}
+.nav__logo img{height:100%;width:auto;object-fit:contain}
+.nav__logo .mark{font-family:var(--serif);font-size:22px;color:var(--cream);letter-spacing:.01em;transition:color .5s}
+.nav__links{display:flex;gap:34px;align-items:center}
+.nav__link{font-size:15px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,244,236,.86);position:relative;transition:color .4s}
+.nav__link::after{content:"";position:absolute;left:0;bottom:-7px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.nav__link:hover{color:#fff}
+.nav__link:hover::after{transform:scaleX(1)}
+.nav__right{display:flex;align-items:center;gap:16px}
+/* scrolled state */
+.nav.solid{background:var(--green);box-shadow:0 12px 40px rgba(10,30,26,.28);padding:14px 0}
+/* when on cream sections after hero we still keep green bar, so links readable */
+.burger{display:none;width:46px;height:46px;border:1px solid rgba(247,244,236,.4);border-radius:50%;background:transparent;cursor:pointer;position:relative}
+.burger span{position:absolute;left:13px;right:13px;height:1.5px;background:var(--cream);transition:.35s var(--ease)}
+.burger span:nth-child(1){top:18px}.burger span:nth-child(2){top:23px}.burger span:nth-child(3){top:28px}
+.burger.open span:nth-child(1){top:23px;transform:rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){top:23px;transform:rotate(-45deg)}
+
+.overlay{position:fixed;inset:0;z-index:79;background:var(--green);display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);clip-path:circle(0% at 100% 0);transition:clip-path .7s var(--ease);pointer-events:none}
+.overlay.open{clip-path:circle(150% at 100% 0);pointer-events:auto}
+.overlay a.o-link{font-family:var(--serif);font-size:clamp(34px,7vw,64px);color:var(--cream);padding:8px 0;display:flex;align-items:baseline;gap:18px;opacity:.92;transition:color .4s,padding-left .4s}
+.overlay a.o-link:hover{color:var(--gold);padding-left:12px}
+.overlay a.o-link .idx{font-family:var(--sans);font-size:14px;letter-spacing:.2em;color:var(--gold)}
+.overlay .o-foot{margin-top:44px;color:var(--stone);font-size:15px;letter-spacing:.04em;display:flex;flex-wrap:wrap;gap:8px 26px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--green-2)}
+.hero__media{position:absolute;inset:0;z-index:0}
+.hero__media video,.hero__media .ph-fill{width:100%;height:100%;object-fit:cover}
+.hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,30,26,.55) 0%,rgba(9,30,26,.25) 40%,rgba(9,30,26,.86) 100%)}
+.hero__in{position:relative;z-index:2;width:100%;padding-bottom:clamp(56px,9vh,110px);padding-top:160px}
+.hero__loc{color:var(--gold);font-size:14px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 26px;display:flex;gap:12px;align-items:center}
+.hero__loc::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(199,167,106,.6);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(199,167,106,.55)}70%{box-shadow:0 0 0 14px rgba(199,167,106,0)}100%{box-shadow:0 0 0 0 rgba(199,167,106,0)}}
+.hero h1{color:var(--cream);font-size:clamp(46px,7.4vw,80px);max-width:16ch;letter-spacing:-.015em}
+.hero h1 em{font-style:italic;color:var(--gold-2)}
+.hero__sub{color:rgba(247,244,236,.9);max-width:52ch;margin:26px 0 38px;font-size:clamp(18px,1.5vw,21px)}
+.hero__cues{position:absolute;right:var(--gutter);bottom:clamp(56px,9vh,110px);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(247,244,236,.7)}
+.hero__cues .line{width:1px;height:60px;background:rgba(247,244,236,.4);position:relative;overflow:hidden}
+.hero__cues .line i{position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--gold);animation:drop 2.2s var(--ease) infinite}
+@keyframes drop{0%{top:-40%}100%{top:100%}}
+.hero__cues span{writing-mode:vertical-rl;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+
+/* ---------- Generic section ---------- */
+.section{padding:clamp(80px,11vw,150px) 0;position:relative}
+.section h2{font-size:clamp(38px,5vw,52px);max-width:18ch}
+.section.dark{background:var(--green);color:var(--cream)}
+.section.dark h2{color:var(--cream)}
+.section.dark .lede{color:rgba(247,244,236,.82)}
+.section.dark .eyebrow{color:var(--gold-2)}
+.tag{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+
+/* Mission */
+.mission__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,6vw,90px);align-items:center}
+.mission__copy p+p{margin-top:20px}
+.mission__media{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 80px -40px rgba(18,60,53,.6)}
+.mission__media .m-el{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.mission__media:hover .m-el{transform:scale(1.06)}
+.mission__badge{position:absolute;left:22px;bottom:22px;background:rgba(18,60,53,.86);backdrop-filter:blur(6px);color:var(--cream);padding:16px 22px;border-radius:12px;border:1px solid rgba(199,167,106,.4)}
+.mission__badge b{font-family:var(--serif);font-size:30px;display:block;color:var(--gold-2);line-height:1}
+.mission__badge span{font-size:13px;letter-spacing:.06em;color:rgba(247,244,236,.8)}
+
+/* Stat strip */
+.stats{border-top:1px solid var(--stone);border-bottom:1px solid var(--stone);margin-top:clamp(50px,7vw,90px)}
+.stats__grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:38px clamp(14px,2vw,30px);border-left:1px solid var(--stone)}
+.stat:first-child{border-left:0}
+.stat b{font-family:var(--serif);font-size:clamp(40px,5vw,58px);color:var(--green);line-height:1;display:block}
+.section.dark .stat b{color:var(--gold-2)}
+.section.dark .stat{border-color:rgba(183,170,152,.3)}
+.stat span{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);margin-top:10px;display:block;font-weight:600}
+.section.dark .stat span{color:rgba(247,244,236,.75)}
+
+/* Team */
+.team__grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(34px,5vw,72px);align-items:stretch}
+.founder{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(26px,3.4vw,44px);align-items:center}
+.founder__photo{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;box-shadow:0 40px 80px -46px rgba(18,60,53,.65)}
+.founder__photo .f-el{width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--ease)}
+.founder__photo:hover .f-el{transform:scale(1.05)}
+.founder h3{font-size:clamp(30px,3.4vw,40px)}
+.founder .role{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:12px 0 20px}
+.checks{list-style:none;padding:0;margin:24px 0 30px;display:grid;gap:12px}
+.checks li{position:relative;padding-left:34px;font-size:17px;color:#3a423e}
+.checks li::before{content:"";position:absolute;left:0;top:9px;width:18px;height:18px;border-radius:50%;border:1px solid var(--gold);background:radial-gradient(circle at 50% 50%,var(--gold) 0 4px,transparent 5px)}
+.member{border:1px solid var(--stone);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;justify-content:space-between;background:#fff}
+.member .av{width:74px;height:74px;border-radius:50%;background:var(--stone-soft);display:flex;align-items:center;justify-content:center;color:var(--stone);font-family:var(--serif);font-size:28px;margin-bottom:20px;border:1px solid var(--stone)}
+.member h3{font-size:24px}
+.member .soon{color:var(--stone);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+
+/* Partner / Invest */
+.invest__head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(40px,5vw,64px)}
+.card{background:rgba(247,244,236,.04);border:1px solid rgba(199,167,106,.28);border-radius:var(--r);padding:34px 30px;transition:transform .5s var(--ease),border-color .5s,background .5s}
+.card:hover{transform:translateY(-6px);border-color:var(--gold);background:rgba(199,167,106,.06)}
+.card .k{font-family:var(--serif);font-size:clamp(34px,4vw,46px);color:var(--gold-2);line-height:1}
+.card h3{font-size:21px;margin:16px 0 10px;color:var(--cream)}
+.card p{font-size:16px;color:rgba(247,244,236,.75);margin:0}
+.calc{margin-top:26px;display:grid;grid-template-columns:1fr;gap:14px;border:1px solid rgba(199,167,106,.3);border-radius:var(--r);padding:26px 30px;background:rgba(9,30,26,.5)}
+.calc__row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px dashed rgba(199,167,106,.25);font-size:16px;color:rgba(247,244,236,.85)}
+.calc__row:last-child{border-bottom:0;padding-bottom:0}
+.calc__row b{font-family:var(--serif);color:var(--gold-2);font-size:26px}
+.calc__row.total b{color:#fff}
+.disclosure{margin-top:26px;font-size:13px;line-height:1.6;color:rgba(247,244,236,.5);max-width:80ch}
+
+/* Portfolio */
+.port__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:clamp(40px,5vw,60px)}
+.prop{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--green-2);cursor:pointer}
+.prop .p-el{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease);will-change:transform}
+.prop:hover .p-el{transform:scale(1.08)}
+.prop__grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,30,26,0) 40%,rgba(9,30,26,.9) 100%);z-index:1}
+.prop__meta{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:var(--cream);transform:translateY(6px);opacity:.96;transition:transform .5s var(--ease)}
+.prop:hover .prop__meta{transform:translateY(0)}
+.prop__meta .addr{display:block;font-family:var(--serif);font-size:18px;line-height:1.2}
+.prop__meta .loc{display:block;font-size:13px;color:rgba(247,244,236,.75);margin-top:4px}
+.badge{position:absolute;top:14px;left:14px;z-index:2;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:100px;backdrop-filter:blur(4px)}
+.badge.active{background:rgba(199,167,106,.92);color:var(--green)}
+.badge.sold{background:rgba(18,60,53,.78);color:var(--gold-2);border:1px solid rgba(199,167,106,.5)}
+
+/* Community */
+.community{position:relative;overflow:hidden}
+.community__grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(34px,5vw,80px);align-items:center}
+.community__media{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:5/4;box-shadow:0 40px 90px -46px rgba(18,60,53,.7)}
+.community__media .c-el{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.community__media:hover .c-el{transform:scale(1.05)}
+
+/* Stay connected */
+.connect{background:var(--green-2);color:var(--cream)}
+.connect__grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.socials{display:flex;gap:16px;flex-wrap:wrap}
+.social{display:flex;align-items:center;gap:14px;border:1px solid rgba(199,167,106,.4);border-radius:100px;padding:14px 24px;transition:background .45s var(--ease),color .45s,transform .3s;color:var(--cream)}
+.social:hover{background:var(--gold);color:var(--green);transform:translateY(-3px)}
+.social svg{width:20px;height:20px;fill:currentColor}
+.social b{font-size:15px;letter-spacing:.04em}
+
+/* Form / Join network */
+.join{background:var(--cream)}
+.join__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,5vw,80px);align-items:start}
+.form{background:#fff;border:1px solid var(--stone);border-radius:calc(var(--r) + 4px);padding:clamp(26px,3vw,42px);box-shadow:0 40px 90px -60px rgba(18,60,53,.5)}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--green);margin-bottom:9px}
+.field input,.field select,.field textarea{width:100%;font-family:var(--sans);font-size:16px;color:var(--ink);padding:15px 16px;border:1px solid var(--stone);border-radius:10px;background:var(--cream);transition:border-color .4s,box-shadow .4s;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(199,167,106,.18)}
+.field textarea{min-height:110px;resize:vertical}
+.form__two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form__ok{display:none;text-align:center;padding:30px 10px}
+.form__ok.show{display:block}
+.form__ok .ok-ic{width:64px;height:64px;border-radius:50%;background:var(--green);color:var(--gold-2);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:30px}
+.form.sent .form__body{display:none}
+
+/* Footer */
+.footer{background:var(--green);color:var(--cream);padding:clamp(60px,8vw,96px) 0 40px}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(183,170,152,.24)}
+.footer__logo{height:52px;margin-bottom:22px}
+.footer__logo img{height:100%;width:auto}
+.footer .mark{font-family:var(--serif);font-size:26px;color:var(--cream)}
+.footer p{color:rgba(247,244,236,.75);font-size:16px;max-width:34ch}
+.footer h4{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);margin:0 0 18px}
+.footer ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.footer a.f-link{color:rgba(247,244,236,.82);font-size:16px;transition:color .35s,padding-left .35s}
+.footer a.f-link:hover{color:var(--gold-2);padding-left:5px}
+.footer__bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;color:rgba(247,244,236,.5);font-size:13px}
+.footer__bottom a{color:rgba(247,244,236,.6)}
+.footer__disc{margin-top:16px;font-size:12px;color:rgba(247,244,236,.4);max-width:90ch;line-height:1.6}
+
+/* Reveal defaults (GSAP drives; fallback keeps visible) */
+.reveal{opacity:0;transform:translateY(26px)}
+.no-gsap .reveal{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:980px){
+  .nav__links{display:none}
+  .burger{display:block}
+  .nav__cta{display:none}
+  .mission__grid,.team__grid,.founder,.invest__head,.community__grid,.join__grid,.connect__grid{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .port__grid{grid-template-columns:repeat(2,1fr)}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .connect__grid{gap:26px}
+}
+@media(max-width:600px){
+  body.pdrei{font-size:18px}
+  .stats__grid{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:0}
+  .cards{grid-template-columns:1fr}
+  .port__grid{grid-template-columns:1fr 1fr;gap:12px}
+  .form__two{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr}
+  .hero__cues{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .reveal{opacity:1!important;transform:none!important}
+}
+
+/* ---------- Placeholder styling (preview only; real photos load in GoHighLevel) ---------- */
+.ph-fill,.m-el.is-ph,.f-el.is-ph,.p-el.is-ph,.c-el.is-ph{
+  background:linear-gradient(135deg,#16443c 0%,#0d2e29 55%,#1c5147 100%);
+  position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:rgba(247,244,236,.55);
+}
+.is-ph::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(199,167,106,.14) 1px,transparent 1px);background-size:18px 18px;opacity:.5}
+.ph-label{position:relative;z-index:1;font-family:var(--serif);font-size:15px;letter-spacing:.04em;padding:14px;color:rgba(247,244,236,.7)}
+.hero__media .ph-fill{align-items:flex-end;justify-content:flex-end}
+.hero__media .ph-label{font-size:13px;opacity:.4;text-transform:uppercase;letter-spacing:.2em}
+</style>
+
+<div class="pdrei no-gsap">
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a href="#home" class="nav__logo" aria-label="Purpose Driven REI — home">
+      <img data-key="logo" alt="Purpose Driven REI" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span class="mark" style="display:none">Purpose&nbsp;Driven&nbsp;REI</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="#mission">Mission</a>
+      <a class="nav__link" href="#team">Team</a>
+      <a class="nav__link" href="#invest">Invest</a>
+      <a class="nav__link" href="#portfolio">Portfolio</a>
+      <a class="nav__link" href="#community">Community</a>
+    </nav>
+    <div class="nav__right">
+      <a href="#join" class="btn nav__cta">Partner With Us <span class="ar">&rarr;</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= OVERLAY MENU ================= -->
+<div class="overlay" id="overlay" aria-hidden="true">
+  <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
+    <a class="o-link" href="#home"><span class="idx">01</span> Home</a>
+    <a class="o-link" href="#mission"><span class="idx">02</span> Our Mission</a>
+    <a class="o-link" href="#team"><span class="idx">03</span> Our Team</a>
+    <a class="o-link" href="#invest"><span class="idx">04</span> Partner With Us</a>
+    <a class="o-link" href="#portfolio"><span class="idx">05</span> Portfolio</a>
+    <a class="o-link" href="#community"><span class="idx">06</span> Community</a>
+    <a class="o-link" href="#join"><span class="idx">07</span> Join Our Network</a>
+    <div class="o-foot"><span>info@purposedrivenrei.com</span><span>+1 909-345-2383</span><span>Southern California</span></div>
+  </nav>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero__media">
+    <video data-key="heroVideo" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+  <div class="wrap hero__in">
+    <p class="hero__loc" data-h>Southern California · Nationwide</p>
+    <h1 data-h>Real Estate That <em>Profits</em><br>With Purpose.</h1>
+    <p class="hero__sub" data-h>Purpose Driven REI acquires, renovates, and resells residential property across Southern California and beyond — building real value for the investors and partners who grow with us.</p>
+    <div class="btnrow" data-h>
+      <a href="#join" class="btn">Partner With Us <span class="ar">&rarr;</span></a>
+      <a href="#portfolio" class="btn btn--ghost btn--onDark">Explore the Portfolio</a>
+    </div>
+  </div>
+  <div class="hero__cues"><span>Scroll</span><div class="line"><i></i></div></div>
+</section>
+
+<!-- ================= MISSION ================= -->
+<section class="section" id="mission">
+  <div class="wrap">
+    <div class="mission__grid">
+      <div class="mission__copy">
+        <p class="eyebrow reveal">Our Mission</p>
+        <h2 class="reveal">A real estate network built to profit with purpose.</h2>
+        <p class="lede reveal" style="margin-top:26px">Purpose Driven REI isn't another real estate meetup. It's a community designed to help you learn, connect, and take action — whether you're brand new or a seasoned flipper. This is where deals get shared, partnerships get formed, and real opportunities come to life.</p>
+        <p class="reveal muted" style="margin-top:18px">Inside this room you're not guessing. You're plugged into a network actively finding properties, structuring deals, and closing transactions — so you can grow faster, smarter, and with the right people in your corner.</p>
+        <div class="btnrow reveal" style="margin-top:34px">
+          <a href="#join" class="btn">Join the Network <span class="ar">&rarr;</span></a>
+          <a href="#invest" class="txtlink">How partnering works <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="mission__media reveal">
+        <img class="m-el" data-key="bg1" alt="Purpose Driven REI renovated property">
+        <div class="mission__badge"><b>SoCal</b><span>Headquartered in Southern California</span></div>
+      </div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stats__grid">
+        <div class="stat"><b data-count="20" data-suffix="+">0</b><span>Years Experience</span></div>
+        <div class="stat"><b data-count="200" data-suffix="+">0</b><span>Flips Completed</span></div>
+        <div class="stat"><b data-count="1500" data-suffix="+">0</b><span>Homes Transacted</span></div>
+        <div class="stat"><b>#1</b><span>Purpose-Driven Community</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="section" id="team" style="background:var(--stone-soft)">
+  <div class="wrap">
+    <p class="eyebrow reveal">Our Team</p>
+    <h2 class="reveal" style="margin-bottom:clamp(38px,5vw,60px)">The people behind the purpose.</h2>
+    <div class="team__grid">
+      <div class="founder reveal">
+        <div class="founder__photo"><img class="f-el" data-key="ricardo" alt="Ricardo Carrillo, Founder & CEO"></div>
+        <div>
+          <h3>Ricardo Carrillo</h3>
+          <p class="role">Founder &amp; CEO</p>
+          <p>Ricardo brings 20+ years of real-world experience in real estate — actively buying, renovating, and reselling residential properties across Southern California and beyond. With more than 200 successful fix-and-flip projects closed and a growing footprint in new construction, he's seen the questions come up on every deal.</p>
+          <ul class="checks">
+            <li>20+ years of investing &amp; sales experience in SoCal</li>
+            <li>200+ successful fix &amp; flip projects closed</li>
+            <li>Active in deal sourcing, private money &amp; new construction</li>
+            <li>Founder of a community built on purpose</li>
+          </ul>
+          <a href="#invest" class="txtlink">Partner with Ricardo <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="member reveal">
+        <div>
+          <div class="av">+</div>
+          <h3>Growing Our Team</h3>
+          <p class="muted" style="font-size:16px;margin:12px 0 22px">Our network of operators, partners, and specialists continues to expand as Purpose Driven REI grows across new markets.</p>
+        </div>
+        <span class="soon">More team announced soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARTNER / INVEST ================= -->
+<section class="section dark" id="invest">
+  <div class="wrap">
+    <div class="invest__head">
+      <div>
+        <p class="eyebrow reveal">Partner With Us</p>
+        <h2 class="reveal">Private money, secured by real estate.</h2>
+      </div>
+      <p class="lede reveal">We create value through thoughtful renovation while delivering strong, secured returns for our investment partners. Capital is protected by real property — a promissory note and deed of trust on every deal.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card reveal"><div class="k">10–15%</div><h3>Target Returns</h3><p>Fixed or annualized for the project term, depending on lien position and structure.</p></div>
+      <div class="card reveal"><div class="k">6–12</div><h3>Month Timelines</h3><p>Investment terms typically run 6–12 months based on scope, market, and project stage.</p></div>
+      <div class="card reveal"><div class="k">70–75%</div><h3>Loan-to-Value</h3><p>Disciplined LTV targets keep every project conservatively positioned.</p></div>
+      <div class="card reveal"><div class="k">1st / 2nd</div><h3>Lien Position</h3><p>Secured in 1st or 2nd position, depending on capital and project structure.</p></div>
+      <div class="card reveal"><div class="k">Deed</div><h3>Real Security</h3><p>Investor capital secured by real estate via promissory note &amp; recorded deed of trust.</p></div>
+      <div class="card reveal"><div class="k">70%</div><h3>2025 Success Rate</h3><p>Even in a tough 2025 market — with a limited principal guarantee within 12–24 months.</p></div>
+    </div>
+
+    <div class="calc reveal">
+      <div class="calc__row"><span>Example investment</span><b>$50,000</b></div>
+      <div class="calc__row"><span>Typical return — 15% fixed, 2nd position</span><b>$7,500</b></div>
+      <div class="calc__row total"><span>Total paid back at completion (6–9 mo.)</span><b>$57,500</b></div>
+    </div>
+
+    <div class="btnrow reveal" style="margin-top:38px">
+      <a href="#join" class="btn">Request the Investor Overview <span class="ar">&rarr;</span></a>
+      <a href="#portfolio" class="btn btn--ghost btn--onDark">See Example Projects</a>
+    </div>
+
+    <p class="disclosure reveal">Risk disclosure: Real estate investments carry uncontrollable risks like any other investment, including market shifts, economic conditions, or unforeseen natural events. Returns and principal repayment are not guaranteed. Figures shown are illustrative examples of typical structures, not an offer or a promise of performance.</p>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="section" id="portfolio">
+  <div class="wrap">
+    <div class="invest__head" style="align-items:end">
+      <div>
+        <p class="eyebrow reveal">Portfolio</p>
+        <h2 class="reveal">Example projects, closed &amp; active.</h2>
+      </div>
+      <p class="lede reveal">A selection of residential renovations and new-construction projects sourced, structured, and executed by Purpose Driven REI.</p>
+    </div>
+    <div class="port__grid" id="portGrid"><!-- injected --></div>
+    <div class="btnrow reveal" style="margin-top:44px;justify-content:center">
+      <a href="#join" class="btn">Invest In The Next Project <span class="ar">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMMUNITY ================= -->
+<section class="section dark community" id="community">
+  <div class="wrap">
+    <div class="community__grid">
+      <div class="community__media reveal">
+        <img class="c-el" data-key="community" alt="The Purpose Driven REI community">
+      </div>
+      <div>
+        <p class="eyebrow reveal">The Community</p>
+        <h2 class="reveal">Real opportunities, real people, in your corner.</h2>
+        <p class="lede reveal" style="margin-top:24px">This is where deals get shared, partnerships get formed, and momentum gets built. Surround yourself with investors who are actively finding properties, structuring deals, and closing transactions — and grow faster because of it.</p>
+        <div class="btnrow reveal" style="margin-top:34px">
+          <a href="#join" class="btn">Join the Community <span class="ar">&rarr;</span></a>
+          <a href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" class="txtlink" style="color:var(--gold-2)">Follow @pdreinv_ <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAY CONNECTED ================= -->
+<section class="section connect" id="connect">
+  <div class="wrap">
+    <div class="connect__grid">
+      <div>
+        <p class="eyebrow reveal">Stay Connected</p>
+        <h2 class="reveal" style="color:var(--cream)">Follow the deals as they happen.</h2>
+        <p class="lede reveal" style="margin-top:20px;color:rgba(247,244,236,.82)">See active projects, renovation progress, and investor insights — straight from the field.</p>
+      </div>
+      <div class="socials reveal">
+        <a class="social" href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" aria-label="Instagram @pdreinv_">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5 0-4.75.07-.9.04-1.38.19-1.7.31-.43.17-.73.37-1.05.69-.32.32-.52.62-.69 1.05-.12.32-.27.8-.31 1.7C3.13 8.5 3.13 8.85 3.13 12s0 3.5.07 4.75c.04.9.19 1.38.31 1.7.17.43.37.73.69 1.05.32.32.62.52 1.05.69.32.12.8.27 1.7.31 1.25.07 1.6.07 4.75.07s3.5 0 4.75-.07c.9-.04 1.38-.19 1.7-.31.43-.17.73-.37 1.05-.69.32-.32.52-.62.69-1.05.12-.32.27-.8.31-1.7.07-1.25.07-1.6.07-4.75s0-3.5-.07-4.75c-.04-.9-.19-1.38-.31-1.7a2.8 2.8 0 0 0-.69-1.05 2.8 2.8 0 0 0-1.05-.69c-.32-.12-.8-.27-1.7-.31C15.5 4 15.15 4 12 4Zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06Zm0 8.14A3.2 3.2 0 1 0 8.8 12 3.2 3.2 0 0 0 12 15.2Zm5.14-8.34a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15Z"/></svg>
+          <b>@pdreinv_</b>
+        </a>
+        <a class="social" href="https://www.facebook.com/ricardo.realtor909/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3-.04-1.3-.13-2.47-.13-2.44 0-4.11 1.49-4.11 4.23v2.36H7.7V13h2.72v8Z"/></svg>
+          <b>Facebook</b>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOIN OUR NETWORK (FORM) ================= -->
+<section class="section join" id="join">
+  <div class="wrap">
+    <div class="join__grid">
+      <div>
+        <p class="eyebrow reveal">Join Our Network</p>
+        <h2 class="reveal">Let's build something with purpose.</h2>
+        <p class="lede reveal" style="margin-top:22px">Tell us where you're headed — investing capital, partnering on deals, or joining the community. We'll follow up with the right next step, including our full Private Money Investment Overview.</p>
+        <ul class="checks reveal" style="margin-top:30px">
+          <li>Straight answers on what's actually working in this market</li>
+          <li>Access to active, secured investment opportunities</li>
+          <li>A network that sources, structures, and closes together</li>
+        </ul>
+        <p class="reveal muted" style="font-size:16px;margin-top:26px">Prefer to talk? <a href="tel:+19093452383" class="txtlink" style="font-size:14px">+1 909-345-2383</a></p>
+      </div>
+
+      <form class="form reveal" id="joinForm" novalidate>
+        <div class="form__body">
+          <div class="form__two">
+            <div class="field"><label for="fn">First name</label><input id="fn" name="firstName" type="text" autocomplete="given-name" required></div>
+            <div class="field"><label for="ln">Last name</label><input id="ln" name="lastName" type="text" autocomplete="family-name" required></div>
+          </div>
+          <div class="form__two">
+            <div class="field"><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="ph">Phone</label><input id="ph" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="field">
+            <label for="it">I'm interested in</label>
+            <select id="it" name="interest" required>
+              <option value="" selected disabled>Select an option</option>
+              <option>Investing private money</option>
+              <option>Partnering on a deal (JV)</option>
+              <option>Joining the community</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field"><label for="ms">Message</label><textarea id="ms" name="message" placeholder="Tell us a little about your goals…"></textarea></div>
+          <button type="submit" class="btn" style="width:100%;justify-content:center">Send My Details <span class="ar">&rarr;</span></button>
+          <p class="muted" style="font-size:13px;margin:16px 0 0;text-align:center">By submitting you agree to be contacted by Purpose Driven REI. This is not an offer to sell securities.</p>
+        </div>
+        <div class="form__ok" id="formOk">
+          <div class="ok-ic">&#10003;</div>
+          <h3 style="font-size:26px">Thank you — we're on it.</h3>
+          <p class="muted" style="margin-top:10px">A member of the Purpose Driven REI team will reach out shortly with your next step.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><img data-key="logo" alt="Purpose Driven REI" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="mark" style="display:none">Purpose Driven REI</span></div>
+        <p>Acquiring, renovating, and reselling residential property across Southern California and beyond — profiting with purpose.</p>
+        <div class="socials" style="margin-top:24px">
+          <a class="social" href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" style="padding:12px 18px"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2Zm0 4.86A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06Zm0 8.14A3.2 3.2 0 1 0 8.8 12 3.2 3.2 0 0 0 12 15.2Zm5.14-8.34a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15Z"/></svg><b>Instagram</b></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a class="f-link" href="#mission">Our Mission</a></li>
+          <li><a class="f-link" href="#team">Our Team</a></li>
+          <li><a class="f-link" href="#invest">Partner With Us</a></li>
+          <li><a class="f-link" href="#portfolio">Portfolio</a></li>
+          <li><a class="f-link" href="#community">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a class="f-link" href="mailto:info@purposedrivenrei.com">info@purposedrivenrei.com</a></li>
+          <li><a class="f-link" href="tel:+19093452383">+1 909-345-2383</a></li>
+          <li><a class="f-link" href="https://www.google.com/maps/search/?api=1&query=4795+Holt+Blvd+Montclair+CA+91763" target="_blank" rel="noopener">4795 Holt Blvd,<br>Montclair, CA 91763</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="yr"></span> Purpose Driven REI. All rights reserved.</span>
+      <span>Southern California · Nationwide</span>
+    </div>
+    <p class="footer__disc">Investment figures are illustrative examples of typical structures and do not constitute an offer to sell or a solicitation to buy any security. Real estate investments carry risk, including market shifts, economic conditions, and unforeseen events; returns and principal repayment are not guaranteed. Past performance is not indicative of future results.</p>
+  </div>
+</footer>
+
+<!--__GSAP__-->
+<!--__SCROLLTRIGGER__-->
+<script>
+(function(){
+  /* ============ MEDIA CONFIG ============
+     Real client assets (load in GoHighLevel & any browser). In the CSP-locked
+     preview these are swapped for in-brand placeholders automatically. */
+  var USE_PLACEHOLDERS = /*__PLACEHOLDER_FLAG__*/ false;
+  var A = {
+    logo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd50d4376904eac229652f.png",
+    heroVideo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c33db497cd89d245e0219.mp4",
+    community:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd42271774270f1d8640f9.jpeg",
+    bg1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879188345b27e11fea8.jpg",
+    bg2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879497cd89d244ff594.jpg",
+    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a45689080abc5e234418ecd.jpeg"
+  };
+  var PROPS = [
+    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c285e32db2dd157e6dbeb.webp",addr:"27786 Matterhorn Dr",loc:"Lake Arrowhead, CA 92352",status:"Active"},
+    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849a4c8a1a2c38cd226.webp",addr:"617 E Guenther St",loc:"San Antonio, TX 78210",status:"Active"},
+    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855cf81b06f05379480.webp",addr:"6117 Arroyo Rd Unit 4",loc:"Palm Springs, CA 92264",status:"Active"},
+    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855497cd89d244ff2cc.webp",addr:"72555 Nicolson Dr",loc:"Twentynine Palms, CA 92277",status:"Sold 02/26"},
+    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849cf81b06f053793cd.webp",addr:"51640 Avenida Diaz",loc:"La Quinta, CA 92253",status:"Sold 12/25"},
+    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849a4c8a1a2c38cd22b.webp",addr:"3398 Condalia Ave",loc:"Yucca Valley, CA 92284",status:"Sold 11/25"},
+    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849cf81b06f053793c8.webp",addr:"28062 Waterman Rd",loc:"Barstow, CA 92311",status:"Sold 10/25"},
+    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849188345b27e1163b1.webp",addr:"31202 Delwood St",loc:"Val Verde, CA 91384",status:"Sold 10/25"}
+  ];
+
+  /* ---------- Hydrate media (real or placeholder) ---------- */
+  function phLabel(t){return '<span class="ph-label">'+t+'</span>';}
+  function hydrate(){
+    // logos
+    document.querySelectorAll('img[data-key="logo"]').forEach(function(img){
+      if(USE_PLACEHOLDERS){img.style.display='none';img.nextElementSibling.style.display='inline';}
+      else{img.src=A.logo;}
+    });
+    // hero video
+    var v=document.querySelector('video[data-key="heroVideo"]');
+    if(v){
+      if(USE_PLACEHOLDERS){
+        var d=document.createElement('div');d.className='ph-fill is-ph';d.innerHTML=phLabel('Hero video background');
+        v.parentNode.replaceChild(d,v);
+      }else{v.src=A.heroVideo;}
+    }
+    // simple <img data-key> (bg1, ricardo, community)
+    document.querySelectorAll('.m-el,.f-el,.c-el').forEach(function(img){
+      var k=img.getAttribute('data-key');
+      if(USE_PLACEHOLDERS){
+        img.classList.add('is-ph');
+        var labels={bg1:'Renovated property',ricardo:'Ricardo Carrillo',community:'Community group photo'};
+        img.removeAttribute('src');
+        img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
+      }else{img.src=A[k];}
+    });
+    // portfolio
+    var grid=document.getElementById('portGrid');
+    PROPS.forEach(function(p,i){
+      var sold=/sold/i.test(p.status);
+      var media=USE_PLACEHOLDERS
+        ? '<div class="p-el is-ph">'+phLabel((i+1<10?'0':'')+(i+1))+'</div>'
+        : '<img class="p-el" loading="lazy" src="'+p.img+'" alt="'+p.addr+', '+p.loc+'">';
+      var el=document.createElement('a');
+      el.className='prop reveal';el.href='#join';
+      el.innerHTML='<span class="badge '+(sold?'sold':'active')+'">'+p.status+'</span>'+media+
+        '<span class="prop__grad"></span><span class="prop__meta"><span class="addr">'+p.addr+'</span><span class="loc">'+p.loc+'</span></span>';
+      grid.appendChild(el);
+    });
+  }
+  hydrate();
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  /* ---------- Nav: solid on scroll ---------- */
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>40);}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* ---------- Mobile overlay ---------- */
+  var burger=document.getElementById('burger'),ov=document.getElementById('overlay');
+  function toggleMenu(open){burger.classList.toggle('open',open);ov.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);ov.setAttribute('aria-hidden',!open);document.body.style.overflow=open?'hidden':'';}
+  burger.addEventListener('click',function(){toggleMenu(!ov.classList.contains('open'));});
+  ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggleMenu(false);});});
+
+  /* ---------- Button click acknowledgement ---------- */
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('click',function(){b.classList.add('clicked');setTimeout(function(){b.classList.remove('clicked');},260);});
+  });
+
+  /* ---------- Form ---------- */
+  var form=document.getElementById('joinForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true;
+    form.querySelectorAll('[required]').forEach(function(f){
+      if(!f.value){ok=false;f.style.borderColor='#b4562f';f.style.boxShadow='0 0 0 4px rgba(180,86,47,.14)';}
+      else{f.style.borderColor='';f.style.boxShadow='';}
+    });
+    if(!ok)return;
+    form.classList.add('sent');
+    var okEl=document.getElementById('formOk');okEl.classList.add('show');
+    if(window.gsap){gsap.fromTo(okEl,{opacity:0,y:16},{opacity:1,y:0,duration:.6,ease:'power2.out'});}
+    /* In GoHighLevel: replace this handler with a native GHL form/ webhook. */
+  });
+
+  /* ---------- GSAP animations ---------- */
+  if(window.gsap){
+    document.body.classList.remove('no-gsap');
+    if(window.ScrollTrigger)gsap.registerPlugin(ScrollTrigger);
+    var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    // hero intro
+    gsap.set('.hero [data-h]',{opacity:0,y:34});
+    gsap.to('.hero [data-h]',{opacity:1,y:0,duration:1,ease:'power3.out',stagger:.12,delay:.25});
+
+    if(!rm && window.ScrollTrigger){
+      // reveals
+      gsap.utils.toArray('.reveal').forEach(function(el){
+        gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',
+          scrollTrigger:{trigger:el,start:'top 86%'}});
+      });
+      // stagger property cards
+      ScrollTrigger.batch('.prop',{start:'top 90%',onEnter:function(b){gsap.to(b,{opacity:1,y:0,duration:.7,stagger:.08,ease:'power2.out'});}});
+
+      // subtle image parallax
+      gsap.utils.toArray('.m-el,.c-el,.f-el').forEach(function(img){
+        gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',
+          scrollTrigger:{trigger:img.closest('div'),start:'top bottom',end:'bottom top',scrub:true}});
+      });
+
+      // count-up stats
+      gsap.utils.toArray('[data-count]').forEach(function(el){
+        var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',o={v:0};
+        ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:function(){
+          gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:function(){
+            el.textContent=Math.round(o.v).toLocaleString()+suf;}});
+        }});
+      });
+    }else{
+      gsap.set('.reveal',{opacity:1,y:0});
+      document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=(+el.getAttribute('data-count')).toLocaleString()+(el.getAttribute('data-suffix')||'');});
+    }
+
+    // magnetic buttons (pointer only)
+    if(!rm && matchMedia('(hover:hover)').matches){
+      document.querySelectorAll('.btn').forEach(function(b){
+        var xTo=gsap.quickTo(b,'x',{duration:.5,ease:'power3'}),yTo=gsap.quickTo(b,'y',{duration:.5,ease:'power3'});
+        b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();xTo((e.clientX-(r.left+r.width/2))*.28);yTo((e.clientY-(r.top+r.height/2))*.4);});
+        b.addEventListener('mouseleave',function(){xTo(0);yTo(0);});
+      });
+    }
+  }else{
+    // no GSAP: reveal everything, fill counters
+    document.querySelectorAll('.reveal').forEach(function(e){e.style.opacity=1;e.style.transform='none';});
+    document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=(+el.getAttribute('data-count')).toLocaleString()+(el.getAttribute('data-suffix')||'');});
+  }
+})();
+</script>
+</div>
