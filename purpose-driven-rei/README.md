@@ -8,22 +8,10 @@ fonts, all styles/scripts, real media on `assets.cdn.filesafe.space`.
 ## Pages
 - **`index.html`** — the **Home** page (paste into the Home page's Code block).
 - **`mission.html`** — the **Mission / About** page (GHL page slug `mission`).
-- **`invest.html`** — the **Invest** page (GHL page slug `invest`), an
-  investor-focused page: video hero, big-number returns, a 4-step process, a
-  deal-math card, a capital-protection grid, track record + founder quote, an
-  investor FAQ, and a booking form.
+- **`invest.html`** — the **Invest** page (GHL page slug `invest`).
 
-Domain: `purposedrivenrei.com`, with pages at `/`, `/mission`, `/invest`. The
-nav/footer "Invest" links across all pages point to `/invest`.
-
-### ⚠️ Invest page notes
-- **Hero video** uses the supplied `.mov` (QuickTime). `.mov` plays in Safari but
-  is **not reliably supported in Chrome/Firefox**; where it can't decode, the
-  dark hero background shows instead. For universal playback, host an **MP4 (H.264)**
-  version and swap the `heroVideo` URL in the media config.
-- The **"Book Your Investor Call"** buttons and the form currently trigger an
-  on-page thank-you. Point them at your **Calendly / GHL calendar** link, or wire
-  the form to a **GHL form/webhook**, when ready (marked in the script).
+Nav links are absolute (`/mission`, `/invest`, `/#team`, ...), so publish each
+page at the matching slug on `purposedrivenrei.com`.
 
 ## Files
 - **`index.html`** / **`mission.html`** — production deliverables to paste into
@@ -41,11 +29,23 @@ nav/footer "Invest" links across all pages point to `/invest`.
 2. Paste the entire contents of `index.html` (Home) or `mission.html` (Mission).
 3. Save & preview.
 
-### ⚠️ Mission page slug
-The Home page's **Mission** menu item links to **`/mission`**. Create the new
-GHL page with the URL slug **`mission`** so that link resolves. If you use a
-different slug, tell me and I'll update the links. The Mission page's own nav
-links back to the Home page sections via `/#team`, `/#invest`, etc.
+### ⚠️ Page slugs
+Menu links point to **`/mission`** and **`/invest`**, so create those GHL pages
+with the URL slugs **`mission`** and **`invest`**. If you use different slugs,
+tell me and I'll update the links. In-page section links go back to Home via
+`/#team`, `/#portfolio`, etc.
+
+### ⚠️ Invest hero video (.mov)
+The Invest hero uses the supplied **`.mov`** video as its background. `.mov`
+plays in Safari but many Chrome/Android browsers will not autoplay it. For
+reliable playback everywhere, provide an **`.mp4` (H.264)** version and I'll
+swap it in. Until then, non-supporting browsers show the in-brand dark hero.
+
+### Investor form
+The Invest page form is client-side only (shows a thank-you state). Wire it to a
+native GHL form or webhook to capture leads. The "Book an Investor Call" buttons
+currently point to that form — swap the `href` for a Calendly/GHL calendar link
+when ready.
 
 The markup is scoped under `.pdrei`, so it won't collide with GHL's own styles.
 The form is client-side only (shows a thank-you state) — swap it for a native
