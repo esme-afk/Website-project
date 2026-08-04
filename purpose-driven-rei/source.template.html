@@ -78,15 +78,22 @@ html{scroll-behavior:smooth}
 /* scrolled state */
 .nav.solid{background:var(--green);box-shadow:0 12px 40px rgba(10,30,26,.28);padding:14px 0}
 /* when on cream sections after hero we still keep green bar, so links readable */
-.burger{display:none;width:46px;height:46px;border:1px solid rgba(247,244,236,.4);border-radius:50%;background:transparent;cursor:pointer;position:relative}
+.burger{display:none;width:46px;height:46px;border:1px solid rgba(247,244,236,.4);border-radius:50%;background:transparent;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
 .burger span{position:absolute;left:13px;right:13px;height:1.5px;background:var(--cream);transition:.35s var(--ease)}
 .burger span:nth-child(1){top:18px}.burger span:nth-child(2){top:23px}.burger span:nth-child(3){top:28px}
-.burger.open span:nth-child(1){top:23px;transform:rotate(45deg)}
-.burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){top:23px;transform:rotate(-45deg)}
 
-.overlay{position:fixed;inset:0;z-index:79;background:var(--green);display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s var(--ease),visibility .5s var(--ease)}
-.overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+/* ---------- CSS-only mobile menu (no JavaScript needed to open/close) ---------- */
+.nav-toggle{position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.overlay{position:fixed;inset:0;z-index:2147483000;background:var(--green);display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s var(--ease),visibility .45s var(--ease)}
+.nav-toggle:checked ~ .overlay{opacity:1;visibility:visible;pointer-events:auto}
+/* burger animates to an X when the menu is open */
+.nav-toggle:checked ~ .nav .burger span:nth-child(1){top:23px;transform:rotate(45deg)}
+.nav-toggle:checked ~ .nav .burger span:nth-child(2){opacity:0}
+.nav-toggle:checked ~ .nav .burger span:nth-child(3){top:23px;transform:rotate(-45deg)}
+/* lock background scroll while open (progressive; ignored where :has is unsupported) */
+html:has(.nav-toggle:checked),body:has(.nav-toggle:checked){overflow:hidden}
+.overlay__close{position:absolute;top:20px;right:calc(var(--gutter) - 4px);width:46px;height:46px;border:1px solid rgba(247,244,236,.4);border-radius:50%;background:transparent;color:var(--cream);font-family:var(--sans);font-size:30px;line-height:44px;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.overlay__close:hover{border-color:var(--gold);color:var(--gold)}
 .overlay a.o-link{font-family:var(--serif);font-size:clamp(34px,7vw,64px);color:var(--cream);padding:8px 0;display:flex;align-items:baseline;gap:18px;opacity:.92;transition:color .4s,padding-left .4s}
 .overlay a.o-link:hover{color:var(--gold);padding-left:12px}
 .overlay a.o-link .idx{font-family:var(--sans);font-size:14px;letter-spacing:.2em;color:var(--gold)}
@@ -287,6 +294,9 @@ html{scroll-behavior:smooth}
 
 <div class="pdrei no-gsap">
 
+<!-- CSS-only menu state (toggled by the burger + close labels; no JS required) -->
+<input type="checkbox" id="pdrei-nav" class="nav-toggle" aria-hidden="true" tabindex="-1">
+
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <div class="wrap nav__in">
@@ -303,13 +313,14 @@ html{scroll-behavior:smooth}
     </nav>
     <div class="nav__right">
       <a href="#join" class="btn nav__cta">Partner With Us <span class="ar">&rarr;</span></a>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <label class="burger" for="pdrei-nav" role="button" aria-label="Open menu" tabindex="0"><span></span><span></span><span></span></label>
     </div>
   </div>
 </header>
 
 <!-- ================= OVERLAY MENU ================= -->
-<div class="overlay" id="overlay" aria-hidden="true">
+<div class="overlay" id="overlay">
+  <label class="overlay__close" for="pdrei-nav" role="button" aria-label="Close menu" tabindex="0">&times;</label>
   <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
     <a class="o-link" href="#home"><span class="idx">01</span> Home</a>
     <a class="o-link" href="/mission"><span class="idx">02</span> Our Mission</a>
@@ -663,23 +674,15 @@ html{scroll-behavior:smooth}
   onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
   /* ---------- Mobile overlay ----------
-     Move the overlay to <body> so its position:fixed is viewport-relative even
-     when GoHighLevel wraps this block in a transformed container, and reveal it
-     with opacity/visibility (clip-path can fail to expand inside GHL). */
-  var burger=document.getElementById('burger'),ov=document.getElementById('overlay');
-  if(ov && ov.parentNode!==document.body){document.body.appendChild(ov);}
-  function toggleMenu(open){
-    if(!burger||!ov)return;
-    burger.classList.toggle('open',open);
-    ov.classList.toggle('open',open);
-    burger.setAttribute('aria-expanded',open);
-    ov.setAttribute('aria-hidden',!open);
-    document.body.style.overflow=open?'hidden':'';
-  }
-  if(burger&&ov){
-    burger.addEventListener('click',function(e){e.preventDefault();toggleMenu(!ov.classList.contains('open'));});
-    ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggleMenu(false);});});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleMenu(false);});
+     Open/close is 100% CSS (checkbox #pdrei-nav + burger/close labels), so it
+     works even if this script is stripped or blocked. JS below is enhancement
+     only: close the menu after tapping a same-page link, and on Escape. */
+  var navToggle=document.getElementById('pdrei-nav');
+  if(navToggle){
+    document.querySelectorAll('.overlay a').forEach(function(a){
+      a.addEventListener('click',function(){navToggle.checked=false;});
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')navToggle.checked=false;});
   }
 
   /* ---------- Button click acknowledgement ---------- */

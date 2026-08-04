@@ -33,6 +33,9 @@
 
 <div class="pdrei no-gsap">
 
+<!-- CSS-only menu state (toggled by the burger + close labels; no JS required) -->
+<input type="checkbox" id="pdrei-nav" class="nav-toggle" aria-hidden="true" tabindex="-1">
+
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <div class="wrap nav__in">
@@ -49,13 +52,14 @@
     </nav>
     <div class="nav__right">
       <a href="/#join" class="btn nav__cta">Partner With Us <span class="ar">&rarr;</span></a>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <label class="burger" for="pdrei-nav" role="button" aria-label="Open menu" tabindex="0"><span></span><span></span><span></span></label>
     </div>
   </div>
 </header>
 
 <!-- ================= OVERLAY MENU ================= -->
-<div class="overlay" id="overlay" aria-hidden="true">
+<div class="overlay" id="overlay">
+  <label class="overlay__close" for="pdrei-nav" role="button" aria-label="Close menu" tabindex="0">&times;</label>
   <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
     <a class="o-link" href="/"><span class="idx">01</span> Home</a>
     <a class="o-link" href="/mission"><span class="idx">02</span> Our Mission</a>
@@ -289,21 +293,15 @@
   function onScroll(){if(nav)nav.classList.toggle('solid',window.scrollY>40);}
   onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
-  /* ---------- Mobile overlay (moved to body; opacity/visibility reveal) ---------- */
-  var burger=document.getElementById('burger'),ov=document.getElementById('overlay');
-  if(ov && ov.parentNode!==document.body){document.body.appendChild(ov);}
-  function toggleMenu(open){
-    if(!burger||!ov)return;
-    burger.classList.toggle('open',open);
-    ov.classList.toggle('open',open);
-    burger.setAttribute('aria-expanded',open);
-    ov.setAttribute('aria-hidden',!open);
-    document.body.style.overflow=open?'hidden':'';
-  }
-  if(burger&&ov){
-    burger.addEventListener('click',function(e){e.preventDefault();toggleMenu(!ov.classList.contains('open'));});
-    ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggleMenu(false);});});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleMenu(false);});
+  /* ---------- Mobile overlay ----------
+     Open/close is 100% CSS (checkbox #pdrei-nav + burger/close labels). JS is
+     enhancement only: close after tapping a link, and on Escape. */
+  var navToggle=document.getElementById('pdrei-nav');
+  if(navToggle){
+    document.querySelectorAll('.overlay a').forEach(function(a){
+      a.addEventListener('click',function(){navToggle.checked=false;});
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')navToggle.checked=false;});
   }
 
   /* ---------- Button click acknowledgement ---------- */
