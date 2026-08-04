@@ -25,3 +25,4 @@ function emit(srcName, prodName, prevName) {
 
 emit('src.html', 'index.build.html', 'preview.html');
 emit('mission.src.html', 'mission.build.html', 'mission.preview.html');
+emit('invest.src.html', 'invest.build.html', 'invest.preview.html');

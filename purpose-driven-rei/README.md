@@ -7,8 +7,23 @@ fonts, all styles/scripts, real media on `assets.cdn.filesafe.space`.
 
 ## Pages
 - **`index.html`** — the **Home** page (paste into the Home page's Code block).
-- **`mission.html`** — the **Mission / About** page (paste into a NEW GHL page —
-  see slug note below).
+- **`mission.html`** — the **Mission / About** page (GHL page slug `mission`).
+- **`invest.html`** — the **Invest** page (GHL page slug `invest`), an
+  investor-focused page: video hero, big-number returns, a 4-step process, a
+  deal-math card, a capital-protection grid, track record + founder quote, an
+  investor FAQ, and a booking form.
+
+Domain: `purposedrivenrei.com`, with pages at `/`, `/mission`, `/invest`. The
+nav/footer "Invest" links across all pages point to `/invest`.
+
+### ⚠️ Invest page notes
+- **Hero video** uses the supplied `.mov` (QuickTime). `.mov` plays in Safari but
+  is **not reliably supported in Chrome/Firefox**; where it can't decode, the
+  dark hero background shows instead. For universal playback, host an **MP4 (H.264)**
+  version and swap the `heroVideo` URL in the media config.
+- The **"Book Your Investor Call"** buttons and the form currently trigger an
+  on-page thank-you. Point them at your **Calendly / GHL calendar** link, or wire
+  the form to a **GHL form/webhook**, when ready (marked in the script).
 
 ## Files
 - **`index.html`** / **`mission.html`** — production deliverables to paste into
