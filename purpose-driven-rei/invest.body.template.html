@@ -9,6 +9,8 @@
 .iv-hero .hero__in{padding-bottom:clamp(120px,16vh,180px)}
 .iv-hero h1{max-width:17ch}
 .iv-hero h1 em{color:var(--gold-2)}
+/* darker tint so white hero text stays readable over a bright image */
+.iv-hero .hero__media::after{background:linear-gradient(180deg,rgba(6,16,14,.74) 0%,rgba(6,16,14,.6) 45%,rgba(6,16,14,.92) 100%)}
 
 /* hero stat ribbon */
 .iv-ribbon{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid rgba(199,167,106,.28);background:linear-gradient(180deg,rgba(9,30,26,0),rgba(9,30,26,.55));backdrop-filter:blur(4px)}
@@ -102,8 +104,12 @@
   .iv-secure{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
+  /* stack the hero in normal flow so the stat ribbon sits BELOW the buttons (no overlap) */
+  .iv-hero{min-height:auto;flex-direction:column;align-items:stretch}
+  .iv-hero .hero__in{padding-bottom:clamp(30px,6vh,46px)}
+  .iv-ribbon{position:static;background:rgba(6,16,14,.5);backdrop-filter:none}
   .iv-ribbon__in{grid-template-columns:1fr;gap:2px}
-  .iv-ribbon__item{border-left:0;border-top:1px solid rgba(199,167,106,.2);padding:10px 0}
+  .iv-ribbon__item{border-left:0;border-top:1px solid rgba(199,167,106,.2);padding:12px 0}
   .iv-ribbon__item:first-child{border-top:0}
   .iv-bignum{grid-template-columns:1fr}
   .iv-bignum__c{border-left:0;border-top:1px solid rgba(199,167,106,.18)}
@@ -200,7 +206,7 @@
 
 <!-- ================= THE OPPORTUNITY / RETURNS (image bg) ================= -->
 <section class="section dark has-bg" id="returns">
-  <div class="sec-bg"><img class="b-el" data-key="img2" alt=""></div>
+  <div class="sec-bg"><img class="b-el" data-key="img9" alt=""></div>
   <div class="wrap">
     <div class="invest__head">
       <div>
@@ -388,7 +394,8 @@
     img5:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a724758f72284777bab11c4.jpg",
     img6:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2867497cd89d244ff4c8.jpg",
     img7:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a725fca725d6d9e1bd8c88c.jpg",
-    img8:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a726266fcee90cf63b3879a.jpg"
+    img8:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a726266fcee90cf63b3879a.jpg",
+    img9:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a725fcc670a4ee783b6e9be.jpg"
   };
 
   function phLabel(t){return '<span class="ph-label">'+t+'</span>';}
@@ -401,7 +408,7 @@
       var k=img.getAttribute('data-key');
       if(USE_PLACEHOLDERS){
         img.classList.add('is-ph');
-        var labels={img1:'Renovated asset',img2:'Portfolio project',img3:'Secured real estate',img5:'Building with purpose',img6:'Completed project',img7:'Purpose Driven REI',img8:'The numbers',ricardo:'Ricardo Carrillo'};
+        var labels={img1:'Renovated asset',img2:'Portfolio project',img3:'Secured real estate',img5:'Building with purpose',img6:'Completed project',img7:'Purpose Driven REI',img8:'The numbers',img9:'The opportunity',ricardo:'Ricardo Carrillo'};
         img.removeAttribute('src');
         img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
       }else{img.src=A[k];}
