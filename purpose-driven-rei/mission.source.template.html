@@ -78,26 +78,31 @@ html{scroll-behavior:smooth}
 /* scrolled state */
 .nav.solid{background:var(--green);box-shadow:0 12px 40px rgba(10,30,26,.28);padding:14px 0}
 /* when on cream sections after hero we still keep green bar, so links readable */
-.burger{display:none;width:46px;height:46px;border:1px solid rgba(247,244,236,.4);border-radius:50%;background:transparent;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
-.burger span{position:absolute;left:13px;right:13px;height:1.5px;background:var(--cream);transition:.35s var(--ease)}
-.burger span:nth-child(1){top:18px}.burger span:nth-child(2){top:23px}.burger span:nth-child(3){top:28px}
+.pdrei-burger{display:none;width:46px;height:46px;border:1px solid rgba(247,244,236,.4);border-radius:50%;background:transparent;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+.pdrei-burger span{position:absolute;left:13px;right:13px;height:1.5px;background:var(--cream);transition:.35s var(--ease)}
+.pdrei-burger span:nth-child(1){top:18px}.pdrei-burger span:nth-child(2){top:23px}.pdrei-burger span:nth-child(3){top:28px}
 
-/* ---------- CSS-only mobile menu (no JavaScript needed to open/close) ---------- */
-.nav-toggle{position:absolute;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
-.overlay{position:fixed;inset:0;z-index:2147483000;background:var(--green);display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s var(--ease),visibility .45s var(--ease)}
-.nav-toggle:checked ~ .overlay{opacity:1;visibility:visible;pointer-events:auto}
-/* burger animates to an X when the menu is open */
-.nav-toggle:checked ~ .nav .burger span:nth-child(1){top:23px;transform:rotate(45deg)}
-.nav-toggle:checked ~ .nav .burger span:nth-child(2){opacity:0}
-.nav-toggle:checked ~ .nav .burger span:nth-child(3){top:23px;transform:rotate(-45deg)}
+/* ---------- Mobile menu ----------
+   Unique pdrei- class names (so GoHighLevel's own .overlay/.nav/.burger styles
+   can't hide or move it). Open/close is pure CSS via a hidden checkbox. On load
+   the checkbox + menu are relocated to <body> so position:fixed is viewport
+   relative even inside GHL's transformed section wrappers, at the max z-index so
+   nothing can cover it. */
+.pdrei-navtoggle{position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;margin:0;z-index:-1}
+.pdrei-menu{position:fixed;inset:0;z-index:2147483647;background:var(--green);font-family:var(--sans);display:flex;flex-direction:column;justify-content:center;padding:0 var(--gutter);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s var(--ease),visibility .45s var(--ease)}
+.pdrei-navtoggle:checked ~ .pdrei-menu{opacity:1;visibility:visible;pointer-events:auto}
+/* burger animates to an X when open (works whether the toggle is in the block or moved to <body>) */
+.pdrei-navtoggle:checked ~ .nav .pdrei-burger span:nth-child(1),body:has(.pdrei-navtoggle:checked) .pdrei-burger span:nth-child(1){top:23px;transform:rotate(45deg)}
+.pdrei-navtoggle:checked ~ .nav .pdrei-burger span:nth-child(2),body:has(.pdrei-navtoggle:checked) .pdrei-burger span:nth-child(2){opacity:0}
+.pdrei-navtoggle:checked ~ .nav .pdrei-burger span:nth-child(3),body:has(.pdrei-navtoggle:checked) .pdrei-burger span:nth-child(3){top:23px;transform:rotate(-45deg)}
 /* lock background scroll while open (progressive; ignored where :has is unsupported) */
-html:has(.nav-toggle:checked),body:has(.nav-toggle:checked){overflow:hidden}
-.overlay__close{position:absolute;top:20px;right:calc(var(--gutter) - 4px);width:46px;height:46px;border:1px solid rgba(247,244,236,.4);border-radius:50%;background:transparent;color:var(--cream);font-family:var(--sans);font-size:30px;line-height:44px;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.overlay__close:hover{border-color:var(--gold);color:var(--gold)}
-.overlay a.o-link{font-family:var(--serif);font-size:clamp(34px,7vw,64px);color:var(--cream);padding:8px 0;display:flex;align-items:baseline;gap:18px;opacity:.92;transition:color .4s,padding-left .4s}
-.overlay a.o-link:hover{color:var(--gold);padding-left:12px}
-.overlay a.o-link .idx{font-family:var(--sans);font-size:14px;letter-spacing:.2em;color:var(--gold)}
-.overlay .o-foot{margin-top:44px;color:var(--stone);font-size:15px;letter-spacing:.04em;display:flex;flex-wrap:wrap;gap:8px 26px}
+html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:hidden}
+.pdrei-menu__close{position:absolute;top:20px;right:calc(var(--gutter) - 4px);width:46px;height:46px;border:1px solid rgba(247,244,236,.4);border-radius:50%;background:transparent;color:var(--cream);font-family:var(--sans);font-size:30px;line-height:44px;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent;z-index:2}
+.pdrei-menu__close:hover{border-color:var(--gold);color:var(--gold)}
+.pdrei-menu__link{font-family:var(--serif);font-size:clamp(34px,7vw,64px);color:var(--cream);padding:8px 0;display:flex;align-items:baseline;gap:18px;opacity:.92;transition:color .4s,padding-left .4s;text-decoration:none}
+.pdrei-menu__link:hover{color:var(--gold);padding-left:12px}
+.pdrei-menu__link .idx{font-family:var(--sans);font-size:14px;letter-spacing:.2em;color:var(--gold)}
+.pdrei-menu__foot{margin-top:44px;color:var(--stone);font-size:15px;letter-spacing:.04em;display:flex;flex-wrap:wrap;gap:8px 26px}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--green-2)}
@@ -258,7 +263,7 @@ html:has(.nav-toggle:checked),body:has(.nav-toggle:checked){overflow:hidden}
 /* ---------- Responsive ---------- */
 @media(max-width:980px){
   .nav__links{display:none}
-  .burger{display:block}
+  .pdrei-burger{display:block}
   .nav__cta{display:none}
   .mission__grid,.team__grid,.founder,.invest__head,.community__grid,.join__grid,.connect__grid{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr 1fr}
@@ -328,7 +333,7 @@ html:has(.nav-toggle:checked),body:has(.nav-toggle:checked){overflow:hidden}
 <div class="pdrei no-gsap">
 
 <!-- CSS-only menu state (toggled by the burger + close labels; no JS required) -->
-<input type="checkbox" id="pdrei-nav" class="nav-toggle" aria-hidden="true" tabindex="-1">
+<input type="checkbox" id="pdrei-navtoggle" class="pdrei-navtoggle" aria-hidden="true" tabindex="-1">
 
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
@@ -346,23 +351,23 @@ html:has(.nav-toggle:checked),body:has(.nav-toggle:checked){overflow:hidden}
     </nav>
     <div class="nav__right">
       <a href="/#join" class="btn nav__cta">Partner With Us <span class="ar">&rarr;</span></a>
-      <label class="burger" for="pdrei-nav" role="button" aria-label="Open menu" tabindex="0"><span></span><span></span><span></span></label>
+      <label class="pdrei-burger" for="pdrei-navtoggle" role="button" aria-label="Open menu" tabindex="0"><span></span><span></span><span></span></label>
     </div>
   </div>
 </header>
 
 <!-- ================= OVERLAY MENU ================= -->
-<div class="overlay" id="overlay">
-  <label class="overlay__close" for="pdrei-nav" role="button" aria-label="Close menu" tabindex="0">&times;</label>
+<div class="pdrei-menu" id="pdrei-menu">
+  <label class="pdrei-menu__close" for="pdrei-navtoggle" role="button" aria-label="Close menu" tabindex="0">&times;</label>
   <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
-    <a class="o-link" href="/"><span class="idx">01</span> Home</a>
-    <a class="o-link" href="/mission"><span class="idx">02</span> Our Mission</a>
-    <a class="o-link" href="/#team"><span class="idx">03</span> Our Team</a>
-    <a class="o-link" href="/#invest"><span class="idx">04</span> Partner With Us</a>
-    <a class="o-link" href="/#portfolio"><span class="idx">05</span> Portfolio</a>
-    <a class="o-link" href="/#community"><span class="idx">06</span> Community</a>
-    <a class="o-link" href="/#join"><span class="idx">07</span> Join Our Network</a>
-    <div class="o-foot"><span>info@purposedrivenrei.com</span><span>+1 909-345-2383</span><span>Southern California</span></div>
+    <a class="pdrei-menu__link" href="/"><span class="idx">01</span> Home</a>
+    <a class="pdrei-menu__link" href="/mission"><span class="idx">02</span> Our Mission</a>
+    <a class="pdrei-menu__link" href="/#team"><span class="idx">03</span> Our Team</a>
+    <a class="pdrei-menu__link" href="/#invest"><span class="idx">04</span> Partner With Us</a>
+    <a class="pdrei-menu__link" href="/#portfolio"><span class="idx">05</span> Portfolio</a>
+    <a class="pdrei-menu__link" href="/#community"><span class="idx">06</span> Community</a>
+    <a class="pdrei-menu__link" href="/#join"><span class="idx">07</span> Join Our Network</a>
+    <div class="pdrei-menu__foot"><span>info@purposedrivenrei.com</span><span>+1 909-345-2383</span><span>Southern California</span></div>
   </nav>
 </div>
 
@@ -587,12 +592,15 @@ html:has(.nav-toggle:checked),body:has(.nav-toggle:checked){overflow:hidden}
   function onScroll(){if(nav)nav.classList.toggle('solid',window.scrollY>40);}
   onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
-  /* ---------- Mobile overlay ----------
-     Open/close is 100% CSS (checkbox #pdrei-nav + burger/close labels). JS is
-     enhancement only: close after tapping a link, and on Escape. */
-  var navToggle=document.getElementById('pdrei-nav');
-  if(navToggle){
-    document.querySelectorAll('.overlay a').forEach(function(a){
+  /* ---------- Mobile menu ----------
+     Open/close is 100% CSS (checkbox #pdrei-navtoggle + burger/close labels). JS
+     is enhancement only: relocate the toggle + menu to <body> (escapes GHL
+     transformed wrappers), close after a link tap, and close on Escape. */
+  var navToggle=document.getElementById('pdrei-navtoggle');
+  var menuEl=document.getElementById('pdrei-menu');
+  if(navToggle&&menuEl){
+    try{document.body.appendChild(navToggle);document.body.appendChild(menuEl);}catch(e){}
+    menuEl.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click',function(){navToggle.checked=false;});
     });
     document.addEventListener('keydown',function(e){if(e.key==='Escape')navToggle.checked=false;});
