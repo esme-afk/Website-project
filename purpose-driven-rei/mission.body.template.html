@@ -1,0 +1,346 @@
+<style>
+/* ---------- Mission / About page specifics ---------- */
+.hero__media img,.hero__media .b-el{width:100%;height:100%;object-fit:cover}
+.hero__media .b-el.is-ph{width:100%;height:100%}
+.mhero .hero__in{max-width:var(--maxw);margin:0 auto}
+.mhero h1{max-width:18ch}
+.eyebrow.onDark{color:var(--gold-2)}
+.lead-quote{font-family:var(--serif);font-size:clamp(28px,4vw,46px);line-height:1.16;letter-spacing:-.01em;max-width:22ch}
+.quote-band{text-align:center}
+.quote-band .lead-quote{margin:0 auto;max-width:26ch}
+.quote-band .attrib{margin-top:26px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);font-weight:600}
+.staff__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,44px);max-width:1040px;margin:clamp(40px,5vw,64px) auto 0}
+.staff__grid .tbd{text-align:center}
+.founder{max-width:1040px;margin:0 auto}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(40px,5vw,64px)}
+.pillar{background:rgba(247,244,236,.04);border:1px solid rgba(199,167,106,.28);border-radius:var(--r);padding:34px 30px;transition:transform .5s var(--ease),border-color .5s,background .5s}
+.pillar:hover{transform:translateY(-6px);border-color:var(--gold);background:rgba(199,167,106,.06)}
+.pillar .pn{font-family:var(--serif);font-size:clamp(30px,3.4vw,40px);color:var(--gold-2);line-height:1}
+.pillar h3{font-size:21px;margin:16px 0 10px;color:var(--cream)}
+.pillar p{font-size:16px;color:rgba(247,244,236,.75);margin:0}
+.cta-band{text-align:center}
+.cta-band h2{margin:0 auto;max-width:20ch}
+.cta-band .lede{margin:22px auto 0}
+.cta-band .btnrow{justify-content:center;margin-top:34px}
+@media(max-width:980px){
+  .pillars{grid-template-columns:1fr}
+  .staff__grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .staff__grid{grid-template-columns:1fr;max-width:340px}
+}
+</style>
+
+<div class="pdrei no-gsap">
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a href="/" class="nav__logo" aria-label="Purpose Driven REI home">
+      <img data-key="logo" alt="Purpose Driven REI" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span class="mark" style="display:none">Purpose&nbsp;Driven&nbsp;REI</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="/mission">Mission</a>
+      <a class="nav__link" href="/#team">Team</a>
+      <a class="nav__link" href="/#invest">Invest</a>
+      <a class="nav__link" href="/#portfolio">Portfolio</a>
+      <a class="nav__link" href="/#community">Community</a>
+    </nav>
+    <div class="nav__right">
+      <a href="/#join" class="btn nav__cta">Partner With Us <span class="ar">&rarr;</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= OVERLAY MENU ================= -->
+<div class="overlay" id="overlay" aria-hidden="true">
+  <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
+    <a class="o-link" href="/"><span class="idx">01</span> Home</a>
+    <a class="o-link" href="/mission"><span class="idx">02</span> Our Mission</a>
+    <a class="o-link" href="/#team"><span class="idx">03</span> Our Team</a>
+    <a class="o-link" href="/#invest"><span class="idx">04</span> Partner With Us</a>
+    <a class="o-link" href="/#portfolio"><span class="idx">05</span> Portfolio</a>
+    <a class="o-link" href="/#community"><span class="idx">06</span> Community</a>
+    <a class="o-link" href="/#join"><span class="idx">07</span> Join Our Network</a>
+    <div class="o-foot"><span>info@purposedrivenrei.com</span><span>+1 909-345-2383</span><span>Southern California</span></div>
+  </nav>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero mhero" id="home">
+  <div class="hero__media"><img class="b-el" data-key="img3" alt="Purpose Driven REI"></div>
+  <div class="wrap hero__in">
+    <p class="eyebrow onDark reveal" data-h>Our Story</p>
+    <h1 data-h>Built to profit <em>with purpose.</em></h1>
+    <p class="hero__sub" data-h>Purpose Driven REI was founded on a simple belief: real estate should build lasting wealth for the people who invest in it, and lift the communities it touches along the way.</p>
+    <div class="btnrow" data-h>
+      <a href="/#join" class="btn">Partner With Us <span class="ar">&rarr;</span></a>
+      <a href="/#portfolio" class="btn btn--ghost btn--onDark">See Our Work</a>
+    </div>
+  </div>
+  <div class="hero__cues"><span>Scroll</span><div class="line"><i></i></div></div>
+</section>
+
+<!-- ================= MISSION STATEMENT ================= -->
+<section class="section" id="mission-statement">
+  <div class="wrap">
+    <div class="mission__grid">
+      <div class="mission__copy">
+        <p class="eyebrow reveal">Driven By A Shared Mission To</p>
+        <h2 class="reveal">Revitalize Properties. Maximize Returns. Elevate Communities.</h2>
+        <p class="lede reveal" style="margin-top:26px">We acquire, renovate, and resell underperforming residential properties into high performing assets, delivering strong, secured returns for our investment partners while improving neighborhoods and strengthening the communities we invest in.</p>
+        <p class="reveal muted" style="margin-top:18px">What started as one investor's hands-on approach to fix and flip has grown into a full network of partners, operators, and private lenders who build value together, one deal at a time.</p>
+        <div class="btnrow reveal" style="margin-top:34px">
+          <a href="/#join" class="btn">Join the Network <span class="ar">&rarr;</span></a>
+          <a href="/#invest" class="txtlink">How partnering works <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="mission__media reveal">
+        <img class="m-el" data-key="img1" alt="A Purpose Driven REI renovation project">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOUNDER ================= -->
+<section class="section" style="background:var(--stone-soft)" id="founder">
+  <div class="wrap">
+    <p class="eyebrow center reveal">Our Founder</p>
+    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(38px,5vw,60px);max-width:18ch">Meet Ricardo Carrillo.</h2>
+    <div class="founder reveal">
+      <div class="founder__photo"><img class="f-el" data-key="ricardo" alt="Ricardo Carrillo, Founder & CEO"></div>
+      <div>
+        <h3>Ricardo Carrillo</h3>
+        <p class="role">Founder &amp; CEO</p>
+        <p>Ricardo brings 20+ years of real-world experience in real estate, actively buying, renovating, and reselling residential properties across Southern California and beyond. With more than 200 successful fix-and-flip projects closed and a growing footprint in new construction, he has seen the questions come up on every deal, and built a network designed to answer them.</p>
+        <p style="margin-top:16px">His approach is simple: source the right properties, structure every deal conservatively, protect investor capital with real security, and treat every project as a chance to leave a neighborhood better than he found it.</p>
+        <ul class="checks">
+          <li>20+ years of investing &amp; sales experience in SoCal</li>
+          <li>200+ successful fix &amp; flip projects closed</li>
+          <li>Active in deal sourcing, private money &amp; new construction</li>
+          <li>Founder of a community built on purpose</li>
+        </ul>
+        <a href="/#invest" class="txtlink">Partner with Ricardo <span class="ar">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUR APPROACH (image bg) ================= -->
+<section class="section dark has-bg" id="values">
+  <div class="sec-bg"><img class="b-el" data-key="img4" alt=""></div>
+  <div class="wrap">
+    <div class="invest__head">
+      <div>
+        <p class="eyebrow reveal">Our Approach</p>
+        <h2 class="reveal">How we build value, on every deal.</h2>
+      </div>
+      <p class="lede reveal">Discipline over hype. Every project runs through the same playbook, so our partners always know how their capital is working and how it is protected.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal"><div class="pn">01</div><h3>Source</h3><p>We find underperforming properties with real upside, in markets we know, at prices that leave room for a conservative return.</p></div>
+      <div class="pillar reveal"><div class="pn">02</div><h3>Transform</h3><p>Thoughtful, high quality renovation turns tired homes into desirable assets that buyers want and neighborhoods are proud of.</p></div>
+      <div class="pillar reveal"><div class="pn">03</div><h3>Protect</h3><p>Investor capital is secured by real estate, with a promissory note and recorded deed of trust on every deal.</p></div>
+      <div class="pillar reveal"><div class="pn">04</div><h3>Return</h3><p>We deliver strong, secured returns to our partners and reinvest into the next project, and the next community.</p></div>
+    </div>
+    <div class="btnrow reveal" style="margin-top:38px">
+      <a href="/#invest" class="btn">See the Investor Overview <span class="ar">&rarr;</span></a>
+      <a href="/#portfolio" class="btn btn--ghost btn--onDark">View the Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUR TEAM / STAFF ================= -->
+<section class="section" id="team-staff">
+  <div class="wrap">
+    <p class="eyebrow center reveal">Our Team</p>
+    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(38px,5vw,60px);max-width:20ch">The people behind the purpose.</h2>
+    <div class="staff__grid reveal">
+      <div class="tbd">
+        <div class="tbd__photo"></div>
+        <h3>TBD</h3>
+        <p class="role">TBD</p>
+      </div>
+      <div class="tbd">
+        <div class="tbd__photo"></div>
+        <h3>TBD</h3>
+        <p class="role">TBD</p>
+      </div>
+      <div class="tbd">
+        <div class="tbd__photo"></div>
+        <h3>TBD</h3>
+        <p class="role">TBD</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RECENT WORK ================= -->
+<section class="section dark community" id="recent">
+  <div class="wrap">
+    <div class="community__grid">
+      <div class="community__media reveal">
+        <img class="c-el" data-key="img2" alt="A recent Purpose Driven REI project">
+      </div>
+      <div>
+        <p class="eyebrow reveal">Recent Work</p>
+        <h2 class="reveal">Proof of the process.</h2>
+        <p class="lede reveal" style="margin-top:24px">From desert renovations to boutique new construction, our portfolio is where the mission becomes real. Every closed project is a partner rewarded and a property returned to its best.</p>
+        <div class="btnrow reveal" style="margin-top:34px">
+          <a href="/#portfolio" class="btn">Explore the Portfolio <span class="ar">&rarr;</span></a>
+          <a href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" class="txtlink" style="color:var(--gold-2)">Follow @pdreinv_ <span class="ar">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING CTA (image bg) ================= -->
+<section class="section dark has-bg cta-band" id="join-cta">
+  <div class="sec-bg"><img class="b-el" data-key="img5" alt=""></div>
+  <div class="wrap">
+    <p class="eyebrow center reveal">Partner With Us</p>
+    <h2 class="reveal">Let's build something with purpose.</h2>
+    <p class="lede reveal">Whether you are investing capital, partnering on a deal, or joining the community, there is a place for you in the Purpose Driven REI network.</p>
+    <div class="btnrow reveal">
+      <a href="/#join" class="btn">Join Our Network <span class="ar">&rarr;</span></a>
+      <a href="/#invest" class="btn btn--ghost btn--onDark">How Partnering Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo"><img data-key="logo" alt="Purpose Driven REI" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="mark" style="display:none">Purpose Driven REI</span></div>
+        <p>Acquiring, renovating, and reselling residential property across Southern California and beyond, profiting with purpose.</p>
+        <div class="socials" style="margin-top:24px">
+          <a class="social" href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" style="padding:12px 18px"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2Zm0 4.86A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06Zm0 8.14A3.2 3.2 0 1 0 8.8 12 3.2 3.2 0 0 0 12 15.2Zm5.14-8.34a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15Z"/></svg><b>Instagram</b></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a class="f-link" href="/mission">Our Mission</a></li>
+          <li><a class="f-link" href="/#team">Our Team</a></li>
+          <li><a class="f-link" href="/#invest">Partner With Us</a></li>
+          <li><a class="f-link" href="/#portfolio">Portfolio</a></li>
+          <li><a class="f-link" href="/#community">Community</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a class="f-link" href="mailto:info@purposedrivenrei.com">info@purposedrivenrei.com</a></li>
+          <li><a class="f-link" href="tel:+19093452383">+1 909-345-2383</a></li>
+          <li><a class="f-link" href="https://www.google.com/maps/search/?api=1&query=4795+Holt+Blvd+Montclair+CA+91763" target="_blank" rel="noopener">4795 Holt Blvd,<br>Montclair, CA 91763</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="yr"></span> Purpose Driven REI. All rights reserved.</span>
+      <span>Southern California · Nationwide</span>
+    </div>
+    <p class="footer__disc">Investment figures are illustrative examples of typical structures and do not constitute an offer to sell or a solicitation to buy any security. Real estate investments carry risk, including market shifts, economic conditions, and unforeseen events; returns and principal repayment are not guaranteed. Past performance is not indicative of future results.</p>
+  </div>
+</footer>
+
+<!--__GSAP__-->
+<!--__SCROLLTRIGGER__-->
+<script>
+(function(){
+  /* ============ MEDIA CONFIG ============ */
+  var USE_PLACEHOLDERS = /*__PLACEHOLDER_FLAG__*/ false;
+  var A = {
+    logo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd50d4376904eac229652f.png",
+    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a45689080abc5e234418ecd.jpeg",
+    img1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c285e32db2dd157e6dbeb.webp",
+    img2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855cf81b06f05379480.webp",
+    img3:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd4600ef1dbfe76e0d3e99.jpg",
+    img4:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a7234d90629193ed56d3690.jpg",
+    img5:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a72355eeaa4719b5c7ba904.jpg"
+  };
+
+  function phLabel(t){return '<span class="ph-label">'+t+'</span>';}
+  function hydrate(){
+    document.querySelectorAll('img[data-key="logo"]').forEach(function(img){
+      if(USE_PLACEHOLDERS){img.style.display='none';img.nextElementSibling.style.display='inline';}
+      else{img.src=A.logo;}
+    });
+    document.querySelectorAll('.m-el,.f-el,.c-el,.b-el').forEach(function(img){
+      var k=img.getAttribute('data-key');
+      if(USE_PLACEHOLDERS){
+        img.classList.add('is-ph');
+        var labels={img1:'Recent renovation',img2:'Recent project',img3:'Purpose Driven REI',img4:'Renovated interior',img5:'Building with purpose',ricardo:'Ricardo Carrillo'};
+        img.removeAttribute('src');
+        img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
+      }else{img.src=A[k];}
+    });
+  }
+  hydrate();
+  var yrEl=document.getElementById('yr'); if(yrEl){yrEl.textContent=new Date().getFullYear();}
+
+  /* ---------- Nav: solid on scroll ---------- */
+  var nav=document.getElementById('nav');
+  function onScroll(){if(nav)nav.classList.toggle('solid',window.scrollY>40);}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* ---------- Mobile overlay (moved to body; opacity/visibility reveal) ---------- */
+  var burger=document.getElementById('burger'),ov=document.getElementById('overlay');
+  if(ov && ov.parentNode!==document.body){document.body.appendChild(ov);}
+  function toggleMenu(open){
+    if(!burger||!ov)return;
+    burger.classList.toggle('open',open);
+    ov.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+    ov.setAttribute('aria-hidden',!open);
+    document.body.style.overflow=open?'hidden':'';
+  }
+  if(burger&&ov){
+    burger.addEventListener('click',function(e){e.preventDefault();toggleMenu(!ov.classList.contains('open'));});
+    ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggleMenu(false);});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleMenu(false);});
+  }
+
+  /* ---------- Button click acknowledgement ---------- */
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('click',function(){b.classList.add('clicked');setTimeout(function(){b.classList.remove('clicked');},260);});
+  });
+
+  /* ---------- GSAP animations ---------- */
+  if(window.gsap){
+    document.body.classList.remove('no-gsap');
+    if(window.ScrollTrigger)gsap.registerPlugin(ScrollTrigger);
+    var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    gsap.set('.hero [data-h]',{opacity:0,y:34});
+    gsap.to('.hero [data-h]',{opacity:1,y:0,duration:1,ease:'power3.out',stagger:.12,delay:.25});
+
+    if(!rm && window.ScrollTrigger){
+      gsap.utils.toArray('.reveal').forEach(function(el){
+        gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
+      });
+      gsap.utils.toArray('.m-el,.c-el,.f-el').forEach(function(img){
+        gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:img.closest('div'),start:'top bottom',end:'bottom top',scrub:true}});
+      });
+    }else{
+      gsap.set('.reveal',{opacity:1,y:0});
+    }
+
+    if(!rm && matchMedia('(hover:hover)').matches){
+      document.querySelectorAll('.btn').forEach(function(b){
+        var xTo=gsap.quickTo(b,'x',{duration:.5,ease:'power3'}),yTo=gsap.quickTo(b,'y',{duration:.5,ease:'power3'});
+        b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();xTo((e.clientX-(r.left+r.width/2))*.28);yTo((e.clientY-(r.top+r.height/2))*.4);});
+        b.addEventListener('mouseleave',function(){xTo(0);yTo(0);});
+      });
+    }
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(e){e.style.opacity=1;e.style.transform='none';});
+  }
+})();
+</script>
+</div>

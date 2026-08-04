@@ -1,22 +1,36 @@
-# Purpose Driven REI — Home Page
+# Purpose Driven REI — Website
 
-Single self-contained home page for **Purpose Driven REI** (luxury real-estate
-investing), built for the **GoHighLevel** website builder → *Custom Code / Code
-Block* element.
+Self-contained pages for **Purpose Driven REI** (luxury real-estate investing),
+built for the **GoHighLevel** website builder → *Custom Code / Code Block*
+element. Each page is one paste-in block: inlined GSAP + ScrollTrigger, inlined
+fonts, all styles/scripts, real media on `assets.cdn.filesafe.space`.
+
+## Pages
+- **`index.html`** — the **Home** page (paste into the Home page's Code block).
+- **`mission.html`** — the **Mission / About** page (paste into a NEW GHL page —
+  see slug note below).
 
 ## Files
-- **`index.html`** — the production deliverable. Fully self-contained: inlined
-  GSAP + ScrollTrigger, inlined fonts, all styles and scripts. Uses the client's
-  real media on `assets.cdn.filesafe.space`. **This is the file to paste into the
-  GoHighLevel code block.**
-- **`source.template.html`** — the un-inlined source template (build markers for
-  fonts/GSAP, `USE_PLACEHOLDERS` flag) used to generate `index.html` and the
-  preview.
+- **`index.html`** / **`mission.html`** — production deliverables to paste into
+  GoHighLevel.
+- **`source.template.html`** / **`mission.source.template.html`** — un-inlined
+  source templates (build markers for fonts/GSAP, `USE_PLACEHOLDERS` flag).
+- **`mission.body.template.html`** — the Mission page body/script; the shared
+  head/CSS is spliced in from `source.template.html` at assemble time.
+- **`build.mjs`** — inlines fonts + GSAP and emits both prod + placeholder-preview
+  builds for both pages. (Uses replacement *functions* so `$&`/`$'` sequences in
+  the minified libraries are not mangled.)
 
 ## How to use in GoHighLevel
 1. Add a **Custom Code / Code** element to a blank section (full width, no padding).
-2. Paste the entire contents of `index.html`.
+2. Paste the entire contents of `index.html` (Home) or `mission.html` (Mission).
 3. Save & preview.
+
+### ⚠️ Mission page slug
+The Home page's **Mission** menu item links to **`/mission`**. Create the new
+GHL page with the URL slug **`mission`** so that link resolves. If you use a
+different slug, tell me and I'll update the links. The Mission page's own nav
+links back to the Home page sections via `/#team`, `/#invest`, etc.
 
 The markup is scoped under `.pdrei`, so it won't collide with GHL's own styles.
 The form is client-side only (shows a thank-you state) — swap it for a native

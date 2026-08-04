@@ -286,24 +286,57 @@ html{scroll-behavior:smooth}
 .hero__media .ph-label{font-size:13px;opacity:.4;text-transform:uppercase;letter-spacing:.2em}
 </style>
 
+<style>
+/* ---------- Mission / About page specifics ---------- */
+.hero__media img,.hero__media .b-el{width:100%;height:100%;object-fit:cover}
+.hero__media .b-el.is-ph{width:100%;height:100%}
+.mhero .hero__in{max-width:var(--maxw);margin:0 auto}
+.mhero h1{max-width:18ch}
+.eyebrow.onDark{color:var(--gold-2)}
+.lead-quote{font-family:var(--serif);font-size:clamp(28px,4vw,46px);line-height:1.16;letter-spacing:-.01em;max-width:22ch}
+.quote-band{text-align:center}
+.quote-band .lead-quote{margin:0 auto;max-width:26ch}
+.quote-band .attrib{margin-top:26px;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);font-weight:600}
+.staff__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,44px);max-width:1040px;margin:clamp(40px,5vw,64px) auto 0}
+.staff__grid .tbd{text-align:center}
+.founder{max-width:1040px;margin:0 auto}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(40px,5vw,64px)}
+.pillar{background:rgba(247,244,236,.04);border:1px solid rgba(199,167,106,.28);border-radius:var(--r);padding:34px 30px;transition:transform .5s var(--ease),border-color .5s,background .5s}
+.pillar:hover{transform:translateY(-6px);border-color:var(--gold);background:rgba(199,167,106,.06)}
+.pillar .pn{font-family:var(--serif);font-size:clamp(30px,3.4vw,40px);color:var(--gold-2);line-height:1}
+.pillar h3{font-size:21px;margin:16px 0 10px;color:var(--cream)}
+.pillar p{font-size:16px;color:rgba(247,244,236,.75);margin:0}
+.cta-band{text-align:center}
+.cta-band h2{margin:0 auto;max-width:20ch}
+.cta-band .lede{margin:22px auto 0}
+.cta-band .btnrow{justify-content:center;margin-top:34px}
+@media(max-width:980px){
+  .pillars{grid-template-columns:1fr}
+  .staff__grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .staff__grid{grid-template-columns:1fr;max-width:340px}
+}
+</style>
+
 <div class="pdrei no-gsap">
 
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <div class="wrap nav__in">
-    <a href="#home" class="nav__logo" aria-label="Purpose Driven REI home">
+    <a href="/" class="nav__logo" aria-label="Purpose Driven REI home">
       <img data-key="logo" alt="Purpose Driven REI" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
       <span class="mark" style="display:none">Purpose&nbsp;Driven&nbsp;REI</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
       <a class="nav__link" href="/mission">Mission</a>
-      <a class="nav__link" href="#team">Team</a>
-      <a class="nav__link" href="#invest">Invest</a>
-      <a class="nav__link" href="#portfolio">Portfolio</a>
-      <a class="nav__link" href="#community">Community</a>
+      <a class="nav__link" href="/#team">Team</a>
+      <a class="nav__link" href="/#invest">Invest</a>
+      <a class="nav__link" href="/#portfolio">Portfolio</a>
+      <a class="nav__link" href="/#community">Community</a>
     </nav>
     <div class="nav__right">
-      <a href="#join" class="btn nav__cta">Partner With Us <span class="ar">&rarr;</span></a>
+      <a href="/#join" class="btn nav__cta">Partner With Us <span class="ar">&rarr;</span></a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -312,164 +345,139 @@ html{scroll-behavior:smooth}
 <!-- ================= OVERLAY MENU ================= -->
 <div class="overlay" id="overlay" aria-hidden="true">
   <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
-    <a class="o-link" href="#home"><span class="idx">01</span> Home</a>
+    <a class="o-link" href="/"><span class="idx">01</span> Home</a>
     <a class="o-link" href="/mission"><span class="idx">02</span> Our Mission</a>
-    <a class="o-link" href="#team"><span class="idx">03</span> Our Team</a>
-    <a class="o-link" href="#invest"><span class="idx">04</span> Partner With Us</a>
-    <a class="o-link" href="#portfolio"><span class="idx">05</span> Portfolio</a>
-    <a class="o-link" href="#community"><span class="idx">06</span> Community</a>
-    <a class="o-link" href="#join"><span class="idx">07</span> Join Our Network</a>
+    <a class="o-link" href="/#team"><span class="idx">03</span> Our Team</a>
+    <a class="o-link" href="/#invest"><span class="idx">04</span> Partner With Us</a>
+    <a class="o-link" href="/#portfolio"><span class="idx">05</span> Portfolio</a>
+    <a class="o-link" href="/#community"><span class="idx">06</span> Community</a>
+    <a class="o-link" href="/#join"><span class="idx">07</span> Join Our Network</a>
     <div class="o-foot"><span>info@purposedrivenrei.com</span><span>+1 909-345-2383</span><span>Southern California</span></div>
   </nav>
 </div>
 
 <!-- ================= HERO ================= -->
-<section class="hero" id="home">
-  <div class="hero__media">
-    <video data-key="heroVideo" autoplay muted loop playsinline preload="metadata"></video>
-  </div>
+<section class="hero mhero" id="home">
+  <div class="hero__media"><img class="b-el" data-key="img3" alt="Purpose Driven REI"></div>
   <div class="wrap hero__in">
-    <h1 data-h>Real Estate That <em>Profits</em><br>With Purpose.</h1>
-    <p class="hero__sub" data-h>Purpose Driven REI acquires, renovates, and resells residential property across Southern California and beyond, building real value for the investors and partners who grow with us.</p>
+    <p class="eyebrow onDark reveal" data-h>Our Story</p>
+    <h1 data-h>Built to profit <em>with purpose.</em></h1>
+    <p class="hero__sub" data-h>Purpose Driven REI was founded on a simple belief: real estate should build lasting wealth for the people who invest in it, and lift the communities it touches along the way.</p>
     <div class="btnrow" data-h>
-      <a href="#join" class="btn">Partner With Us <span class="ar">&rarr;</span></a>
-      <a href="#portfolio" class="btn btn--ghost btn--onDark">Explore the Portfolio</a>
+      <a href="/#join" class="btn">Partner With Us <span class="ar">&rarr;</span></a>
+      <a href="/#portfolio" class="btn btn--ghost btn--onDark">See Our Work</a>
     </div>
   </div>
   <div class="hero__cues"><span>Scroll</span><div class="line"><i></i></div></div>
 </section>
 
-<!-- ================= MISSION ================= -->
-<section class="section" id="mission">
+<!-- ================= MISSION STATEMENT ================= -->
+<section class="section" id="mission-statement">
   <div class="wrap">
     <div class="mission__grid">
       <div class="mission__copy">
         <p class="eyebrow reveal">Driven By A Shared Mission To</p>
         <h2 class="reveal">Revitalize Properties. Maximize Returns. Elevate Communities.</h2>
         <p class="lede reveal" style="margin-top:26px">We acquire, renovate, and resell underperforming residential properties into high performing assets, delivering strong, secured returns for our investment partners while improving neighborhoods and strengthening the communities we invest in.</p>
-        <p class="reveal muted" style="margin-top:18px">Every project is an opportunity to build real value, for the partners who grow with us and for the neighborhoods we work in. That is what it means to profit with purpose.</p>
+        <p class="reveal muted" style="margin-top:18px">What started as one investor's hands-on approach to fix and flip has grown into a full network of partners, operators, and private lenders who build value together, one deal at a time.</p>
         <div class="btnrow reveal" style="margin-top:34px">
-          <a href="#join" class="btn">Join the Network <span class="ar">&rarr;</span></a>
-          <a href="#invest" class="txtlink">How partnering works <span class="ar">&rarr;</span></a>
+          <a href="/#join" class="btn">Join the Network <span class="ar">&rarr;</span></a>
+          <a href="/#invest" class="txtlink">How partnering works <span class="ar">&rarr;</span></a>
         </div>
       </div>
       <div class="mission__media reveal">
-        <img class="m-el" data-key="bg1" alt="Purpose Driven REI renovated property">
-      </div>
-    </div>
-
-    <div class="stats reveal">
-      <div class="stats__grid">
-        <div class="stat"><b data-count="20" data-suffix="+">0</b><span>Years Experience</span></div>
-        <div class="stat"><b data-count="200" data-suffix="+">0</b><span>Flips Completed</span></div>
-        <div class="stat"><b data-count="1500" data-suffix="+">0</b><span>Homes Transacted</span></div>
-        <div class="stat"><b>#1</b><span>Purpose-Driven Community</span></div>
+        <img class="m-el" data-key="img1" alt="A Purpose Driven REI renovation project">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= TEAM ================= -->
-<section class="section" id="team" style="background:var(--stone-soft)">
+<!-- ================= FOUNDER ================= -->
+<section class="section" style="background:var(--stone-soft)" id="founder">
   <div class="wrap">
-    <p class="eyebrow center reveal">Our Team</p>
-    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(38px,5vw,60px);max-width:20ch">The people behind the purpose.</h2>
+    <p class="eyebrow center reveal">Our Founder</p>
+    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(38px,5vw,60px);max-width:18ch">Meet Ricardo Carrillo.</h2>
     <div class="founder reveal">
       <div class="founder__photo"><img class="f-el" data-key="ricardo" alt="Ricardo Carrillo, Founder & CEO"></div>
       <div>
         <h3>Ricardo Carrillo</h3>
         <p class="role">Founder &amp; CEO</p>
-        <p>Ricardo brings 20+ years of real-world experience in real estate, actively buying, renovating, and reselling residential properties across Southern California and beyond. With more than 200 successful fix-and-flip projects closed and a growing footprint in new construction, he's seen the questions come up on every deal.</p>
+        <p>Ricardo brings 20+ years of real-world experience in real estate, actively buying, renovating, and reselling residential properties across Southern California and beyond. With more than 200 successful fix-and-flip projects closed and a growing footprint in new construction, he has seen the questions come up on every deal, and built a network designed to answer them.</p>
+        <p style="margin-top:16px">His approach is simple: source the right properties, structure every deal conservatively, protect investor capital with real security, and treat every project as a chance to leave a neighborhood better than he found it.</p>
         <ul class="checks">
           <li>20+ years of investing &amp; sales experience in SoCal</li>
           <li>200+ successful fix &amp; flip projects closed</li>
           <li>Active in deal sourcing, private money &amp; new construction</li>
           <li>Founder of a community built on purpose</li>
         </ul>
-        <a href="#invest" class="txtlink">Partner with Ricardo <span class="ar">&rarr;</span></a>
-      </div>
-    </div>
-    <div class="team__more reveal">
-      <div class="tbd">
-        <div class="tbd__photo"></div>
-        <h3>TBD</h3>
-        <p class="role">TBD</p>
-      </div>
-      <div class="tbd">
-        <div class="tbd__photo"></div>
-        <h3>TBD</h3>
-        <p class="role">TBD</p>
+        <a href="/#invest" class="txtlink">Partner with Ricardo <span class="ar">&rarr;</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= PARTNER / INVEST ================= -->
-<section class="section dark has-bg" id="invest">
-  <div class="sec-bg"><img class="b-el" data-key="bg2" alt=""></div>
+<!-- ================= OUR APPROACH (image bg) ================= -->
+<section class="section dark has-bg" id="values">
+  <div class="sec-bg"><img class="b-el" data-key="img4" alt=""></div>
   <div class="wrap">
     <div class="invest__head">
       <div>
-        <p class="eyebrow reveal">Partner With Us</p>
-        <h2 class="reveal">Private money, secured by real estate.</h2>
+        <p class="eyebrow reveal">Our Approach</p>
+        <h2 class="reveal">How we build value, on every deal.</h2>
       </div>
-      <p class="lede reveal">We create value through thoughtful renovation while delivering strong, secured returns for our investment partners. Capital is protected by real property, with a promissory note and deed of trust on every deal.</p>
+      <p class="lede reveal">Discipline over hype. Every project runs through the same playbook, so our partners always know how their capital is working and how it is protected.</p>
     </div>
-
-    <div class="cards">
-      <div class="card reveal"><div class="k">10–15%</div><h3>Target Returns</h3><p>Fixed or annualized for the project term, depending on lien position and structure.</p></div>
-      <div class="card reveal"><div class="k">6–12</div><h3>Month Timelines</h3><p>Investment terms typically run 6–12 months based on scope, market, and project stage.</p></div>
-      <div class="card reveal"><div class="k">70–75%</div><h3>Loan-to-Value</h3><p>Disciplined LTV targets keep every project conservatively positioned.</p></div>
-      <div class="card reveal"><div class="k">1st / 2nd</div><h3>Lien Position</h3><p>Secured in 1st or 2nd position, depending on capital and project structure.</p></div>
-      <div class="card reveal"><div class="k">Deed</div><h3>Real Security</h3><p>Investor capital secured by real estate via promissory note &amp; recorded deed of trust.</p></div>
-      <div class="card reveal"><div class="k">70%</div><h3>2025 Success Rate</h3><p>Even in a tough 2025 market, with a limited principal guarantee within 12–24 months.</p></div>
+    <div class="pillars">
+      <div class="pillar reveal"><div class="pn">01</div><h3>Source</h3><p>We find underperforming properties with real upside, in markets we know, at prices that leave room for a conservative return.</p></div>
+      <div class="pillar reveal"><div class="pn">02</div><h3>Transform</h3><p>Thoughtful, high quality renovation turns tired homes into desirable assets that buyers want and neighborhoods are proud of.</p></div>
+      <div class="pillar reveal"><div class="pn">03</div><h3>Protect</h3><p>Investor capital is secured by real estate, with a promissory note and recorded deed of trust on every deal.</p></div>
+      <div class="pillar reveal"><div class="pn">04</div><h3>Return</h3><p>We deliver strong, secured returns to our partners and reinvest into the next project, and the next community.</p></div>
     </div>
-
-    <div class="calc reveal">
-      <div class="calc__row"><span>Example investment</span><b>$50,000</b></div>
-      <div class="calc__row"><span>Typical return at 15% fixed, 2nd position</span><b>$7,500</b></div>
-      <div class="calc__row total"><span>Total paid back at completion (6–9 mo.)</span><b>$57,500</b></div>
-    </div>
-
     <div class="btnrow reveal" style="margin-top:38px">
-      <a href="#join" class="btn">Request the Investor Overview <span class="ar">&rarr;</span></a>
-      <a href="#portfolio" class="btn btn--ghost btn--onDark">See Example Projects</a>
+      <a href="/#invest" class="btn">See the Investor Overview <span class="ar">&rarr;</span></a>
+      <a href="/#portfolio" class="btn btn--ghost btn--onDark">View the Portfolio</a>
     </div>
-
-    <p class="disclosure reveal">Risk disclosure: Real estate investments carry uncontrollable risks like any other investment, including market shifts, economic conditions, or unforeseen natural events. Returns and principal repayment are not guaranteed. Figures shown are illustrative examples of typical structures, not an offer or a promise of performance.</p>
   </div>
 </section>
 
-<!-- ================= PORTFOLIO ================= -->
-<section class="section" id="portfolio">
+<!-- ================= OUR TEAM / STAFF ================= -->
+<section class="section" id="team-staff">
   <div class="wrap">
-    <div class="invest__head" style="align-items:end">
-      <div>
-        <p class="eyebrow reveal">Portfolio</p>
-        <h2 class="reveal">Example projects, closed &amp; active.</h2>
+    <p class="eyebrow center reveal">Our Team</p>
+    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(38px,5vw,60px);max-width:20ch">The people behind the purpose.</h2>
+    <div class="staff__grid reveal">
+      <div class="tbd">
+        <div class="tbd__photo"></div>
+        <h3>TBD</h3>
+        <p class="role">TBD</p>
       </div>
-      <p class="lede reveal">A selection of residential renovations and new-construction projects sourced, structured, and executed by Purpose Driven REI.</p>
-    </div>
-    <div class="port__grid" id="portGrid"><!-- injected --></div>
-    <div class="btnrow reveal" style="margin-top:44px;justify-content:center">
-      <a href="#join" class="btn">Invest In The Next Project <span class="ar">&rarr;</span></a>
+      <div class="tbd">
+        <div class="tbd__photo"></div>
+        <h3>TBD</h3>
+        <p class="role">TBD</p>
+      </div>
+      <div class="tbd">
+        <div class="tbd__photo"></div>
+        <h3>TBD</h3>
+        <p class="role">TBD</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= COMMUNITY ================= -->
-<section class="section dark community" id="community">
+<!-- ================= RECENT WORK ================= -->
+<section class="section dark community" id="recent">
   <div class="wrap">
     <div class="community__grid">
       <div class="community__media reveal">
-        <img class="c-el" data-key="community" alt="The Purpose Driven REI community">
+        <img class="c-el" data-key="img2" alt="A recent Purpose Driven REI project">
       </div>
       <div>
-        <p class="eyebrow reveal">The Community</p>
-        <h2 class="reveal">Real opportunities, real people, in your corner.</h2>
-        <p class="lede reveal" style="margin-top:24px">This is where deals get shared, partnerships get formed, and momentum gets built. Surround yourself with investors who are actively finding properties, structuring deals, and closing transactions, and grow faster because of it.</p>
+        <p class="eyebrow reveal">Recent Work</p>
+        <h2 class="reveal">Proof of the process.</h2>
+        <p class="lede reveal" style="margin-top:24px">From desert renovations to boutique new construction, our portfolio is where the mission becomes real. Every closed project is a partner rewarded and a property returned to its best.</p>
         <div class="btnrow reveal" style="margin-top:34px">
-          <a href="#join" class="btn">Join the Community <span class="ar">&rarr;</span></a>
+          <a href="/#portfolio" class="btn">Explore the Portfolio <span class="ar">&rarr;</span></a>
           <a href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" class="txtlink" style="color:var(--gold-2)">Follow @pdreinv_ <span class="ar">&rarr;</span></a>
         </div>
       </div>
@@ -477,75 +485,16 @@ html{scroll-behavior:smooth}
   </div>
 </section>
 
-<!-- ================= STAY CONNECTED ================= -->
-<section class="section connect has-bg" id="connect">
-  <div class="sec-bg"><img class="b-el" data-key="bg1" alt=""></div>
+<!-- ================= CLOSING CTA (image bg) ================= -->
+<section class="section dark has-bg cta-band" id="join-cta">
+  <div class="sec-bg"><img class="b-el" data-key="img5" alt=""></div>
   <div class="wrap">
-    <div class="connect__grid">
-      <div>
-        <p class="eyebrow reveal">Stay Connected</p>
-        <h2 class="reveal" style="color:var(--cream)">Follow the deals as they happen.</h2>
-        <p class="lede reveal" style="margin-top:20px;color:rgba(247,244,236,.82)">See active projects, renovation progress, and investor insights, straight from the field.</p>
-      </div>
-      <div class="socials reveal">
-        <a class="social" href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" aria-label="Instagram @pdreinv_">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5 0-4.75.07-.9.04-1.38.19-1.7.31-.43.17-.73.37-1.05.69-.32.32-.52.62-.69 1.05-.12.32-.27.8-.31 1.7C3.13 8.5 3.13 8.85 3.13 12s0 3.5.07 4.75c.04.9.19 1.38.31 1.7.17.43.37.73.69 1.05.32.32.62.52 1.05.69.32.12.8.27 1.7.31 1.25.07 1.6.07 4.75.07s3.5 0 4.75-.07c.9-.04 1.38-.19 1.7-.31.43-.17.73-.37 1.05-.69.32-.32.52-.62.69-1.05.12-.32.27-.8.31-1.7.07-1.25.07-1.6.07-4.75s0-3.5-.07-4.75c-.04-.9-.19-1.38-.31-1.7a2.8 2.8 0 0 0-.69-1.05 2.8 2.8 0 0 0-1.05-.69c-.32-.12-.8-.27-1.7-.31C15.5 4 15.15 4 12 4Zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06Zm0 8.14A3.2 3.2 0 1 0 8.8 12 3.2 3.2 0 0 0 12 15.2Zm5.14-8.34a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15Z"/></svg>
-          <b>@pdreinv_</b>
-        </a>
-        <a class="social" href="https://www.facebook.com/ricardo.realtor909/" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3-.04-1.3-.13-2.47-.13-2.44 0-4.11 1.49-4.11 4.23v2.36H7.7V13h2.72v8Z"/></svg>
-          <b>Facebook</b>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= JOIN OUR NETWORK (FORM) ================= -->
-<section class="section join" id="join">
-  <div class="wrap">
-    <div class="join__grid">
-      <div>
-        <p class="eyebrow reveal">Join Our Network</p>
-        <h2 class="reveal">Let's build something with purpose.</h2>
-        <p class="lede reveal" style="margin-top:22px">Tell us where you're headed: investing capital, partnering on deals, or joining the community. We'll follow up with the right next step, including our full Private Money Investment Overview.</p>
-        <ul class="checks reveal" style="margin-top:30px">
-          <li>Straight answers on what's actually working in this market</li>
-          <li>Access to active, secured investment opportunities</li>
-          <li>A network that sources, structures, and closes together</li>
-        </ul>
-      </div>
-
-      <form class="form reveal" id="joinForm" novalidate>
-        <div class="form__body">
-          <div class="form__two">
-            <div class="field"><label for="fn">First name</label><input id="fn" name="firstName" type="text" autocomplete="given-name" required></div>
-            <div class="field"><label for="ln">Last name</label><input id="ln" name="lastName" type="text" autocomplete="family-name" required></div>
-          </div>
-          <div class="form__two">
-            <div class="field"><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="ph">Phone</label><input id="ph" name="phone" type="tel" autocomplete="tel"></div>
-          </div>
-          <div class="field">
-            <label for="it">I'm interested in</label>
-            <select id="it" name="interest" required>
-              <option value="" selected disabled>Select an option</option>
-              <option>Investing private money</option>
-              <option>Partnering on a deal (JV)</option>
-              <option>Joining the community</option>
-              <option>Something else</option>
-            </select>
-          </div>
-          <div class="field"><label for="ms">Message</label><textarea id="ms" name="message" placeholder="Tell us a little about your goals…"></textarea></div>
-          <button type="submit" class="btn" style="width:100%;justify-content:center">Send My Details <span class="ar">&rarr;</span></button>
-          <p class="muted" style="font-size:13px;margin:16px 0 0;text-align:center">By submitting you agree to be contacted by Purpose Driven REI. This is not an offer to sell securities.</p>
-        </div>
-        <div class="form__ok" id="formOk">
-          <div class="ok-ic">&#10003;</div>
-          <h3 style="font-size:26px">Thank you, we're on it.</h3>
-          <p class="muted" style="margin-top:10px">A member of the Purpose Driven REI team will reach out shortly with your next step.</p>
-        </div>
-      </form>
+    <p class="eyebrow center reveal">Partner With Us</p>
+    <h2 class="reveal">Let's build something with purpose.</h2>
+    <p class="lede reveal">Whether you are investing capital, partnering on a deal, or joining the community, there is a place for you in the Purpose Driven REI network.</p>
+    <div class="btnrow reveal">
+      <a href="/#join" class="btn">Join Our Network <span class="ar">&rarr;</span></a>
+      <a href="/#invest" class="btn btn--ghost btn--onDark">How Partnering Works</a>
     </div>
   </div>
 </section>
@@ -565,10 +514,10 @@ html{scroll-behavior:smooth}
         <h4>Explore</h4>
         <ul>
           <li><a class="f-link" href="/mission">Our Mission</a></li>
-          <li><a class="f-link" href="#team">Our Team</a></li>
-          <li><a class="f-link" href="#invest">Partner With Us</a></li>
-          <li><a class="f-link" href="#portfolio">Portfolio</a></li>
-          <li><a class="f-link" href="#community">Community</a></li>
+          <li><a class="f-link" href="/#team">Our Team</a></li>
+          <li><a class="f-link" href="/#invest">Partner With Us</a></li>
+          <li><a class="f-link" href="/#portfolio">Portfolio</a></li>
+          <li><a class="f-link" href="/#community">Community</a></li>
         </ul>
       </div>
       <div>
@@ -614,81 +563,43 @@ html{scroll-behavior:smooth}
 </script>
 <script>
 (function(){
-  /* ============ MEDIA CONFIG ============
-     Real client assets (load in GoHighLevel & any browser). In the CSP-locked
-     preview these are swapped for in-brand placeholders automatically. */
+  /* ============ MEDIA CONFIG ============ */
   var USE_PLACEHOLDERS = false;
   var A = {
     logo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd50d4376904eac229652f.png",
-    heroVideo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c33db497cd89d245e0219.mp4",
-    community:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd42271774270f1d8640f9.jpeg",
-    bg1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879188345b27e11fea8.jpg",
-    bg2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879497cd89d244ff594.jpg",
-    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a45689080abc5e234418ecd.jpeg"
+    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a45689080abc5e234418ecd.jpeg",
+    img1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c285e32db2dd157e6dbeb.webp",
+    img2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855cf81b06f05379480.webp",
+    img3:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd4600ef1dbfe76e0d3e99.jpg",
+    img4:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a7234d90629193ed56d3690.jpg",
+    img5:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a72355eeaa4719b5c7ba904.jpg"
   };
-  var PROPS = [
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c285e32db2dd157e6dbeb.webp",addr:"27786 Matterhorn Dr",loc:"Lake Arrowhead, CA 92352",status:"Active"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849a4c8a1a2c38cd226.webp",addr:"617 E Guenther St",loc:"San Antonio, TX 78210",status:"Active"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855cf81b06f05379480.webp",addr:"6117 Arroyo Rd Unit 4",loc:"Palm Springs, CA 92264",status:"Active"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855497cd89d244ff2cc.webp",addr:"72555 Nicolson Dr",loc:"Twentynine Palms, CA 92277",status:"Sold 02/26"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849cf81b06f053793cd.webp",addr:"51640 Avenida Diaz",loc:"La Quinta, CA 92253",status:"Sold 12/25"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849a4c8a1a2c38cd22b.webp",addr:"3398 Condalia Ave",loc:"Yucca Valley, CA 92284",status:"Sold 11/25"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849cf81b06f053793c8.webp",addr:"28062 Waterman Rd",loc:"Barstow, CA 92311",status:"Sold 10/25"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849188345b27e1163b1.webp",addr:"31202 Delwood St",loc:"Val Verde, CA 91384",status:"Sold 10/25"}
-  ];
 
-  /* ---------- Hydrate media (real or placeholder) ---------- */
   function phLabel(t){return '<span class="ph-label">'+t+'</span>';}
   function hydrate(){
-    // logos
     document.querySelectorAll('img[data-key="logo"]').forEach(function(img){
       if(USE_PLACEHOLDERS){img.style.display='none';img.nextElementSibling.style.display='inline';}
       else{img.src=A.logo;}
     });
-    // hero video
-    var v=document.querySelector('video[data-key="heroVideo"]');
-    if(v){
-      if(USE_PLACEHOLDERS){
-        var d=document.createElement('div');d.className='ph-fill is-ph';d.innerHTML=phLabel('Hero video background');
-        v.parentNode.replaceChild(d,v);
-      }else{v.src=A.heroVideo;}
-    }
-    // simple <img data-key> (bg1, ricardo, community)
     document.querySelectorAll('.m-el,.f-el,.c-el,.b-el').forEach(function(img){
       var k=img.getAttribute('data-key');
       if(USE_PLACEHOLDERS){
         img.classList.add('is-ph');
-        var labels={bg1:'Renovated property',bg2:'Renovated property',ricardo:'Ricardo Carrillo',community:'Community group photo'};
+        var labels={img1:'Recent renovation',img2:'Recent project',img3:'Purpose Driven REI',img4:'Renovated interior',img5:'Building with purpose',ricardo:'Ricardo Carrillo'};
         img.removeAttribute('src');
         img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
       }else{img.src=A[k];}
     });
-    // portfolio
-    var grid=document.getElementById('portGrid');
-    PROPS.forEach(function(p,i){
-      var sold=/sold/i.test(p.status);
-      var media=USE_PLACEHOLDERS
-        ? '<div class="p-el is-ph">'+phLabel((i+1<10?'0':'')+(i+1))+'</div>'
-        : '<img class="p-el" loading="lazy" src="'+p.img+'" alt="'+p.addr+', '+p.loc+'">';
-      var el=document.createElement('a');
-      el.className='prop reveal';el.href='#join';
-      el.innerHTML='<span class="badge '+(sold?'sold':'active')+'">'+p.status+'</span>'+media+
-        '<span class="prop__grad"></span><span class="prop__meta"><span class="addr">'+p.addr+'</span><span class="loc">'+p.loc+'</span></span>';
-      grid.appendChild(el);
-    });
   }
   hydrate();
-  document.getElementById('yr').textContent=new Date().getFullYear();
+  var yrEl=document.getElementById('yr'); if(yrEl){yrEl.textContent=new Date().getFullYear();}
 
   /* ---------- Nav: solid on scroll ---------- */
   var nav=document.getElementById('nav');
-  function onScroll(){nav.classList.toggle('solid',window.scrollY>40);}
+  function onScroll(){if(nav)nav.classList.toggle('solid',window.scrollY>40);}
   onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
-  /* ---------- Mobile overlay ----------
-     Move the overlay to <body> so its position:fixed is viewport-relative even
-     when GoHighLevel wraps this block in a transformed container, and reveal it
-     with opacity/visibility (clip-path can fail to expand inside GHL). */
+  /* ---------- Mobile overlay (moved to body; opacity/visibility reveal) ---------- */
   var burger=document.getElementById('burger'),ov=document.getElementById('overlay');
   if(ov && ov.parentNode!==document.body){document.body.appendChild(ov);}
   function toggleMenu(open){
@@ -710,61 +621,26 @@ html{scroll-behavior:smooth}
     b.addEventListener('click',function(){b.classList.add('clicked');setTimeout(function(){b.classList.remove('clicked');},260);});
   });
 
-  /* ---------- Form ---------- */
-  var form=document.getElementById('joinForm');
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var ok=true;
-    form.querySelectorAll('[required]').forEach(function(f){
-      if(!f.value){ok=false;f.style.borderColor='#b4562f';f.style.boxShadow='0 0 0 4px rgba(180,86,47,.14)';}
-      else{f.style.borderColor='';f.style.boxShadow='';}
-    });
-    if(!ok)return;
-    form.classList.add('sent');
-    var okEl=document.getElementById('formOk');okEl.classList.add('show');
-    if(window.gsap){gsap.fromTo(okEl,{opacity:0,y:16},{opacity:1,y:0,duration:.6,ease:'power2.out'});}
-    /* In GoHighLevel: replace this handler with a native GHL form/ webhook. */
-  });
-
   /* ---------- GSAP animations ---------- */
   if(window.gsap){
     document.body.classList.remove('no-gsap');
     if(window.ScrollTrigger)gsap.registerPlugin(ScrollTrigger);
     var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-    // hero intro
     gsap.set('.hero [data-h]',{opacity:0,y:34});
     gsap.to('.hero [data-h]',{opacity:1,y:0,duration:1,ease:'power3.out',stagger:.12,delay:.25});
 
     if(!rm && window.ScrollTrigger){
-      // reveals
       gsap.utils.toArray('.reveal').forEach(function(el){
-        gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',
-          scrollTrigger:{trigger:el,start:'top 86%'}});
+        gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
       });
-      // stagger property cards
-      ScrollTrigger.batch('.prop',{start:'top 90%',onEnter:function(b){gsap.to(b,{opacity:1,y:0,duration:.7,stagger:.08,ease:'power2.out'});}});
-
-      // subtle image parallax
       gsap.utils.toArray('.m-el,.c-el,.f-el').forEach(function(img){
-        gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',
-          scrollTrigger:{trigger:img.closest('div'),start:'top bottom',end:'bottom top',scrub:true}});
-      });
-
-      // count-up stats
-      gsap.utils.toArray('[data-count]').forEach(function(el){
-        var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',o={v:0};
-        ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:function(){
-          gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:function(){
-            el.textContent=Math.round(o.v).toLocaleString()+suf;}});
-        }});
+        gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:img.closest('div'),start:'top bottom',end:'bottom top',scrub:true}});
       });
     }else{
       gsap.set('.reveal',{opacity:1,y:0});
-      document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=(+el.getAttribute('data-count')).toLocaleString()+(el.getAttribute('data-suffix')||'');});
     }
 
-    // magnetic buttons (pointer only)
     if(!rm && matchMedia('(hover:hover)').matches){
       document.querySelectorAll('.btn').forEach(function(b){
         var xTo=gsap.quickTo(b,'x',{duration:.5,ease:'power3'}),yTo=gsap.quickTo(b,'y',{duration:.5,ease:'power3'});
@@ -773,9 +649,7 @@ html{scroll-behavior:smooth}
       });
     }
   }else{
-    // no GSAP: reveal everything, fill counters
     document.querySelectorAll('.reveal').forEach(function(e){e.style.opacity=1;e.style.transform='none';});
-    document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=(+el.getAttribute('data-count')).toLocaleString()+(el.getAttribute('data-suffix')||'');});
   }
 })();
 </script>
