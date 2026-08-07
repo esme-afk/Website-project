@@ -347,7 +347,15 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 .cm-events .lede{margin:22px auto 0;max-width:62ch}
 .cm-events .btnrow{justify-content:center;margin-top:34px}
 
+/* stay connected (dark, property bg) */
+.cm-connect .checks li{color:rgba(247,244,236,.85)}
+.cm-connect-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(40px,5vw,60px)}
+.cm-connect-gallery figure{margin:0;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;box-shadow:0 34px 70px -50px rgba(0,0,0,.65)}
+.cm-connect-gallery figure .c-el{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.cm-connect-gallery figure:hover .c-el{transform:scale(1.06)}
+
 @media(max-width:980px){
+  .cm-connect-gallery{grid-template-columns:1fr 1fr}
   .cm-intro,.cm-meet{grid-template-columns:1fr}
   .cm-ways{grid-template-columns:1fr 1fr}
   .cm-ig{grid-template-columns:1fr 1fr}
@@ -475,32 +483,6 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   </div>
 </section>
 
-<!-- ================= LIVE MEETUPS FEATURE ================= -->
-<section class="section" id="meetups" style="background:var(--stone-soft)">
-  <div class="wrap">
-    <div class="cm-meet">
-      <div class="cm-gallery reveal">
-        <figure><img class="c-el" data-key="poutdoor" alt="A fixed and flipped home exterior"></figure>
-        <figure><img class="c-el" data-key="pfixed" alt="A renovated Purpose Driven REI property"></figure>
-        <figure><img class="c-el" data-key="pconstruction" alt="A project under construction"></figure>
-      </div>
-      <div>
-        <p class="eyebrow reveal">On The Property</p>
-        <h2 class="reveal">See a real deal, from walkthrough to close.</h2>
-        <p class="lede reveal" style="margin-top:22px">The best classroom is a live job site. At our property meetups, Ricardo walks the deal in the open, the numbers, the negotiation, the renovation plan, and the exit, so you learn how a real fix and flip actually comes together.</p>
-        <ul class="cm-tag reveal">
-          <li>Watch a live deal get analyzed and negotiated</li>
-          <li>See renovation strategy on an active project</li>
-          <li>Ask questions and meet the people doing the work</li>
-        </ul>
-        <div class="btnrow reveal" style="margin-top:32px">
-          <a href="#events" class="btn">Join the Next Meetup <span class="ar">&rarr;</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= GET CONNECTED (instagram) ================= -->
 <section class="section" id="get-connected">
   <div class="wrap">
@@ -532,20 +514,21 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   </div>
 </section>
 
-<!-- ================= STAY CONNECTED FORM ================= -->
-<section class="section join" id="connect-form">
+<!-- ================= STAY CONNECTED (property bg + community gallery + form) ================= -->
+<section class="section dark has-bg cm-connect" id="connect-form">
+  <div class="sec-bg"><img class="b-el" data-key="poutdoor" alt=""></div>
   <div class="wrap">
     <div class="join__grid">
       <div>
         <p class="eyebrow reveal">Stay Connected</p>
-        <h2 class="reveal">Be the first to know.</h2>
+        <h2 class="reveal" style="color:var(--cream)">Be the first to know.</h2>
         <p class="lede reveal" style="margin-top:22px">Drop your details and we will keep you in the loop on upcoming meetups, Zooms, and networking events, plus the occasional deal insight straight from the field.</p>
         <ul class="checks reveal" style="margin-top:30px">
           <li>Early announcements for every event</li>
           <li>Invites to live property meetups</li>
           <li>Value and insights from a community that does the work</li>
         </ul>
-        <p class="reveal muted" style="font-size:16px;margin-top:26px">Ready to register for the next one? <a href="/register" class="txtlink" style="font-size:14px">See upcoming events <span class="ar">&rarr;</span></a></p>
+        <p class="reveal" style="font-size:16px;margin-top:26px;color:rgba(247,244,236,.78)">Ready to register for the next one? <a href="/register" class="txtlink" style="font-size:14px;color:var(--gold-2)">See upcoming events <span class="ar">&rarr;</span></a></p>
       </div>
 
       <form class="form reveal" id="connectForm" novalidate>
@@ -579,6 +562,12 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
           <div class="btnrow" style="justify-content:center;margin-top:20px"><a href="/register" class="btn">See Upcoming Events <span class="ar">&rarr;</span></a></div>
         </div>
       </form>
+    </div>
+    <div class="cm-connect-gallery reveal">
+      <figure><img class="c-el" data-key="c3" alt="The Purpose Driven REI community"></figure>
+      <figure><img class="c-el" data-key="c4" alt="Community members together"></figure>
+      <figure><img class="c-el" data-key="c1" alt="A community gathering"></figure>
+      <figure><img class="c-el" data-key="c2" alt="A networking event"></figure>
     </div>
   </div>
 </section>
