@@ -9,6 +9,10 @@ fonts, all styles/scripts, real media on `assets.cdn.filesafe.space`.
 - **`index.html`** — the **Home** page (paste into the Home page's Code block).
 - **`mission.html`** — the **Mission / About** page (GHL page slug `mission`).
 - **`invest.html`** — the **Invest** page (GHL page slug `invest`).
+- **`community.html`** — the **Community** page (GHL page slug `community`). Embeds
+  three Instagram reels (via `instagram.com/embed.js`) and links the "Register"
+  buttons to `/register`. Instagram embeds and the register link only work on the
+  live site, not in the sandbox preview.
 
 Nav links are absolute (`/mission`, `/invest`, `/#team`, ...), so publish each
 page at the matching slug on `purposedrivenrei.com`.

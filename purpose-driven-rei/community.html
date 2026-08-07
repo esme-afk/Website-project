@@ -298,6 +298,66 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 .hero__media .ph-label{font-size:13px;opacity:.4;text-transform:uppercase;letter-spacing:.2em}
 </style>
 
+<style>
+/* ============================================================================
+   COMMUNITY PAGE specifics (design system + menu + fonts from shared head)
+   ============================================================================ */
+.hero__media img,.hero__media .b-el{width:100%;height:100%;object-fit:cover}
+.hero__media .b-el.is-ph{width:100%;height:100%}
+.cm-hero{min-height:92svh}
+.cm-hero h1{max-width:16ch}
+.cm-hero h1 em{color:var(--gold-2)}
+.cm-hero .hero__media::after{background:linear-gradient(180deg,rgba(6,16,14,.72) 0%,rgba(6,16,14,.55) 42%,rgba(6,16,14,.9) 100%)}
+
+/* intro */
+.cm-intro{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,6vw,90px);align-items:center}
+.cm-intro__media{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;box-shadow:0 50px 90px -50px rgba(18,60,53,.6)}
+.cm-intro__media .m-el{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.cm-intro__media:hover .m-el{transform:scale(1.05)}
+
+/* ways to connect cards */
+.cm-ways{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:clamp(40px,5vw,64px)}
+.cm-way{background:rgba(247,244,236,.04);border:1px solid rgba(199,167,106,.28);border-radius:var(--r);padding:34px 32px;transition:transform .5s var(--ease),border-color .5s,background .5s}
+.cm-way:hover{transform:translateY(-6px);border-color:var(--gold);background:rgba(199,167,106,.06)}
+.cm-way .ic{width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold-2);margin-bottom:20px}
+.cm-way .ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+.cm-way h3{color:var(--cream);font-size:22px;margin:0 0 10px}
+.cm-way p{margin:0;font-size:16px;color:rgba(247,244,236,.75)}
+
+/* meetup feature gallery */
+.cm-meet{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4vw,56px);align-items:center}
+.cm-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px}
+.cm-gallery figure{position:relative;border-radius:var(--r);overflow:hidden;margin:0;box-shadow:0 40px 80px -50px rgba(18,60,53,.6)}
+.cm-gallery figure .c-el{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.3s var(--ease)}
+.cm-gallery figure:hover .c-el{transform:scale(1.05)}
+.cm-gallery figure:nth-child(1){grid-column:1 / -1;aspect-ratio:16/9}
+.cm-gallery figure:nth-child(2),.cm-gallery figure:nth-child(3){aspect-ratio:1/1}
+.cm-tag{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.cm-tag li{position:relative;padding-left:30px;font-size:17px;color:#3a423e}
+.cm-tag li::before{content:"";position:absolute;left:0;top:9px;width:16px;height:16px;border-radius:50%;border:1px solid var(--gold);background:radial-gradient(circle at 50% 50%,var(--gold) 0 4px,transparent 5px)}
+
+/* instagram get-connected grid */
+.cm-ig{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(40px,5vw,60px);align-items:start}
+.cm-ig .instagram-media{margin:0 auto!important;min-width:0!important;width:100%!important}
+.cm-ig__fallback{border:1px solid var(--stone);border-radius:var(--r);background:#fff;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;color:var(--stone);padding:24px}
+
+/* events / register band */
+.cm-events{text-align:center}
+.cm-events h2{margin:0 auto;max-width:20ch}
+.cm-events .lede{margin:22px auto 0;max-width:62ch}
+.cm-events .btnrow{justify-content:center;margin-top:34px}
+
+@media(max-width:980px){
+  .cm-intro,.cm-meet{grid-template-columns:1fr}
+  .cm-ways{grid-template-columns:1fr 1fr}
+  .cm-ig{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .cm-ways,.cm-ig{grid-template-columns:1fr}
+  .cm-gallery figure:nth-child(2),.cm-gallery figure:nth-child(3){aspect-ratio:16/10}
+}
+</style>
+
 <div class="pdrei no-gsap">
 
 <!-- CSS-only menu state (toggled by the burger + close labels; no JS required) -->
@@ -306,19 +366,19 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <div class="wrap nav__in">
-    <a href="#home" class="nav__logo" aria-label="Purpose Driven REI home">
+    <a href="/" class="nav__logo" aria-label="Purpose Driven REI home">
       <img data-key="logo" alt="Purpose Driven REI" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
       <span class="mark" style="display:none">Purpose&nbsp;Driven&nbsp;REI</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
       <a class="nav__link" href="/mission">Mission</a>
-      <a class="nav__link" href="#team">Team</a>
+      <a class="nav__link" href="/#team">Team</a>
       <a class="nav__link" href="/invest">Invest</a>
-      <a class="nav__link" href="#portfolio">Portfolio</a>
+      <a class="nav__link" href="/#portfolio">Portfolio</a>
       <a class="nav__link" href="/community">Community</a>
     </nav>
     <div class="nav__right">
-      <a href="#join" class="btn nav__cta">Partner With Us <span class="ar">&rarr;</span></a>
+      <a href="#connect-form" class="btn nav__cta">Join the Community <span class="ar">&rarr;</span></a>
       <label class="pdrei-burger" for="pdrei-navtoggle" role="button" aria-label="Open menu" tabindex="0"><span></span><span></span><span></span></label>
     </div>
   </div>
@@ -328,211 +388,167 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 <div class="pdrei-menu" id="pdrei-menu">
   <label class="pdrei-menu__close" for="pdrei-navtoggle" role="button" aria-label="Close menu" tabindex="0">&times;</label>
   <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
-    <a class="pdrei-menu__link" href="#home"><span class="idx">01</span> Home</a>
+    <a class="pdrei-menu__link" href="/"><span class="idx">01</span> Home</a>
     <a class="pdrei-menu__link" href="/mission"><span class="idx">02</span> Our Mission</a>
-    <a class="pdrei-menu__link" href="#team"><span class="idx">03</span> Our Team</a>
+    <a class="pdrei-menu__link" href="/#team"><span class="idx">03</span> Our Team</a>
     <a class="pdrei-menu__link" href="/invest"><span class="idx">04</span> Invest</a>
-    <a class="pdrei-menu__link" href="#portfolio"><span class="idx">05</span> Portfolio</a>
+    <a class="pdrei-menu__link" href="/#portfolio"><span class="idx">05</span> Portfolio</a>
     <a class="pdrei-menu__link" href="/community"><span class="idx">06</span> Community</a>
-    <a class="pdrei-menu__link" href="#join"><span class="idx">07</span> Join Our Network</a>
+    <a class="pdrei-menu__link" href="#connect-form"><span class="idx">07</span> Join the Community</a>
     <div class="pdrei-menu__foot"><span>info@purposedrivenrei.com</span><span>+1 909-345-2383</span><span>Southern California</span></div>
   </nav>
 </div>
 
-<!-- ================= HERO ================= -->
-<section class="hero" id="home">
-  <div class="hero__media">
-    <video data-key="heroVideo" autoplay muted loop playsinline preload="metadata"></video>
-  </div>
+<!-- ================= HERO (image bg) ================= -->
+<section class="hero cm-hero" id="home">
+  <div class="hero__media"><img class="b-el" data-key="c3" alt="The Purpose Driven REI community"></div>
   <div class="wrap hero__in">
-    <h1 data-h>Real Estate That <em>Profits</em><br>With Purpose.</h1>
-    <p class="hero__sub" data-h>Purpose Driven REI acquires, renovates, and resells residential property across Southern California and beyond, building real value for the investors and partners who grow with us.</p>
+    <p class="eyebrow onDark reveal" data-h style="color:var(--gold-2)">The Community</p>
+    <h1 data-h>Real estate is better <em>with the right people.</em></h1>
+    <p class="hero__sub" data-h>Purpose Driven REI is more than deals. It is a growing community of investors, agents, and partners who learn together, network together, and win together, led by someone who shows up and does the work in public.</p>
     <div class="btnrow" data-h>
-      <a href="#join" class="btn">Partner With Us <span class="ar">&rarr;</span></a>
-      <a href="#portfolio" class="btn btn--ghost btn--onDark">Explore the Portfolio</a>
+      <a href="#connect-form" class="btn">Join the Community <span class="ar">&rarr;</span></a>
+      <a href="#events" class="btn btn--ghost btn--onDark">Upcoming Events</a>
     </div>
   </div>
   <div class="hero__cues"><span>Scroll</span><div class="line"><i></i></div></div>
 </section>
 
-<!-- ================= MISSION ================= -->
-<section class="section" id="mission">
+<!-- ================= INTRO ================= -->
+<section class="section" id="about-community">
   <div class="wrap">
-    <div class="mission__grid">
-      <div class="mission__copy">
-        <p class="eyebrow reveal">Driven By A Shared Mission To</p>
-        <h2 class="reveal">Revitalize Properties. Maximize Returns. Elevate Communities.</h2>
-        <p class="lede reveal" style="margin-top:26px">We acquire, renovate, and resell underperforming residential properties into high performing assets, delivering strong, secured returns for our investment partners while improving neighborhoods and strengthening the communities we invest in.</p>
-        <p class="reveal muted" style="margin-top:18px">Every project is an opportunity to build real value, for the partners who grow with us and for the neighborhoods we work in. That is what it means to profit with purpose.</p>
+    <div class="cm-intro">
+      <div>
+        <p class="eyebrow reveal">Led With Purpose</p>
+        <h2 class="reveal">Built on relationships, mentorship, and real value.</h2>
+        <p class="lede reveal" style="margin-top:24px">Ricardo Carrillo believes the fastest way to grow in real estate is to grow with other people. So he built a community around it: regular Zooms that bring real value to investors, agents, and partners, live meetups on real properties, and networking events where genuine relationships get made.</p>
+        <p class="reveal muted" style="margin-top:18px">He leads as a mentor first. Structure, integrity, and generosity run through everything, because when the people around you win, everybody wins. That is what it means to profit with purpose.</p>
         <div class="btnrow reveal" style="margin-top:34px">
-          <a href="#join" class="btn">Join the Network <span class="ar">&rarr;</span></a>
-          <a href="#invest" class="txtlink">How partnering works <span class="ar">&rarr;</span></a>
+          <a href="#ways" class="btn">Ways to Connect <span class="ar">&rarr;</span></a>
+          <a href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" class="txtlink">Follow @pdreinv_ <span class="ar">&rarr;</span></a>
         </div>
       </div>
-      <div class="mission__media reveal">
-        <img class="m-el" data-key="bg1" alt="Purpose Driven REI renovated property">
-      </div>
-    </div>
-
-    <div class="stats reveal">
-      <div class="stats__grid">
-        <div class="stat"><b data-count="20" data-suffix="+">0</b><span>Years Experience</span></div>
-        <div class="stat"><b data-count="200" data-suffix="+">0</b><span>Flips Completed</span></div>
-        <div class="stat"><b data-count="1500" data-suffix="+">0</b><span>Homes Transacted</span></div>
-        <div class="stat"><b>#1</b><span>Purpose-Driven Community</span></div>
+      <div class="cm-intro__media reveal">
+        <img class="m-el" data-key="c4" alt="The Purpose Driven REI community together">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= TEAM ================= -->
-<section class="section" id="team" style="background:var(--stone-soft)">
-  <div class="wrap">
-    <p class="eyebrow center reveal">Our Team</p>
-    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(38px,5vw,60px);max-width:20ch">The people behind the purpose.</h2>
-    <div class="founder reveal">
-      <div class="founder__photo"><img class="f-el" data-key="ricardo" alt="Ricardo Carrillo, Founder & CEO"></div>
-      <div>
-        <h3>Ricardo Carrillo</h3>
-        <p class="role">Founder &amp; CEO</p>
-        <p>Ricardo brings 20+ years of real-world experience in real estate, actively buying, renovating, and reselling residential properties across Southern California and beyond. With more than 200 successful fix-and-flip projects closed and a growing footprint in new construction, he's seen the questions come up on every deal.</p>
-        <ul class="checks">
-          <li>20+ years of investing &amp; sales experience in SoCal</li>
-          <li>200+ successful fix &amp; flip projects closed</li>
-          <li>Active in deal sourcing, private money &amp; new construction</li>
-          <li>Founder of a community built on purpose</li>
-        </ul>
-        <a href="#invest" class="txtlink">Partner with Ricardo <span class="ar">&rarr;</span></a>
-      </div>
-    </div>
-    <div class="team__more reveal">
-      <div class="tbd">
-        <div class="tbd__photo"></div>
-        <h3>TBD</h3>
-        <p class="role">TBD</p>
-      </div>
-      <div class="tbd">
-        <div class="tbd__photo"></div>
-        <h3>TBD</h3>
-        <p class="role">TBD</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PARTNER / INVEST ================= -->
-<section class="section dark has-bg" id="invest">
-  <div class="sec-bg"><img class="b-el" data-key="bg2" alt=""></div>
+<!-- ================= WAYS TO CONNECT (image bg) ================= -->
+<section class="section dark has-bg" id="ways">
+  <div class="sec-bg"><img class="b-el" data-key="c1" alt=""></div>
   <div class="wrap">
     <div class="invest__head">
       <div>
-        <p class="eyebrow reveal">Partner With Us</p>
-        <h2 class="reveal">Private money, secured by real estate.</h2>
+        <p class="eyebrow reveal">Ways To Connect</p>
+        <h2 class="reveal">Four ways to plug in and grow.</h2>
       </div>
-      <p class="lede reveal">We create value through thoughtful renovation while delivering strong, secured returns for our investment partners. Capital is protected by real property, with a promissory note and deed of trust on every deal.</p>
+      <p class="lede reveal">Whether you learn best on a screen, on a job site, or over a handshake, there is a place for you in this community.</p>
     </div>
-
-    <div class="cards">
-      <div class="card reveal"><div class="k">10–15%</div><h3>Target Returns</h3><p>Fixed or annualized for the project term, depending on lien position and structure.</p></div>
-      <div class="card reveal"><div class="k">6–12</div><h3>Month Timelines</h3><p>Investment terms typically run 6–12 months based on scope, market, and project stage.</p></div>
-      <div class="card reveal"><div class="k">70–75%</div><h3>Loan-to-Value</h3><p>Disciplined LTV targets keep every project conservatively positioned.</p></div>
-      <div class="card reveal"><div class="k">1st / 2nd</div><h3>Lien Position</h3><p>Secured in 1st or 2nd position, depending on capital and project structure.</p></div>
-      <div class="card reveal"><div class="k">Deed</div><h3>Real Security</h3><p>Investor capital secured by real estate via promissory note &amp; recorded deed of trust.</p></div>
-      <div class="card reveal"><div class="k">70%</div><h3>2025 Success Rate</h3><p>Even in a tough 2025 market, with a limited principal guarantee within 12–24 months.</p></div>
+    <div class="cm-ways">
+      <div class="cm-way reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="14" height="13" rx="2"/><path d="M16.5 10l5-3v10l-5-3z"/></svg></div>
+        <h3>Value-Packed Zooms</h3>
+        <p>Live virtual sessions where Ricardo breaks down real deals, answers questions, and brings actionable value to investors, agents, and partners.</p>
+      </div>
+      <div class="cm-way reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Live Property Meetups</h3>
+        <p>On-site meetups at active projects where you see exactly how a real fix and flip is analyzed, negotiated, and executed, in person.</p>
+      </div>
+      <div class="cm-way reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><path d="M2.5 19a6.5 6.5 0 0 1 13 0"/><path d="M16 6.5a3 3 0 0 1 0 5.5"/><path d="M17.5 13.5a6.5 6.5 0 0 1 4 5.5"/></svg></div>
+        <h3>Networking Events</h3>
+        <p>In-person events to build genuine relationships with investors, agents, lenders, and operators who are actively closing deals.</p>
+      </div>
+      <div class="cm-way reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5-5-2.7-5 2.7 1-5.5-4-3.9 5.5-.8z"/></svg></div>
+        <h3>Mentorship &amp; Leadership</h3>
+        <p>Ricardo leads with a mentor's heart, helping the next generation of investors grow with structure, discipline, and purpose.</p>
+      </div>
     </div>
-
-    <div class="calc reveal">
-      <div class="calc__row"><span>Example investment</span><b>$50,000</b></div>
-      <div class="calc__row"><span>Typical return at 15% fixed, 2nd position</span><b>$7,500</b></div>
-      <div class="calc__row total"><span>Total paid back at completion (6–9 mo.)</span><b>$57,500</b></div>
-    </div>
-
     <div class="btnrow reveal" style="margin-top:38px">
-      <a href="#join" class="btn">Request the Investor Overview <span class="ar">&rarr;</span></a>
-      <a href="#portfolio" class="btn btn--ghost btn--onDark">See Example Projects</a>
-    </div>
-
-    <p class="disclosure reveal">Risk disclosure: Real estate investments carry uncontrollable risks like any other investment, including market shifts, economic conditions, or unforeseen natural events. Returns and principal repayment are not guaranteed. Figures shown are illustrative examples of typical structures, not an offer or a promise of performance.</p>
-  </div>
-</section>
-
-<!-- ================= PORTFOLIO ================= -->
-<section class="section" id="portfolio">
-  <div class="wrap">
-    <div class="invest__head" style="align-items:end">
-      <div>
-        <p class="eyebrow reveal">Portfolio</p>
-        <h2 class="reveal">Example projects, closed &amp; active.</h2>
-      </div>
-      <p class="lede reveal">A selection of residential renovations and new-construction projects sourced, structured, and executed by Purpose Driven REI.</p>
-    </div>
-    <div class="port__grid" id="portGrid"><!-- injected --></div>
-    <div class="btnrow reveal" style="margin-top:44px;justify-content:center">
-      <a href="#join" class="btn">Invest In The Next Project <span class="ar">&rarr;</span></a>
+      <a href="#events" class="btn">See Upcoming Events <span class="ar">&rarr;</span></a>
+      <a href="#connect-form" class="btn btn--ghost btn--onDark">Join the Community</a>
     </div>
   </div>
 </section>
 
-<!-- ================= COMMUNITY ================= -->
-<section class="section dark community" id="community">
+<!-- ================= LIVE MEETUPS FEATURE ================= -->
+<section class="section" id="meetups" style="background:var(--stone-soft)">
   <div class="wrap">
-    <div class="community__grid">
-      <div class="community__media reveal">
-        <img class="c-el" data-key="community" alt="The Purpose Driven REI community">
+    <div class="cm-meet">
+      <div class="cm-gallery reveal">
+        <figure><img class="c-el" data-key="poutdoor" alt="A fixed and flipped home exterior"></figure>
+        <figure><img class="c-el" data-key="pfixed" alt="A renovated Purpose Driven REI property"></figure>
+        <figure><img class="c-el" data-key="pconstruction" alt="A project under construction"></figure>
       </div>
       <div>
-        <p class="eyebrow reveal">The Community</p>
-        <h2 class="reveal">Real opportunities, real people, in your corner.</h2>
-        <p class="lede reveal" style="margin-top:24px">This is where deals get shared, partnerships get formed, and momentum gets built. Surround yourself with investors who are actively finding properties, structuring deals, and closing transactions, and grow faster because of it.</p>
-        <div class="btnrow reveal" style="margin-top:34px">
-          <a href="#join" class="btn">Join the Community <span class="ar">&rarr;</span></a>
-          <a href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" class="txtlink" style="color:var(--gold-2)">Follow @pdreinv_ <span class="ar">&rarr;</span></a>
+        <p class="eyebrow reveal">On The Property</p>
+        <h2 class="reveal">See a real deal, from walkthrough to close.</h2>
+        <p class="lede reveal" style="margin-top:22px">The best classroom is a live job site. At our property meetups, Ricardo walks the deal in the open, the numbers, the negotiation, the renovation plan, and the exit, so you learn how a real fix and flip actually comes together.</p>
+        <ul class="cm-tag reveal">
+          <li>Watch a live deal get analyzed and negotiated</li>
+          <li>See renovation strategy on an active project</li>
+          <li>Ask questions and meet the people doing the work</li>
+        </ul>
+        <div class="btnrow reveal" style="margin-top:32px">
+          <a href="#events" class="btn">Join the Next Meetup <span class="ar">&rarr;</span></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= STAY CONNECTED ================= -->
-<section class="section connect has-bg" id="connect">
-  <div class="sec-bg"><img class="b-el" data-key="bg1" alt=""></div>
+<!-- ================= GET CONNECTED (instagram) ================= -->
+<section class="section" id="get-connected">
   <div class="wrap">
-    <div class="connect__grid">
-      <div>
-        <p class="eyebrow reveal">Stay Connected</p>
-        <h2 class="reveal" style="color:var(--cream)">Follow the deals as they happen.</h2>
-        <p class="lede reveal" style="margin-top:20px;color:rgba(247,244,236,.82)">See active projects, renovation progress, and investor insights, straight from the field.</p>
-      </div>
-      <div class="socials reveal">
-        <a class="social" href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" aria-label="Instagram @pdreinv_">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.86s0 3.6-.07 4.86c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.86.07s-3.6 0-4.86-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.86c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5 0-4.75.07-.9.04-1.38.19-1.7.31-.43.17-.73.37-1.05.69-.32.32-.52.62-.69 1.05-.12.32-.27.8-.31 1.7C3.13 8.5 3.13 8.85 3.13 12s0 3.5.07 4.75c.04.9.19 1.38.31 1.7.17.43.37.73.69 1.05.32.32.62.52 1.05.69.32.12.8.27 1.7.31 1.25.07 1.6.07 4.75.07s3.5 0 4.75-.07c.9-.04 1.38-.19 1.7-.31.43-.17.73-.37 1.05-.69.32-.32.52-.62.69-1.05.12-.32.27-.8.31-1.7.07-1.25.07-1.6.07-4.75s0-3.5-.07-4.75c-.04-.9-.19-1.38-.31-1.7a2.8 2.8 0 0 0-.69-1.05 2.8 2.8 0 0 0-1.05-.69c-.32-.12-.8-.27-1.7-.31C15.5 4 15.15 4 12 4Zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06Zm0 8.14A3.2 3.2 0 1 0 8.8 12 3.2 3.2 0 0 0 12 15.2Zm5.14-8.34a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15Z"/></svg>
-          <b>@pdreinv_</b>
-        </a>
-        <a class="social" href="https://www.facebook.com/ricardo.realtor909/" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.3-.04-1.3-.13-2.47-.13-2.44 0-4.11 1.49-4.11 4.23v2.36H7.7V13h2.72v8Z"/></svg>
-          <b>Facebook</b>
-        </a>
-      </div>
+    <p class="eyebrow center reveal">Get Connected</p>
+    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(10px,2vw,18px);max-width:20ch">See the community in action.</h2>
+    <p class="lede reveal" style="text-align:center;margin:0 auto;max-width:60ch">Real moments from our Zooms, meetups, and networking events. Follow along on Instagram and come be part of the next one.</p>
+    <div class="cm-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Da5e1PfKAR7/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/Da5e1PfKAR7/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/Da5e1PfKAR7/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Maria Flores (@homesbyflores)</a></p></div></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZ8nafDP938/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DZ8nafDP938/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DZ8nafDP938/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Sal Ortiz | Salifornia Funding (@salifornia)</a></p></div></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZVOFD6PxAI/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DZVOFD6PxAI/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DZVOFD6PxAI/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Purpose Driven REI (@pdreinv_)</a></p></div></blockquote>
+    </div>
+    <div class="btnrow reveal" style="justify-content:center;margin-top:clamp(36px,4vw,50px)">
+      <a href="https://www.instagram.com/pdreinv_/" target="_blank" rel="noopener" class="btn">Follow @pdreinv_ <span class="ar">&rarr;</span></a>
     </div>
   </div>
 </section>
 
-<!-- ================= JOIN OUR NETWORK (FORM) ================= -->
-<section class="section join" id="join">
+<!-- ================= UPCOMING EVENTS / REGISTER (image bg) ================= -->
+<section class="section dark has-bg cm-events" id="events">
+  <div class="sec-bg"><img class="b-el" data-key="c2" alt=""></div>
+  <div class="wrap">
+    <p class="eyebrow center reveal">Upcoming Events</p>
+    <h2 class="reveal">Stay connected. Never miss the next one.</h2>
+    <p class="lede reveal">New Zooms, live property meetups, and networking events are always on the calendar. Register to see the details of the next meetup, Zoom, or networking event and save your spot.</p>
+    <div class="btnrow reveal">
+      <a href="/register" class="btn">Register for Upcoming Events <span class="ar">&rarr;</span></a>
+      <a href="#connect-form" class="btn btn--ghost btn--onDark">Get Announcements</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAY CONNECTED FORM ================= -->
+<section class="section join" id="connect-form">
   <div class="wrap">
     <div class="join__grid">
       <div>
-        <p class="eyebrow reveal">Join Our Network</p>
-        <h2 class="reveal">Let's build something with purpose.</h2>
-        <p class="lede reveal" style="margin-top:22px">Tell us where you're headed: investing capital, partnering on deals, or joining the community. We'll follow up with the right next step, including our full Private Money Investment Overview.</p>
+        <p class="eyebrow reveal">Stay Connected</p>
+        <h2 class="reveal">Be the first to know.</h2>
+        <p class="lede reveal" style="margin-top:22px">Drop your details and we will keep you in the loop on upcoming meetups, Zooms, and networking events, plus the occasional deal insight straight from the field.</p>
         <ul class="checks reveal" style="margin-top:30px">
-          <li>Straight answers on what's actually working in this market</li>
-          <li>Access to active, secured investment opportunities</li>
-          <li>A network that sources, structures, and closes together</li>
+          <li>Early announcements for every event</li>
+          <li>Invites to live property meetups</li>
+          <li>Value and insights from a community that does the work</li>
         </ul>
+        <p class="reveal muted" style="font-size:16px;margin-top:26px">Ready to register for the next one? <a href="/register" class="txtlink" style="font-size:14px">See upcoming events <span class="ar">&rarr;</span></a></p>
       </div>
 
-      <form class="form reveal" id="joinForm" novalidate>
+      <form class="form reveal" id="connectForm" novalidate>
         <div class="form__body">
           <div class="form__two">
             <div class="field"><label for="fn">First name</label><input id="fn" name="firstName" type="text" autocomplete="given-name" required></div>
@@ -543,23 +559,24 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
             <div class="field"><label for="ph">Phone</label><input id="ph" name="phone" type="tel" autocomplete="tel"></div>
           </div>
           <div class="field">
-            <label for="it">I'm interested in</label>
+            <label for="it">I'm joining as</label>
             <select id="it" name="interest" required>
-              <option value="" selected disabled>Select an option</option>
-              <option>Investing private money</option>
-              <option>Partnering on a deal (JV)</option>
-              <option>Joining the community</option>
-              <option>Something else</option>
+              <option value="" selected disabled>Select one</option>
+              <option>Investor</option>
+              <option>Real estate agent</option>
+              <option>Partner or lender</option>
+              <option>Here to learn</option>
             </select>
           </div>
-          <div class="field"><label for="ms">Message</label><textarea id="ms" name="message" placeholder="Tell us a little about your goals…"></textarea></div>
-          <button type="submit" class="btn" style="width:100%;justify-content:center">Send My Details <span class="ar">&rarr;</span></button>
-          <p class="muted" style="font-size:13px;margin:16px 0 0;text-align:center">By submitting you agree to be contacted by Purpose Driven REI. This is not an offer to sell securities.</p>
+          <div class="field"><label for="ms">Anything you'd like us to know?</label><textarea id="ms" name="message" placeholder="What you're hoping to get out of the community…"></textarea></div>
+          <button type="submit" class="btn" style="width:100%;justify-content:center">Join the Community <span class="ar">&rarr;</span></button>
+          <p class="muted" style="font-size:13px;margin:16px 0 0;text-align:center">By submitting you agree to be contacted by Purpose Driven REI about community events and updates.</p>
         </div>
-        <div class="form__ok" id="formOk">
+        <div class="form__ok" id="connectFormOk">
           <div class="ok-ic">&#10003;</div>
-          <h3 style="font-size:26px">Thank you, we're on it.</h3>
-          <p class="muted" style="margin-top:10px">A member of the Purpose Driven REI team will reach out shortly with your next step.</p>
+          <h3 style="font-size:26px">You're in. Welcome.</h3>
+          <p class="muted" style="margin-top:10px">Watch your inbox for upcoming events and meetups. To see what's next right now, head to our events page.</p>
+          <div class="btnrow" style="justify-content:center;margin-top:20px"><a href="/register" class="btn">See Upcoming Events <span class="ar">&rarr;</span></a></div>
         </div>
       </form>
     </div>
@@ -581,9 +598,9 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
         <h4>Explore</h4>
         <ul>
           <li><a class="f-link" href="/mission">Our Mission</a></li>
-          <li><a class="f-link" href="#team">Our Team</a></li>
+          <li><a class="f-link" href="/#team">Our Team</a></li>
           <li><a class="f-link" href="/invest">Invest</a></li>
-          <li><a class="f-link" href="#portfolio">Portfolio</a></li>
+          <li><a class="f-link" href="/#portfolio">Portfolio</a></li>
           <li><a class="f-link" href="/community">Community</a></li>
         </ul>
       </div>
@@ -600,7 +617,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       <span>© <span id="yr"></span> Purpose Driven REI. All rights reserved.</span>
       <span>Southern California · Nationwide</span>
     </div>
-    <p class="footer__disc">Investment figures are illustrative examples of typical structures and do not constitute an offer to sell or a solicitation to buy any security. Real estate investments carry risk, including market shifts, economic conditions, and unforeseen events; returns and principal repayment are not guaranteed. Past performance is not indicative of future results.</p>
+    <p class="footer__disc">Community events are hosted by Purpose Driven REI. This page is for informational purposes only and does not constitute an offer to sell or a solicitation to buy any security. Real estate investments carry risk; returns and principal repayment are not guaranteed.</p>
   </div>
 </footer>
 
@@ -630,91 +647,50 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 </script>
 <script>
 (function(){
-  /* ============ MEDIA CONFIG ============
-     Real client assets (load in GoHighLevel & any browser). In the CSP-locked
-     preview these are swapped for in-brand placeholders automatically. */
+  /* ============ MEDIA CONFIG ============ */
   var USE_PLACEHOLDERS = false;
   var A = {
     logo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd50d4376904eac229652f.png",
-    heroVideo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c33db497cd89d245e0219.mp4",
-    community:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd42271774270f1d8640f9.jpeg",
-    bg1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879188345b27e11fea8.jpg",
-    bg2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879497cd89d244ff594.jpg",
-    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a45689080abc5e234418ecd.jpeg"
+    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a45689080abc5e234418ecd.jpeg",
+    c1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a761fff9a9c7792ea93da64.png",
+    c2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a761fff7a46c6dc5163a89c.png",
+    c3:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a7234d90629193ed56d3690.jpg",
+    c4:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd42271774270f1d8640f9.jpeg",
+    pfixed:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c285e32db2dd157e6dbeb.webp",
+    pconstruction:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a762184e15da8bdd82e638f.jpg",
+    poutdoor:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a7621b79a9c7792ea950b63.jpg"
   };
-  var PROPS = [
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c285e32db2dd157e6dbeb.webp",addr:"27786 Matterhorn Dr",loc:"Lake Arrowhead, CA 92352",status:"Active"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849a4c8a1a2c38cd226.webp",addr:"617 E Guenther St",loc:"San Antonio, TX 78210",status:"Active"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855cf81b06f05379480.webp",addr:"6117 Arroyo Rd Unit 4",loc:"Palm Springs, CA 92264",status:"Active"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855497cd89d244ff2cc.webp",addr:"72555 Nicolson Dr",loc:"Twentynine Palms, CA 92277",status:"Sold 02/26"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849cf81b06f053793cd.webp",addr:"51640 Avenida Diaz",loc:"La Quinta, CA 92253",status:"Sold 12/25"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849a4c8a1a2c38cd22b.webp",addr:"3398 Condalia Ave",loc:"Yucca Valley, CA 92284",status:"Sold 11/25"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849cf81b06f053793c8.webp",addr:"28062 Waterman Rd",loc:"Barstow, CA 92311",status:"Sold 10/25"},
-    {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2849188345b27e1163b1.webp",addr:"31202 Delwood St",loc:"Val Verde, CA 91384",status:"Sold 10/25"}
-  ];
 
-  /* ---------- Hydrate media (real or placeholder) ---------- */
   function phLabel(t){return '<span class="ph-label">'+t+'</span>';}
   function hydrate(){
-    // logos
     document.querySelectorAll('img[data-key="logo"]').forEach(function(img){
       if(USE_PLACEHOLDERS){img.style.display='none';img.nextElementSibling.style.display='inline';}
       else{img.src=A.logo;}
     });
-    // hero video
-    var v=document.querySelector('video[data-key="heroVideo"]');
-    if(v){
-      if(USE_PLACEHOLDERS){
-        var d=document.createElement('div');d.className='ph-fill is-ph';d.innerHTML=phLabel('Hero video background');
-        v.parentNode.replaceChild(d,v);
-      }else{v.src=A.heroVideo;}
-    }
-    // simple <img data-key> (bg1, ricardo, community)
     document.querySelectorAll('.m-el,.f-el,.c-el,.b-el').forEach(function(img){
       var k=img.getAttribute('data-key');
       if(USE_PLACEHOLDERS){
         img.classList.add('is-ph');
-        var labels={bg1:'Renovated property',bg2:'Renovated property',ricardo:'Ricardo Carrillo',community:'Community group photo'};
+        var labels={c1:'Community',c2:'Networking event',c3:'The community',c4:'Community group',pfixed:'Fixed & flipped home',pconstruction:'Under construction',poutdoor:'Renovated home',ricardo:'Ricardo Carrillo'};
         img.removeAttribute('src');
         img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
       }else{img.src=A[k];}
     });
-    // portfolio
-    var grid=document.getElementById('portGrid');
-    PROPS.forEach(function(p,i){
-      var sold=/sold/i.test(p.status);
-      var media=USE_PLACEHOLDERS
-        ? '<div class="p-el is-ph">'+phLabel((i+1<10?'0':'')+(i+1))+'</div>'
-        : '<img class="p-el" loading="lazy" src="'+p.img+'" alt="'+p.addr+', '+p.loc+'">';
-      var el=document.createElement('a');
-      el.className='prop reveal';el.href='#join';
-      el.innerHTML='<span class="badge '+(sold?'sold':'active')+'">'+p.status+'</span>'+media+
-        '<span class="prop__grad"></span><span class="prop__meta"><span class="addr">'+p.addr+'</span><span class="loc">'+p.loc+'</span></span>';
-      grid.appendChild(el);
-    });
   }
   hydrate();
-  document.getElementById('yr').textContent=new Date().getFullYear();
+  var yrEl=document.getElementById('yr'); if(yrEl){yrEl.textContent=new Date().getFullYear();}
 
   /* ---------- Nav: solid on scroll ---------- */
   var nav=document.getElementById('nav');
-  function onScroll(){nav.classList.toggle('solid',window.scrollY>40);}
+  function onScroll(){if(nav)nav.classList.toggle('solid',window.scrollY>40);}
   onScroll();window.addEventListener('scroll',onScroll,{passive:true});
 
-  /* ---------- Mobile menu ----------
-     Open/close is 100% CSS (checkbox #pdrei-navtoggle + burger/close labels), so
-     it works even if this script is stripped. JS is enhancement only: relocate
-     the toggle + menu to <body> (escapes GHL transformed wrappers so fixed is
-     viewport-relative and above all page content), close after a link tap, and
-     close on Escape. The toggle is moved right before the menu so the CSS
-     sibling selector keeps matching. */
+  /* ---------- Mobile menu (relocate to <body> to escape GHL wrappers) ---------- */
   var navToggle=document.getElementById('pdrei-navtoggle');
   var menuEl=document.getElementById('pdrei-menu');
   if(navToggle&&menuEl){
     try{document.body.appendChild(navToggle);document.body.appendChild(menuEl);}catch(e){}
-    menuEl.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click',function(){navToggle.checked=false;});
-    });
+    menuEl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){navToggle.checked=false;});});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')navToggle.checked=false;});
   }
 
@@ -723,21 +699,23 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
     b.addEventListener('click',function(){b.classList.add('clicked');setTimeout(function(){b.classList.remove('clicked');},260);});
   });
 
-  /* ---------- Form ---------- */
-  var form=document.getElementById('joinForm');
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var ok=true;
-    form.querySelectorAll('[required]').forEach(function(f){
-      if(!f.value){ok=false;f.style.borderColor='#b4562f';f.style.boxShadow='0 0 0 4px rgba(180,86,47,.14)';}
-      else{f.style.borderColor='';f.style.boxShadow='';}
+  /* ---------- Stay Connected form ---------- */
+  var form=document.getElementById('connectForm');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var ok=true;
+      form.querySelectorAll('[required]').forEach(function(f){
+        if(!f.value){ok=false;f.style.borderColor='#b4562f';f.style.boxShadow='0 0 0 4px rgba(180,86,47,.14)';}
+        else{f.style.borderColor='';f.style.boxShadow='';}
+      });
+      if(!ok)return;
+      form.classList.add('sent');
+      var okEl=document.getElementById('connectFormOk');okEl.classList.add('show');
+      if(window.gsap){gsap.fromTo(okEl,{opacity:0,y:16},{opacity:1,y:0,duration:.6,ease:'power2.out'});}
+      /* In GoHighLevel: replace this handler with a native GHL form/webhook. */
     });
-    if(!ok)return;
-    form.classList.add('sent');
-    var okEl=document.getElementById('formOk');okEl.classList.add('show');
-    if(window.gsap){gsap.fromTo(okEl,{opacity:0,y:16},{opacity:1,y:0,duration:.6,ease:'power2.out'});}
-    /* In GoHighLevel: replace this handler with a native GHL form/ webhook. */
-  });
+  }
 
   /* ---------- GSAP animations ---------- */
   if(window.gsap){
@@ -745,39 +723,20 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
     if(window.ScrollTrigger)gsap.registerPlugin(ScrollTrigger);
     var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-    // hero intro
     gsap.set('.hero [data-h]',{opacity:0,y:34});
     gsap.to('.hero [data-h]',{opacity:1,y:0,duration:1,ease:'power3.out',stagger:.12,delay:.25});
 
     if(!rm && window.ScrollTrigger){
-      // reveals
       gsap.utils.toArray('.reveal').forEach(function(el){
-        gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',
-          scrollTrigger:{trigger:el,start:'top 86%'}});
+        gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
       });
-      // stagger property cards
-      ScrollTrigger.batch('.prop',{start:'top 90%',onEnter:function(b){gsap.to(b,{opacity:1,y:0,duration:.7,stagger:.08,ease:'power2.out'});}});
-
-      // subtle image parallax
-      gsap.utils.toArray('.m-el,.c-el,.f-el').forEach(function(img){
-        gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',
-          scrollTrigger:{trigger:img.closest('div'),start:'top bottom',end:'bottom top',scrub:true}});
-      });
-
-      // count-up stats
-      gsap.utils.toArray('[data-count]').forEach(function(el){
-        var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',o={v:0};
-        ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:function(){
-          gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:function(){
-            el.textContent=Math.round(o.v).toLocaleString()+suf;}});
-        }});
+      gsap.utils.toArray('.m-el,.c-el').forEach(function(img){
+        gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:img.closest('figure,div'),start:'top bottom',end:'bottom top',scrub:true}});
       });
     }else{
       gsap.set('.reveal',{opacity:1,y:0});
-      document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=(+el.getAttribute('data-count')).toLocaleString()+(el.getAttribute('data-suffix')||'');});
     }
 
-    // magnetic buttons (pointer only)
     if(!rm && matchMedia('(hover:hover)').matches){
       document.querySelectorAll('.btn').forEach(function(b){
         var xTo=gsap.quickTo(b,'x',{duration:.5,ease:'power3'}),yTo=gsap.quickTo(b,'y',{duration:.5,ease:'power3'});
@@ -786,10 +745,9 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       });
     }
   }else{
-    // no GSAP: reveal everything, fill counters
     document.querySelectorAll('.reveal').forEach(function(e){e.style.opacity=1;e.style.transform='none';});
-    document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=(+el.getAttribute('data-count')).toLocaleString()+(el.getAttribute('data-suffix')||'');});
   }
 })();
 </script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </div>
