@@ -108,7 +108,8 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--green-2)}
 .hero__media{position:absolute;inset:0;z-index:0}
-.hero__media video,.hero__media .ph-fill{width:100%;height:100%;object-fit:cover}
+.hero__media video,.hero__media img,.hero__media .b-el,.hero__media .ph-fill{width:100%;height:100%;object-fit:cover}
+.hero__media .b-el.is-ph{width:100%;height:100%}
 .hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,30,26,.55) 0%,rgba(9,30,26,.25) 40%,rgba(9,30,26,.86) 100%)}
 .hero__in{position:relative;z-index:2;width:100%;padding-bottom:clamp(56px,9vh,110px);padding-top:160px}
 .hero__loc{color:var(--gold);font-size:14px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 26px;display:flex;gap:12px;align-items:center}
@@ -341,9 +342,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
-  <div class="hero__media">
-    <video data-key="heroVideo" autoplay muted loop playsinline preload="metadata"></video>
-  </div>
+  <div class="hero__media"><img class="b-el" data-key="heroImg" alt="Purpose Driven REI renovation"></div>
   <div class="wrap hero__in">
     <h1 data-h>Real Estate That <em>Profits</em><br>With Purpose.</h1>
     <p class="hero__sub" data-h>Purpose Driven REI acquires, renovates, and resells residential property across Southern California and beyond, building real value for the investors and partners who grow with us.</p>
@@ -636,7 +635,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   var USE_PLACEHOLDERS = false;
   var A = {
     logo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd50d4376904eac229652f.png",
-    heroVideo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c33db497cd89d245e0219.mp4",
+    heroImg:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a762184e15da8bdd82e638f.jpg",
     community:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd42271774270f1d8640f9.jpeg",
     bg1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879188345b27e11fea8.jpg",
     bg2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879497cd89d244ff594.jpg",
@@ -661,20 +660,12 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       if(USE_PLACEHOLDERS){img.style.display='none';img.nextElementSibling.style.display='inline';}
       else{img.src=A.logo;}
     });
-    // hero video
-    var v=document.querySelector('video[data-key="heroVideo"]');
-    if(v){
-      if(USE_PLACEHOLDERS){
-        var d=document.createElement('div');d.className='ph-fill is-ph';d.innerHTML=phLabel('Hero video background');
-        v.parentNode.replaceChild(d,v);
-      }else{v.src=A.heroVideo;}
-    }
-    // simple <img data-key> (bg1, ricardo, community)
+    // simple <img data-key> (heroImg, bg1, ricardo, community)
     document.querySelectorAll('.m-el,.f-el,.c-el,.b-el').forEach(function(img){
       var k=img.getAttribute('data-key');
       if(USE_PLACEHOLDERS){
         img.classList.add('is-ph');
-        var labels={bg1:'Renovated property',bg2:'Renovated property',ricardo:'Ricardo Carrillo',community:'Community group photo'};
+        var labels={heroImg:'Purpose Driven REI renovation',bg1:'Renovated property',bg2:'Renovated property',ricardo:'Ricardo Carrillo',community:'Community group photo'};
         img.removeAttribute('src');
         img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
       }else{img.src=A[k];}
