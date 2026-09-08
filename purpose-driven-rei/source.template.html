@@ -1,5 +1,5 @@
 <!-- ============================================================================
-     PURPOSE DRIVEN REI - Home (single self-contained block for GoHighLevel)
+     PURPOSE DRIVEN REI - Mission / Main page (single self-contained block for GoHighLevel)
      Palette  green #123C35 · ink #202624 · cream #F7F4EC · gold #C7A76A · stone #B7AA98
      Type     IvyPresto Display (display) + Manrope (ui/body)
      Motion   GSAP + ScrollTrigger (inlined)
@@ -176,11 +176,15 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 .member h3{font-size:24px}
 .member .soon{color:var(--stone);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
 .founder{max-width:1040px;margin:0 auto}
-.team__more{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);max-width:720px;margin:clamp(46px,6vw,72px) auto 0}
+.team__more{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,40px);max-width:1000px;margin:clamp(46px,6vw,72px) auto 0}
 .tbd{text-align:center}
-.tbd__photo{aspect-ratio:3/4;border-radius:var(--r);background:var(--stone-soft);border:1px solid var(--stone);box-shadow:0 30px 70px -50px rgba(18,60,53,.55)}
-.tbd h3{font-size:clamp(24px,3vw,30px);margin-top:22px}
+.tbd__photo{position:relative;aspect-ratio:3/4;border-radius:var(--r);background:var(--stone-soft);border:1px solid var(--stone);box-shadow:0 30px 70px -50px rgba(18,60,53,.55);overflow:hidden}
+.tbd__photo img,.tbd__photo .f-el{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.tbd:hover .tbd__photo img{transform:scale(1.05)}
+.tbd h3{font-size:clamp(22px,2.6vw,28px);margin-top:22px}
 .tbd .role{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-top:10px}
+@media(max-width:760px){.team__more{grid-template-columns:1fr 1fr;max-width:640px}}
+@media(max-width:480px){.team__more{grid-template-columns:1fr;max-width:320px}}
 
 /* Partner / Invest */
 .invest__head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
@@ -311,7 +315,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       <span class="mark" style="display:none">Purpose&nbsp;Driven&nbsp;REI</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a class="nav__link" href="/mission">Mission</a>
+      <a class="nav__link" href="#mission">Mission</a>
       <a class="nav__link" href="#team">Team</a>
       <a class="nav__link" href="/invest">Invest</a>
       <a class="nav__link" href="#portfolio">Portfolio</a>
@@ -329,7 +333,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   <label class="pdrei-menu__close" for="pdrei-navtoggle" role="button" aria-label="Close menu" tabindex="0">&times;</label>
   <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
     <a class="pdrei-menu__link" href="#home"><span class="idx">01</span> Home</a>
-    <a class="pdrei-menu__link" href="/mission"><span class="idx">02</span> Our Mission</a>
+    <a class="pdrei-menu__link" href="#mission"><span class="idx">02</span> Our Mission</a>
     <a class="pdrei-menu__link" href="#team"><span class="idx">03</span> Our Team</a>
     <a class="pdrei-menu__link" href="/invest"><span class="idx">04</span> Invest</a>
     <a class="pdrei-menu__link" href="#portfolio"><span class="idx">05</span> Portfolio</a>
@@ -393,7 +397,8 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       <div>
         <h3>Ricardo Carrillo</h3>
         <p class="role">Founder &amp; CEO</p>
-        <p>Ricardo brings 20+ years of real-world experience in real estate, actively buying, renovating, and reselling residential properties across Southern California and beyond. With more than 200 successful fix-and-flip projects closed and a growing footprint in new construction, he's seen the questions come up on every deal.</p>
+        <p>Ricardo brings 20+ years of real-world experience in real estate, actively buying, renovating, and reselling residential properties across Southern California and beyond. With more than 200 successful fix-and-flip projects closed and a growing footprint in new construction, he has seen the questions come up on every deal.</p>
+        <p style="margin-top:16px">His approach is simple: source the right properties, structure every deal conservatively, protect investor capital with real security, and treat every project as a chance to leave a neighborhood better than he found it.</p>
         <ul class="checks">
           <li>20+ years of investing &amp; sales experience in SoCal</li>
           <li>200+ successful fix &amp; flip projects closed</li>
@@ -404,6 +409,11 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       </div>
     </div>
     <div class="team__more reveal">
+      <div class="tbd">
+        <div class="tbd__photo"><img class="f-el" data-key="brandon" alt="Brandon"></div>
+        <h3>Brandon</h3>
+        <p class="role">Team Member</p>
+      </div>
       <div class="tbd">
         <div class="tbd__photo"></div>
         <h3>TBD</h3>
@@ -578,7 +588,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       <div>
         <h4>Explore</h4>
         <ul>
-          <li><a class="f-link" href="/mission">Our Mission</a></li>
+          <li><a class="f-link" href="#mission">Our Mission</a></li>
           <li><a class="f-link" href="#team">Our Team</a></li>
           <li><a class="f-link" href="/invest">Invest</a></li>
           <li><a class="f-link" href="#portfolio">Portfolio</a></li>
@@ -616,7 +626,8 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
     community:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd42271774270f1d8640f9.jpeg",
     bg1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879188345b27e11fea8.jpg",
     bg2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879497cd89d244ff594.jpg",
-    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a45689080abc5e234418ecd.jpeg"
+    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6aa09abafb76acb4a93abf33.png",
+    brandon:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6aa09b7da08d19d9275cee5f.png"
   };
   var PROPS = [
     {img:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c285e32db2dd157e6dbeb.webp",addr:"27786 Matterhorn Dr",loc:"Lake Arrowhead, CA 92352",status:"Active"},
@@ -642,7 +653,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       var k=img.getAttribute('data-key');
       if(USE_PLACEHOLDERS){
         img.classList.add('is-ph');
-        var labels={heroImg:'Purpose Driven REI renovation',bg1:'Renovated property',bg2:'Renovated property',ricardo:'Ricardo Carrillo',community:'Community group photo'};
+        var labels={heroImg:'Purpose Driven REI renovation',bg1:'Renovated property',bg2:'Renovated property',ricardo:'Ricardo Carrillo',brandon:'Brandon',community:'Community group photo'};
         img.removeAttribute('src');
         img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
       }else{img.src=A[k];}

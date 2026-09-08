@@ -6,8 +6,12 @@ element. Each page is one paste-in block: inlined GSAP + ScrollTrigger, inlined
 fonts, all styles/scripts, real media on `assets.cdn.filesafe.space`.
 
 ## Pages
-- **`index.html`** — the **Home** page (paste into the Home page's Code block).
-- **`mission.html`** — the **Mission / About** page (GHL page slug `mission`).
+- **`index.html`** — the **main / Mission page** (paste into the Home page's Code
+  block). Home and Mission are now combined into this single powerful landing
+  page; the "Mission" nav item scrolls to its `#mission` section. This is the
+  page to publish at `/`.
+- **`mission.html`** — legacy standalone Mission page, superseded by `index.html`.
+  Kept for reference; you can delete the separate `/mission` GHL page.
 - **`invest.html`** — the **Invest** page (GHL page slug `invest`).
 - **`community.html`** — the **Community** page (GHL page slug `community`). Embeds
   three Instagram reels (via `instagram.com/embed.js`) and links the "Register"

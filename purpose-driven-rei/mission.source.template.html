@@ -1,5 +1,5 @@
 <!-- ============================================================================
-     PURPOSE DRIVEN REI - Home (single self-contained block for GoHighLevel)
+     PURPOSE DRIVEN REI - Mission / Main page (single self-contained block for GoHighLevel)
      Palette  green #123C35 · ink #202624 · cream #F7F4EC · gold #C7A76A · stone #B7AA98
      Type     IvyPresto Display (display) + Manrope (ui/body)
      Motion   GSAP + ScrollTrigger (inlined)
@@ -107,8 +107,9 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--green-2)}
 .hero__media{position:absolute;inset:0;z-index:0}
-.hero__media video,.hero__media .ph-fill{width:100%;height:100%;object-fit:cover}
-.hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,30,26,.55) 0%,rgba(9,30,26,.25) 40%,rgba(9,30,26,.86) 100%)}
+.hero__media video,.hero__media img,.hero__media .b-el,.hero__media .ph-fill{width:100%;height:100%;object-fit:cover}
+.hero__media .b-el.is-ph{width:100%;height:100%}
+.hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,16,14,.78) 0%,rgba(6,16,14,.66) 42%,rgba(6,16,14,.94) 100%)}
 .hero__in{position:relative;z-index:2;width:100%;padding-bottom:clamp(56px,9vh,110px);padding-top:160px}
 .hero__loc{color:var(--gold);font-size:14px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 26px;display:flex;gap:12px;align-items:center}
 .hero__loc::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(199,167,106,.6);animation:pulse 2.6s infinite}
@@ -175,11 +176,15 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 .member h3{font-size:24px}
 .member .soon{color:var(--stone);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
 .founder{max-width:1040px;margin:0 auto}
-.team__more{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);max-width:720px;margin:clamp(46px,6vw,72px) auto 0}
+.team__more{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,40px);max-width:1000px;margin:clamp(46px,6vw,72px) auto 0}
 .tbd{text-align:center}
-.tbd__photo{aspect-ratio:3/4;border-radius:var(--r);background:var(--stone-soft);border:1px solid var(--stone);box-shadow:0 30px 70px -50px rgba(18,60,53,.55)}
-.tbd h3{font-size:clamp(24px,3vw,30px);margin-top:22px}
+.tbd__photo{position:relative;aspect-ratio:3/4;border-radius:var(--r);background:var(--stone-soft);border:1px solid var(--stone);box-shadow:0 30px 70px -50px rgba(18,60,53,.55);overflow:hidden}
+.tbd__photo img,.tbd__photo .f-el{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.tbd:hover .tbd__photo img{transform:scale(1.05)}
+.tbd h3{font-size:clamp(22px,2.6vw,28px);margin-top:22px}
 .tbd .role{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-top:10px}
+@media(max-width:760px){.team__more{grid-template-columns:1fr 1fr;max-width:640px}}
+@media(max-width:480px){.team__more{grid-template-columns:1fr;max-width:320px}}
 
 /* Partner / Invest */
 .invest__head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
@@ -343,7 +348,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       <span class="mark" style="display:none">Purpose&nbsp;Driven&nbsp;REI</span>
     </a>
     <nav class="nav__links" aria-label="Primary">
-      <a class="nav__link" href="/mission">Mission</a>
+      <a class="nav__link" href="/#mission">Mission</a>
       <a class="nav__link" href="/#team">Team</a>
       <a class="nav__link" href="/invest">Invest</a>
       <a class="nav__link" href="/#portfolio">Portfolio</a>
@@ -361,7 +366,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   <label class="pdrei-menu__close" for="pdrei-navtoggle" role="button" aria-label="Close menu" tabindex="0">&times;</label>
   <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
     <a class="pdrei-menu__link" href="/"><span class="idx">01</span> Home</a>
-    <a class="pdrei-menu__link" href="/mission"><span class="idx">02</span> Our Mission</a>
+    <a class="pdrei-menu__link" href="/#mission"><span class="idx">02</span> Our Mission</a>
     <a class="pdrei-menu__link" href="/#team"><span class="idx">03</span> Our Team</a>
     <a class="pdrei-menu__link" href="/invest"><span class="idx">04</span> Invest</a>
     <a class="pdrei-menu__link" href="/#portfolio"><span class="idx">05</span> Portfolio</a>
@@ -528,7 +533,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       <div>
         <h4>Explore</h4>
         <ul>
-          <li><a class="f-link" href="/mission">Our Mission</a></li>
+          <li><a class="f-link" href="/#mission">Our Mission</a></li>
           <li><a class="f-link" href="/#team">Our Team</a></li>
           <li><a class="f-link" href="/invest">Invest</a></li>
           <li><a class="f-link" href="/#portfolio">Portfolio</a></li>
@@ -560,7 +565,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   var USE_PLACEHOLDERS = /*__PLACEHOLDER_FLAG__*/ false;
   var A = {
     logo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd50d4376904eac229652f.png",
-    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a45689080abc5e234418ecd.jpeg",
+    ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6aa09abafb76acb4a93abf33.png",
     img1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c285e32db2dd157e6dbeb.webp",
     img2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2855cf81b06f05379480.webp",
     img3:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd4600ef1dbfe76e0d3e99.jpg",
