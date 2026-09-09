@@ -142,6 +142,14 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 .cta-band h2{margin:0 auto;max-width:20ch}
 .cta-band .lede{margin:22px auto 0;max-width:62ch}
 .cta-band .btnrow{justify-content:center;margin-top:34px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(40px,5vw,64px)}
+.pillar{background:rgba(247,244,236,.04);border:1px solid rgba(199,167,106,.28);border-radius:var(--r);padding:34px 30px;transition:transform .5s var(--ease),border-color .5s,background .5s}
+.pillar:hover{transform:translateY(-6px);border-color:var(--gold);background:rgba(199,167,106,.06)}
+.pillar .pn{font-family:var(--serif);font-size:clamp(30px,3.4vw,40px);color:var(--gold-2);line-height:1}
+.pillar h3{font-size:21px;margin:16px 0 10px;color:var(--cream)}
+.pillar p{font-size:16px;color:rgba(247,244,236,.75);margin:0}
+@media(max-width:900px){.pillars{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.pillars{grid-template-columns:1fr}}
 .sec-bg .ph-label{display:none}
 
 /* Mission */
@@ -354,7 +362,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
     </a>
     <nav class="nav__links" aria-label="Primary">
       <a class="nav__link" href="/#mission">Mission</a>
-      <a class="nav__link" href="/#team">Team</a>
+      <a class="nav__link" href="/team">Team</a>
       <a class="nav__link" href="/invest">Invest</a>
       <a class="nav__link" href="/#portfolio">Portfolio</a>
       <a class="nav__link" href="/community">Community</a>
@@ -371,7 +379,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   <label class="pdrei-menu__close" for="pdrei-navtoggle" role="button" aria-label="Close menu" tabindex="0">&times;</label>
   <nav class="wrap" aria-label="Full menu" style="display:flex;flex-direction:column">
     <a class="pdrei-menu__link" href="/#mission"><span class="idx">01</span> Our Mission</a>
-    <a class="pdrei-menu__link" href="/#team"><span class="idx">02</span> Our Team</a>
+    <a class="pdrei-menu__link" href="/team"><span class="idx">02</span> Our Team</a>
     <a class="pdrei-menu__link" href="/invest"><span class="idx">03</span> Invest</a>
     <a class="pdrei-menu__link" href="/#portfolio"><span class="idx">04</span> Portfolio</a>
     <a class="pdrei-menu__link" href="/community"><span class="idx">05</span> Community</a>
@@ -538,7 +546,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
         <h4>Explore</h4>
         <ul>
           <li><a class="f-link" href="/#mission">Our Mission</a></li>
-          <li><a class="f-link" href="/#team">Our Team</a></li>
+          <li><a class="f-link" href="/team">Our Team</a></li>
           <li><a class="f-link" href="/invest">Invest</a></li>
           <li><a class="f-link" href="/#portfolio">Portfolio</a></li>
           <li><a class="f-link" href="/community">Community</a></li>

@@ -12,6 +12,11 @@ fonts, all styles/scripts, real media on `assets.cdn.filesafe.space`.
   page to publish at `/`.
 - **`mission.html`** — legacy standalone Mission page, superseded by `index.html`.
   Kept for reference; you can delete the separate `/mission` GHL page.
+- **`team.html`** — the **Team** page (GHL page slug `team`). Full deep-dive:
+  hero, values/culture, leadership (Ricardo + Brandon + TBD cards), and a
+  "Join the Team" inquiry form. The main page keeps a short team teaser that
+  links here via "Meet the Full Team", and the "Team" nav item now points to
+  `/team` on every page.
 - **`invest.html`** — the **Invest** page (GHL page slug `invest`).
 - **`community.html`** — the **Community** page (GHL page slug `community`). Embeds
   three Instagram reels (via `instagram.com/embed.js`) and links the "Register"

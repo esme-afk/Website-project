@@ -27,3 +27,4 @@ emit('src.html', 'index.build.html', 'preview.html');
 emit('mission.src.html', 'mission.build.html', 'mission.preview.html');
 emit('invest.src.html', 'invest.build.html', 'invest.preview.html');
 emit('community.src.html', 'community.build.html', 'community.preview.html');
+emit('team.src.html', 'team.build.html', 'team.preview.html');
