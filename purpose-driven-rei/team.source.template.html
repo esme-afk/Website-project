@@ -338,10 +338,37 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 .val h3{font-size:22px;color:var(--ink);margin:0 0 10px}
 .val p{margin:0;font-size:16px;color:#5c635e;line-height:1.65}
 
-/* growing note above the TBD cards */
-.tm-growing{text-align:center;max-width:52ch;margin:clamp(52px,6vw,74px) auto 0;font-size:17px;color:#5c635e}
+/* founder feature (distinct from the home teaser) */
+.tm-founder{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(34px,5vw,74px);align-items:center;max-width:1080px;margin:0 auto}
+.tm-founder__photo{position:relative;border-radius:calc(var(--r) + 4px);overflow:hidden;aspect-ratio:4/5;box-shadow:0 50px 90px -50px rgba(18,60,53,.6)}
+.tm-founder__photo .f-el{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.tm-founder__photo:hover .f-el{transform:scale(1.05)}
+.tm-founder__tag{position:absolute;left:18px;bottom:18px;z-index:2;background:rgba(9,30,26,.72);backdrop-filter:blur(6px);border:1px solid rgba(199,167,106,.4);color:var(--cream);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:9px 16px;border-radius:100px}
+.tm-founder h3{font-size:clamp(32px,4vw,46px);margin:0}
+.tm-founder .role{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:12px 0 20px}
+.tm-founder .lead{font-size:clamp(18px,2vw,20px);color:var(--ink);line-height:1.6;margin:0}
+.tm-founder .body{color:#4a524d;margin:15px 0 0}
+.tm-quote{margin:26px 0;padding:4px 0 4px 24px;border-left:3px solid var(--gold);font-family:var(--serif);font-size:clamp(20px,2.3vw,26px);line-height:1.35;color:var(--green)}
+.tm-focus__label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);font-weight:700;margin:0 0 12px}
+.tm-focus{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px;padding:0;list-style:none}
+.tm-focus li{border:1px solid var(--stone);border-radius:100px;padding:9px 16px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--green);background:#fff}
 
-@media(max-width:760px){.vals{grid-template-columns:1fr}}
+/* team roster (richer cards) */
+.tm-note{text-align:center;max-width:54ch;margin:0 auto clamp(40px,5vw,56px);font-size:17px;color:#5c635e}
+.tm-roster{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.tm-member{display:flex;flex-direction:column;background:#fff;border:1px solid var(--stone);border-radius:calc(var(--r) + 2px);overflow:hidden;box-shadow:0 30px 70px -58px rgba(18,60,53,.45);transition:transform .5s var(--ease),border-color .5s}
+.tm-member:hover{transform:translateY(-6px);border-color:var(--gold)}
+.tm-member__photo{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--green-2)}
+.tm-member__photo .f-el{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.tm-member:hover .tm-member__photo .f-el{transform:scale(1.05)}
+.tm-member__photo--empty{display:flex;align-items:center;justify-content:center;background:var(--stone-soft);color:var(--stone);font-family:var(--serif);font-size:16px;letter-spacing:.04em}
+.tm-member__body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+.tm-member h3{font-size:24px;color:var(--ink);margin:0}
+.tm-member .role{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:8px 0 0}
+.tm-member__bio{font-size:15px;color:#5c635e;line-height:1.6;margin:14px 0 0}
+
+@media(max-width:900px){.tm-roster{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.vals{grid-template-columns:1fr}.tm-founder{grid-template-columns:1fr}.tm-roster{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}}
 </style>
 
 <div class="pdrei no-gsap">
@@ -434,44 +461,89 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   </div>
 </section>
 
-<!-- ================= LEADERSHIP / MEET THE TEAM ================= -->
+<!-- ================= FOUNDER FEATURE ================= -->
 <section class="section" id="leadership" style="background:var(--stone-soft)">
   <div class="wrap">
     <p class="eyebrow center reveal">Leadership</p>
-    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(38px,5vw,60px);max-width:20ch">Meet the people building Purpose Driven REI.</h2>
-    <div class="founder reveal">
-      <div class="founder__photo"><img class="f-el" data-key="ricardo" alt="Ricardo Carrillo, Founder & CEO"></div>
-      <div>
+    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(40px,5vw,62px);max-width:18ch">The founder setting the standard.</h2>
+    <div class="tm-founder">
+      <div class="tm-founder__photo reveal">
+        <img class="f-el" data-key="ricardo" alt="Ricardo Carrillo, Founder & CEO">
+        <span class="tm-founder__tag">Founder &amp; CEO</span>
+      </div>
+      <div class="reveal">
         <h3>Ricardo Carrillo</h3>
         <p class="role">Founder &amp; CEO</p>
-        <p>Ricardo brings 20+ years of real-world experience in real estate, actively buying, renovating, and reselling residential properties across Southern California and beyond. With more than 200 successful fix-and-flip projects closed and a growing footprint in new construction, he has seen the questions come up on every deal.</p>
-        <p style="margin-top:16px">His approach is simple: source the right properties, structure every deal conservatively, protect investor capital with real security, and treat every project as a chance to leave a neighborhood better than he found it. That discipline is the standard he holds the whole team to.</p>
-        <ul class="checks">
-          <li>20+ years of investing &amp; sales experience in SoCal</li>
-          <li>200+ successful fix &amp; flip projects closed</li>
-          <li>Active in deal sourcing, private money &amp; new construction</li>
-          <li>Founder of a community built on purpose</li>
+        <p class="lead">Ricardo founded Purpose Driven REI on a simple belief: real estate should build real wealth and improve the neighborhoods it touches. For 20+ years he has personally sourced, financed, renovated, and sold residential property across Southern California and beyond.</p>
+        <p class="body">With more than 200 fix-and-flip projects closed and a growing new-construction pipeline, he has learned exactly where deals go wrong and how to protect the people funding them. That hard-won experience is now the playbook the entire team runs on.</p>
+        <blockquote class="tm-quote">"I treat every investor's capital the way I treat my own. Secured first, deployed with discipline, and returned on time."</blockquote>
+        <p class="tm-focus__label">What Ricardo leads</p>
+        <ul class="tm-focus">
+          <li>Deal Sourcing</li>
+          <li>Conservative Underwriting</li>
+          <li>Private Money</li>
+          <li>Fix &amp; Flip</li>
+          <li>New Construction</li>
+          <li>Investor Relations</li>
         </ul>
         <a href="#join-team" class="txtlink">Work with Ricardo <span class="ar">&rarr;</span></a>
       </div>
     </div>
-    <p class="tm-growing reveal">The team is growing. Here are more of the people building Purpose Driven REI, with more joining soon.</p>
-    <div class="team__more reveal">
-      <div class="tbd">
-        <div class="tbd__photo"><img class="f-el" data-key="brandon" alt="Brandon"></div>
-        <h3>Brandon</h3>
-        <p class="role">Team Member</p>
+  </div>
+</section>
+
+<!-- ================= BY THE NUMBERS ================= -->
+<section class="section dark has-bg" id="record">
+  <div class="sec-bg"><img class="b-el" data-key="recordBg" alt=""></div>
+  <div class="wrap">
+    <p class="eyebrow center reveal">By the Numbers</p>
+    <h2 class="reveal" style="text-align:center;margin:0 auto;max-width:22ch">A track record built one disciplined deal at a time.</h2>
+    <p class="lede reveal" style="text-align:center;margin:20px auto 0;max-width:60ch;color:rgba(247,244,236,.82)">These are the results behind the team you are trusting with your capital and your community.</p>
+    <div class="stats reveal">
+      <div class="stats__grid">
+        <div class="stat"><b data-count="20" data-suffix="+">0</b><span>Years in the Business</span></div>
+        <div class="stat"><b data-count="200" data-suffix="+">0</b><span>Projects Closed</span></div>
+        <div class="stat"><b data-count="1500" data-suffix="+">0</b><span>Homes Transacted</span></div>
+        <div class="stat"><b data-count="70" data-suffix="%">0</b><span>2025 Success Rate</span></div>
       </div>
-      <div class="tbd">
-        <div class="tbd__photo"></div>
-        <h3>TBD</h3>
-        <p class="role">TBD</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE TEAM (roster) ================= -->
+<section class="section" id="the-team">
+  <div class="wrap">
+    <p class="eyebrow center reveal">The Team</p>
+    <h2 class="reveal" style="text-align:center;margin:0 auto clamp(16px,2vw,22px);max-width:20ch">The people behind every project.</h2>
+    <p class="tm-note reveal">Purpose Driven REI is intentionally small and hands-on. Here is the team doing the work, and the seats we are growing into next.</p>
+    <div class="tm-roster">
+      <div class="tm-member reveal">
+        <div class="tm-member__photo"><img class="f-el" data-key="brandon" alt="Brandon"></div>
+        <div class="tm-member__body">
+          <h3>Brandon</h3>
+          <p class="role">Team Member</p>
+          <p class="tm-member__bio">A key part of the Purpose Driven REI team, working alongside Ricardo to keep projects moving. Full profile coming soon.</p>
+        </div>
       </div>
-      <div class="tbd">
-        <div class="tbd__photo"></div>
-        <h3>TBD</h3>
-        <p class="role">TBD</p>
+      <div class="tm-member reveal">
+        <div class="tm-member__photo tm-member__photo--empty"><span>Joining soon</span></div>
+        <div class="tm-member__body">
+          <h3>New teammate</h3>
+          <p class="role">Role to be announced</p>
+          <p class="tm-member__bio">We are growing with purpose. This seat is opening soon as the team expands.</p>
+        </div>
       </div>
+      <div class="tm-member reveal">
+        <div class="tm-member__photo tm-member__photo--empty"><span>Joining soon</span></div>
+        <div class="tm-member__body">
+          <h3>New teammate</h3>
+          <p class="role">Role to be announced</p>
+          <p class="tm-member__bio">Interested in building with a disciplined, purpose-driven team? This could be you.</p>
+        </div>
+      </div>
+    </div>
+    <div class="btnrow reveal" style="justify-content:center;margin-top:clamp(40px,5vw,56px)">
+      <a href="#join-team" class="btn">Join the Team <span class="ar">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -573,6 +645,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   var A = {
     logo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd50d4376904eac229652f.png",
     heroBg:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a7234d90629193ed56d3690.jpg",
+    recordBg:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879497cd89d244ff594.jpg",
     ricardo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6aa09abafb76acb4a93abf33.png",
     brandon:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6aa09b7da08d19d9275cee5f.png"
   };
@@ -587,7 +660,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       var k=img.getAttribute('data-key');
       if(USE_PLACEHOLDERS){
         img.classList.add('is-ph');
-        var labels={heroBg:'The team',ricardo:'Ricardo Carrillo',brandon:'Brandon'};
+        var labels={heroBg:'The team',recordBg:'Our work',ricardo:'Ricardo Carrillo',brandon:'Brandon'};
         img.removeAttribute('src');
         img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
       }else{img.src=A[k];}
@@ -650,8 +723,15 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       gsap.utils.toArray('.m-el,.c-el,.f-el').forEach(function(img){
         gsap.fromTo(img,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:img.closest('div'),start:'top bottom',end:'bottom top',scrub:true}});
       });
+      gsap.utils.toArray('[data-count]').forEach(function(el){
+        var end=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',o={v:0};
+        ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:function(){
+          gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:function(){el.textContent=Math.round(o.v).toLocaleString()+suf;}});
+        }});
+      });
     }else{
       gsap.set('.reveal',{opacity:1,y:0});
+      document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=(+el.getAttribute('data-count')).toLocaleString()+(el.getAttribute('data-suffix')||'');});
     }
 
     if(!rm && matchMedia('(hover:hover)').matches){
@@ -663,6 +743,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
     }
   }else{
     document.querySelectorAll('.reveal').forEach(function(e){e.style.opacity=1;e.style.transform='none';});
+    document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=(+el.getAttribute('data-count')).toLocaleString()+(el.getAttribute('data-suffix')||'');});
   }
 })();
 </script>
