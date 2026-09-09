@@ -141,6 +141,14 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
 .cta-band h2{margin:0 auto;max-width:20ch}
 .cta-band .lede{margin:22px auto 0;max-width:62ch}
 .cta-band .btnrow{justify-content:center;margin-top:34px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(40px,5vw,64px)}
+.pillar{background:rgba(247,244,236,.04);border:1px solid rgba(199,167,106,.28);border-radius:var(--r);padding:34px 30px;transition:transform .5s var(--ease),border-color .5s,background .5s}
+.pillar:hover{transform:translateY(-6px);border-color:var(--gold);background:rgba(199,167,106,.06)}
+.pillar .pn{font-family:var(--serif);font-size:clamp(30px,3.4vw,40px);color:var(--gold-2);line-height:1}
+.pillar h3{font-size:21px;margin:16px 0 10px;color:var(--cream)}
+.pillar p{font-size:16px;color:rgba(247,244,236,.75);margin:0}
+@media(max-width:900px){.pillars{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.pillars{grid-template-columns:1fr}}
 .sec-bg .ph-label{display:none}
 
 /* Mission */
@@ -432,16 +440,26 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   </div>
 </section>
 
-<!-- ================= PARTNER WITH US (CTA band, from Mission page) ================= -->
-<section class="section dark has-bg cta-band" id="invest">
+<!-- ================= OUR APPROACH (image bg, from Mission page) ================= -->
+<section class="section dark has-bg" id="invest">
   <div class="sec-bg"><img class="b-el" data-key="partnerBg" alt=""></div>
   <div class="wrap">
-    <p class="eyebrow center reveal">Partner With Us</p>
-    <h2 class="reveal">Let's build something with purpose.</h2>
-    <p class="lede reveal">Whether you are investing capital, partnering on a deal, or joining the community, there is a place for you in the Purpose Driven REI network.</p>
-    <div class="btnrow reveal">
-      <a href="/invest" class="btn">How Partnering Works <span class="ar">&rarr;</span></a>
-      <a href="#join" class="btn btn--ghost btn--onDark">Join Our Network</a>
+    <div class="invest__head">
+      <div>
+        <p class="eyebrow reveal">Our Approach</p>
+        <h2 class="reveal">How we build value, on every deal.</h2>
+      </div>
+      <p class="lede reveal">Discipline over hype. Every project runs through the same playbook, so our partners always know how their capital is working and how it is protected.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal"><div class="pn">01</div><h3>Source</h3><p>We find underperforming properties with real upside, in markets we know, at prices that leave room for a conservative return.</p></div>
+      <div class="pillar reveal"><div class="pn">02</div><h3>Transform</h3><p>Thoughtful, high quality renovation turns tired homes into desirable assets that buyers want and neighborhoods are proud of.</p></div>
+      <div class="pillar reveal"><div class="pn">03</div><h3>Protect</h3><p>Investor capital is secured by real estate, with a promissory note and recorded deed of trust on every deal.</p></div>
+      <div class="pillar reveal"><div class="pn">04</div><h3>Return</h3><p>We deliver strong, secured returns to our partners and reinvest into the next project, and the next community.</p></div>
+    </div>
+    <div class="btnrow reveal" style="margin-top:38px">
+      <a href="/invest" class="btn">See the Investor Overview <span class="ar">&rarr;</span></a>
+      <a href="#portfolio" class="btn btn--ghost btn--onDark">View the Portfolio</a>
     </div>
   </div>
 </section>
@@ -606,7 +624,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
   var A = {
     logo:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd50d4376904eac229652f.png",
     heroImg:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd4600ef1dbfe76e0d3e99.jpg",
-    partnerBg:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a72355eeaa4719b5c7ba904.jpg",
+    partnerBg:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a7234d90629193ed56d3690.jpg",
     community:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/69dd42271774270f1d8640f9.jpeg",
     bg1:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879188345b27e11fea8.jpg",
     bg2:"https://assets.cdn.filesafe.space/iU4hjZOXaFxmE8OnsXWv/media/6a6c2879497cd89d244ff594.jpg",
@@ -637,7 +655,7 @@ html:has(.pdrei-navtoggle:checked),body:has(.pdrei-navtoggle:checked){overflow:h
       var k=img.getAttribute('data-key');
       if(USE_PLACEHOLDERS){
         img.classList.add('is-ph');
-        var labels={heroImg:'Purpose Driven REI',bg1:'Renovated property',bg2:'Renovated property',partnerBg:'Build with purpose',ricardo:'Ricardo Carrillo',brandon:'Brandon',community:'Community group photo'};
+        var labels={heroImg:'Purpose Driven REI',bg1:'Renovated property',bg2:'Renovated property',partnerBg:'The community',ricardo:'Ricardo Carrillo',brandon:'Brandon',community:'Community group photo'};
         img.removeAttribute('src');
         img.outerHTML='<div class="'+img.className+' is-ph">'+phLabel(labels[k]||'Photo')+'</div>';
       }else{img.src=A[k];}
