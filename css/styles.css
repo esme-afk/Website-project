@@ -1299,12 +1299,60 @@ body.menu-open .overlay {
   color: var(--amber);
 }
 
-/* Lead-capture row */
+/* Lead-capture form (two steps: ZIP, then contact info) */
 .final-cta__form {
+  margin-bottom: clamp(20px, 2.4vw, 30px);
+}
+.final-cta__step {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-bottom: clamp(20px, 2.4vw, 30px);
+  align-items: flex-start;
+}
+.final-cta__step[hidden] { display: none; }
+
+/* Step 2 — intro line + change-ZIP link */
+.final-cta__step-note {
+  flex: 1 1 100%;
+  width: 100%;
+  margin: 0 0 2px;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: rgba(243, 239, 232, 0.9);
+}
+.final-cta__step-note strong { color: var(--amber); }
+.final-cta__back {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-left: 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--amber);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: color 0.3s var(--ease);
+}
+.final-cta__back:hover,
+.final-cta__back:focus-visible { color: var(--white); }
+
+/* Step 2 — contact fields grid */
+.final-cta__grid {
+  flex: 1 1 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.final-cta__field--wide { grid-column: 1 / -1; }
+
+/* Step 2 — full-width submit under the grid */
+.final-cta__step[data-step-panel="2"] .final-cta__submit {
+  flex: 1 1 100%;
+  width: 100%;
 }
 .final-cta__field {
   position: relative;
@@ -1396,7 +1444,8 @@ body.menu-open .overlay {
   .final-cta__img { margin-top: 0; max-height: 320px; }
 }
 @media (max-width: 560px) {
-  .final-cta__form { flex-direction: column; }
+  .final-cta__step { flex-direction: column; }
+  .final-cta__grid { grid-template-columns: 1fr; }
   .final-cta__field { flex: 0 0 auto; width: 100%; }
   .final-cta__submit { width: 100%; }
   .final-cta__img { max-height: 240px; }
