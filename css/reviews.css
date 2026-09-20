@@ -1,0 +1,422 @@
+/* =====================================================================
+   Lone Wolf Hauling — Reviews Page
+   Editorial hero: the owner + branded truck photo full-bleed, with a
+   left-weighted scrim so the headline, copy, and CTA read cleanly.
+   Relies on brand tokens + base styles in css/styles.css.
+   ===================================================================== */
+
+/* Active nav pill for the current page */
+.nav__pill-link[aria-current="page"] {
+  background: var(--burnt-red);
+  color: var(--white);
+}
+
+/* ============================= REVIEWS HERO ============================ */
+.reviews-hero {
+  position: relative;
+  min-height: min(94vh, 900px);
+  display: flex;
+  align-items: center;
+  background: #0C1727;
+  overflow: hidden;
+}
+
+/* Full-bleed photo */
+.reviews-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.reviews-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 74% center;   /* keeps the owner + logo in frame */
+  display: block;
+}
+
+/* Left-weighted scrim for legibility + brand warmth */
+.reviews-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(96deg,
+      rgba(12, 23, 39, 0.95) 0%,
+      rgba(12, 23, 39, 0.88) 30%,
+      rgba(12, 23, 39, 0.55) 52%,
+      rgba(12, 23, 39, 0.12) 74%,
+      rgba(12, 23, 39, 0.0) 100%),
+    linear-gradient(0deg, rgba(12, 23, 39, 0.55) 0%, rgba(12, 23, 39, 0) 40%);
+  pointer-events: none;
+}
+/* Subtle brand glow bleeding from the lower-left */
+.reviews-hero__scrim::after {
+  content: "";
+  position: absolute;
+  left: -8%;
+  bottom: -18%;
+  width: 55%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(176, 36, 0, 0.28) 0%, rgba(176, 36, 0, 0) 68%);
+}
+
+.reviews-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 40px) var(--gutter) clamp(48px, 7vh, 88px);
+}
+.reviews-hero__content {
+  max-width: 640px;
+  color: #fff;
+}
+
+/* Eyebrow with stars */
+.reviews-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+.reviews-hero__stars {
+  color: var(--amber);
+  letter-spacing: 2px;
+  font-size: 0.92rem;
+}
+
+/* Headline */
+.reviews-hero__title {
+  margin: 0 0 24px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: #fff;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Supporting copy */
+.reviews-hero__sub {
+  margin: 0 0 16px;
+  max-width: 560px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.66;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Location + Check Availability form */
+.reviews-hero__form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 30px 0 22px;
+  max-width: 540px;
+}
+.reviews-hero__field {
+  position: relative;
+  flex: 1 1 240px;
+  display: flex;
+  align-items: center;
+}
+.reviews-hero__field-icon {
+  position: absolute;
+  left: 16px;
+  width: 19px;
+  height: 19px;
+  color: var(--burnt-red);
+  pointer-events: none;
+}
+.reviews-hero__input {
+  width: 100%;
+  padding: 16px 18px 16px 44px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--obsidian);
+  transition: box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+.reviews-hero__input::placeholder { color: rgba(11, 11, 11, 0.5); }
+.reviews-hero__input:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(217, 154, 33, 0.45);
+}
+.reviews-hero__submit {
+  flex: 0 0 auto;
+  padding: 16px 30px;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(120deg, var(--amber) 0%, #C0470A 52%, var(--burnt-red) 100%);
+  box-shadow: 0 14px 32px rgba(176, 36, 0, 0.4);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.reviews-hero__submit:hover { transform: translateY(-2px); box-shadow: 0 20px 42px rgba(176, 36, 0, 0.5); }
+.reviews-hero__submit:active { transform: translateY(0) scale(0.98); }
+
+/* Trust line */
+.reviews-hero__trust {
+  margin: 0;
+  max-width: 560px;
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ---- Entrance ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .reviews-hero__eyebrow,
+  .reviews-hero__title,
+  .reviews-hero__sub,
+  .reviews-hero__form,
+  .reviews-hero__trust {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: revRise 0.9s var(--ease) forwards;
+  }
+  .reviews-hero__title { animation-delay: 0.08s; }
+  .reviews-hero__sub   { animation-delay: 0.18s; }
+  .reviews-hero__form  { animation-delay: 0.30s; }
+  .reviews-hero__trust { animation-delay: 0.40s; }
+}
+@keyframes revRise { to { opacity: 1; transform: none; } }
+
+/* ---- Responsive ---- */
+@media (max-width: 760px) {
+  .reviews-hero__bg img { object-position: 68% center; }
+  /* stronger, full scrim so text stays readable over the photo */
+  .reviews-hero__scrim {
+    background:
+      linear-gradient(180deg, rgba(12,23,39,0.82) 0%, rgba(12,23,39,0.7) 45%, rgba(12,23,39,0.9) 100%);
+  }
+}
+@media (max-width: 560px) {
+  .reviews-hero__form { gap: 10px; }
+  .reviews-hero__field { flex: 1 1 100%; }
+  .reviews-hero__submit { flex: 1 1 100%; }
+}
+
+/* =====================================================================
+   REVIEW HIGHLIGHTS — testimonial marquee  (Reviews page only)
+   Two rows slide in opposite directions and pause on hover.
+   ===================================================================== */
+.tm {
+  background: #FAF6EF;
+  padding: clamp(72px, 10vh, 130px) 0 clamp(80px, 11vh, 140px);
+  overflow: hidden;
+}
+.tm__head {
+  max-width: 820px;
+  margin: 0 auto clamp(40px, 5vw, 64px);
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+.tm__title {
+  margin: 0 0 18px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--obsidian);
+}
+.tm__sub {
+  margin: 0 auto;
+  max-width: 680px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.66;
+  color: rgba(11, 11, 11, 0.6);
+}
+
+/* Rows */
+.tm__row {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.tm__row + .tm__row { margin-top: 22px; }
+.tm__track {
+  display: flex;
+  width: max-content;
+  padding: 8px 0;
+  animation: tmLeft 64s linear infinite;
+  will-change: transform;
+}
+.tm__row--rev .tm__track { animation-name: tmRight; animation-duration: 56s; }
+@keyframes tmLeft  { from { transform: translateX(0); }      to { transform: translateX(-50%); } }
+@keyframes tmRight { from { transform: translateX(-50%); }   to { transform: translateX(0); } }
+/* pause on hover */
+.tm__row:hover .tm__track { animation-play-state: paused; }
+
+/* Card */
+.tm-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(280px, 30vw, 372px);
+  margin-right: 22px;
+  padding: clamp(24px, 2.2vw, 32px);
+  background: #fff;
+  border: 1px solid rgba(11, 11, 11, 0.07);
+  border-radius: 20px;
+  box-shadow: 0 20px 44px rgba(11, 11, 11, 0.07);
+  display: flex;
+  flex-direction: column;
+}
+.tm-card__mark {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-size: 4.4rem;
+  line-height: 1;
+  color: rgba(217, 154, 33, 0.28);
+  pointer-events: none;
+}
+.tm-card__stars {
+  color: var(--amber);
+  letter-spacing: 2px;
+  font-size: 0.94rem;
+  margin-bottom: 12px;
+}
+.tm-card__title {
+  margin: 0 0 12px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.12rem;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: var(--obsidian);
+}
+.tm-card__quote {
+  margin: 0 0 20px;
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: rgba(11, 11, 11, 0.66);
+}
+.tm-card__by {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(11, 11, 11, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.tm-card__name { font-family: var(--font-body); font-weight: 700; font-size: 1rem; color: var(--obsidian); }
+.tm-card__co { font-family: var(--font-body); font-size: 0.88rem; font-weight: 600; color: var(--burnt-red); }
+
+/* Reduced motion — stop the auto-scroll, allow manual scroll */
+@media (prefers-reduced-motion: reduce) {
+  .tm__track { animation: none; }
+  .tm__row { overflow-x: auto; -webkit-mask: none; mask: none; }
+}
+
+/* =====================================================================
+   LEAVE A REVIEW  (Reviews page only)
+   ===================================================================== */
+.leave {
+  position: relative;
+  padding: clamp(72px, 10vh, 130px) var(--gutter) clamp(80px, 11vh, 140px);
+  background: radial-gradient(120% 130% at 50% 0%, #1B2E48 0%, #16273D 45%, #0C1727 100%);
+  overflow: hidden;
+  text-align: center;
+}
+.leave__glow {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  width: 60%;
+  height: 60%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(176, 36, 0, 0.28) 0%, rgba(176, 36, 0, 0) 68%);
+  pointer-events: none;
+}
+.leave__inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+.leave__eyebrow {
+  margin: 0 0 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.leave__title {
+  margin: 0 0 18px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.leave__sub {
+  margin: 0 auto 38px;
+  max-width: 560px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.25vw, 1.14rem);
+  line-height: 1.64;
+  color: rgba(255, 255, 255, 0.7);
+}
+.leave__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.leave__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 30px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.02rem;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+.leave__btn svg { width: 22px; height: 22px; flex: 0 0 auto; }
+.leave__btn--google {
+  background: #fff;
+  color: #1a1a1a;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+.leave__btn--google:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45); }
+.leave__btn--yelp {
+  background: #D32323;
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(211, 35, 35, 0.4);
+}
+.leave__btn--yelp:hover { transform: translateY(-3px); box-shadow: 0 20px 44px rgba(211, 35, 35, 0.55); }
+
+@media (max-width: 480px) {
+  .leave__actions { flex-direction: column; }
+  .leave__btn { justify-content: center; }
+}
