@@ -83,34 +83,38 @@
 
         clearMsg();
 
+        // First + last name split (GHL maps first_name / last_name nicely)
+        var parts = name.split(/\s+/);
+        var firstName = parts.shift() || name;
+        var lastName  = parts.join(" ");
+
         var payload = {
-          name: name,
+          full_name: name,
+          first_name: firstName,
+          last_name: lastName,
           phone: phone,
           email: email,
           zip: zip,
+          postal_code: zip,
           source: "Home Page — Free Quote Form",
           page: location.href,
           submitted_at: new Date().toISOString()
         };
 
-        // Send to GHL. no-cors "fire and forget" (webhook returns no CORS
-        // headers); also mirror the fields onto the query string so the lead
-        // is captured even if the body is not parsed.
-        var url = WEBHOOK +
-          "?name="   + encodeURIComponent(name) +
-          "&phone="  + encodeURIComponent(phone) +
-          "&email="  + encodeURIComponent(email) +
-          "&zip="    + encodeURIComponent(zip) +
-          "&source=" + encodeURIComponent(payload.source) +
-          "&page="   + encodeURIComponent(payload.page);
+        // Send to GHL as application/x-www-form-urlencoded. This content type
+        // is CORS-safelisted, so it works under mode:"no-cors" WITHOUT a
+        // preflight (GHL's webhook doesn't answer preflights), and GHL parses
+        // it straight into named fields for the Mapping Reference. A JSON body
+        // would arrive as text/plain here and produce no mappable fields.
+        var body = new URLSearchParams(payload); // sets form-urlencoded header
 
         var btn = form.querySelector('[data-step-panel="2"] .final-cta__submit');
         if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = "Sending…"; }
 
-        fetch(url, {
+        fetch(WEBHOOK, {
           method: "POST",
           mode: "no-cors",
-          body: JSON.stringify(payload)
+          body: body
         }).then(finish).catch(finish);
 
         function finish() {
